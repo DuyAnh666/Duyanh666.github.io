@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cổng Ôn tập Trực tuyến</title>
+    <style>
+        :root { --primary: #4361ee; --success: #2a9d8f; --danger: #e63946; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #edf2f4; margin: 0; }
+        header { background-color: var(--primary); color: white; padding: 2rem 0; text-align: center; margin-bottom: 50px; position: relative; }
+        header h1 { margin: 0; font-size: 2.2rem; }
+        header p { margin: 10px 0 0 0; font-size: 1.1rem; opacity: 0.9; }
+        
+        .btn-logout { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2); color: white; border: none; padding: 8px 15px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-logout:hover { background: var(--danger); }
+
+        .container { max-width: 900px; margin: auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .course-card { background: white; padding: 40px 30px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.06); cursor: pointer; text-align: center; border-top: 8px solid var(--primary); text-decoration: none; color: inherit; display: block; transition: all 0.3s ease;}
+        .course-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.12); }
+        .course-card h2 { color: var(--primary); margin-top: 0; font-size: 1.6rem; margin-bottom: 15px; }
+        .course-card p { color: #666; font-size: 1.05rem; line-height: 1.5; margin-bottom: 25px; }
+        .btn-enter { display: inline-block; background: var(--primary); color: white; padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button class="btn-logout" onclick="handleLogout()">Đăng xuất</button>
+        <h1>Cổng Ôn tập Trực tuyến</h1>
+        <p>Lựa chọn học phần bạn muốn ôn luyện và thi thử</p>
+    </header>
+
+    <div class="container">
+        <a href="tthcm.html" class="course-card">
+            <h2>📜 Tư tưởng Hồ Chí Minh</h2>
+            <span class="btn-enter">Vào học phần →</span>
+        </a>
+
+        <a href="ktct.html" class="course-card" style="border-top-color: var(--success);">
+            <h2 style="color: var(--success);">📊 Kinh tế Chính trị Mác - Lênin</h2>
+            <span class="btn-enter" style="background: var(--success);">Vào học phần →</span>
+        </a>
+    </div>
+
+    <script>
+        // Kiểm tra xem chưa đăng nhập thì đuổi ra index.html
+        window.onload = function() {
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
+                window.location.href = 'index.html';
+            }
+        };
+
+        // Khi bấm đăng xuất: Xóa bộ nhớ và quay lại trang Đăng nhập
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
