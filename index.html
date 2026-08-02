@@ -49,9 +49,13 @@
         <div id="error-msg" class="error-msg">Tài khoản hoặc mật khẩu không chính xác!</div>
     </div>
 
-    <script>
+<script>
+        // 1. TẠO MÃ KHÓA PHIÊN (Thay đổi mã này khi muốn đuổi tất cả người khác ra)
+        const SESSION_KEY = "DuyAnh_KHOA_V2"; 
+
+        // 2. Kiểm tra xem đã có mã khóa đúng chưa
         window.onload = function() {
-            if (localStorage.getItem('isLoggedIn') === 'true') {
+            if (localStorage.getItem('sessionKey') === SESSION_KEY) {
                 window.location.href = 'home.html'; 
             }
         };
@@ -64,9 +68,9 @@
             return sum.toString(16) + "xZ";
         }
 
+        // 3. Chỉ giữ lại tài khoản của bạn
         const accounts = [
-            { user: "admin", passHash: "14aeb4dxZ" },
-            
+            { user: "admin", passHash: "14aeb4dxZ" } // Mật khẩu là: 123456
         ];
 
         function handleKeyPress(e) {
@@ -77,12 +81,13 @@
             const inputUser = document.getElementById('username').value.trim();
             const inputPass = document.getElementById('password').value.trim();
             const errorMsg = document.getElementById('error-msg');
+            
             const hashedInputPass = hashPassword(inputPass);
-
             const foundAccount = accounts.find(acc => acc.user === inputUser && acc.passHash === hashedInputPass);
 
             if (foundAccount) {
-                localStorage.setItem('isLoggedIn', 'true');
+                // Đăng nhập đúng -> Cấp mã khóa phiên mới nhất
+                localStorage.setItem('sessionKey', SESSION_KEY);
                 window.location.href = 'home.html'; 
             } else {
                 errorMsg.style.display = 'block';
