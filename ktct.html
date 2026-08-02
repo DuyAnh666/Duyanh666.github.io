@@ -54,10 +54,10 @@
         #home-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: auto; padding: 0 20px; }
         #quiz-section { display: none; max-width: 1200px; margin: auto; padding: 0 20px; }
         
-        .card { background: white; padding: 30px 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; text-align: center; border-top: 5px solid var(--primary); transition: all 0.3s ease; }
+        .card { background: white; padding: 25px 18px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; text-align: center; border-top: 5px solid var(--primary); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: center; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card h3 { margin: 0 0 10px 0; color: var(--primary); font-size: 1.3rem; }
-        .card p { margin: 0; color: #666; }
+        .card h3 { margin: 0 0 8px 0; color: var(--primary); font-size: 1.3rem; }
+        .card p { margin: 0; color: #555; font-size: 0.95rem; line-height: 1.4; }
 
         .exam-layout { display: flex; gap: 20px; align-items: flex-start; }
         .main-col { flex: 3; display: flex; flex-direction: column; gap: 15px; }
@@ -108,9 +108,69 @@
 
         #timer-container { display: none; margin-left: auto; font-size: 1.2rem; font-weight: bold; color: var(--danger); background: #ffe3e3; padding: 5px 15px; border-radius: 8px; border: 1px solid var(--danger); }
 
+        /* Styles cho phần Xem lại Bài làm & Lời giải */
+        #review-section { display: none; max-width: 1000px; margin: auto; padding: 0 20px 50px; }
+        .review-header-card {
+            background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary);
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px;
+        }
+        .review-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+        .stat-badge {
+            padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 0.95rem;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .stat-correct { background: #e6f6ee; color: #155724; border: 1px solid var(--success); }
+        .stat-incorrect { background: #fdebee; color: #721c24; border: 1px solid var(--danger); }
+        .stat-score { background: #eff3fe; color: var(--primary); border: 1px solid var(--primary); font-size: 1.05rem; }
+
+        .filter-container { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border); background: white;
+            cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #555; transition: all 0.2s ease;
+        }
+        .filter-btn:hover { background: #f1f3f5; }
+        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 3px 8px rgba(67, 97, 238, 0.3); }
+
+        .review-card {
+            background: white; border: 1px solid var(--border); border-radius: 10px; padding: 25px;
+            margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .review-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+        .review-card-header {
+            display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee;
+            padding-bottom: 12px; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;
+        }
+        .review-q-title { font-weight: 700; font-size: 1.15rem; color: #1f2937; }
+        .review-badges { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .badge-result {
+            padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 700;
+        }
+        .badge-correct { background: #e6f6ee; color: var(--success); border: 1px solid var(--success); }
+        .badge-incorrect { background: #fdebee; color: var(--danger); border: 1px solid var(--danger); }
+        .badge-unanswered { background: #fff3e0; color: #e67e22; border: 1px solid #e67e22; }
+        .badge-flagged { background: #fff0f0; color: var(--danger); font-size: 0.85rem; padding: 4px 10px; border-radius: 4px; border: 1px dotted var(--danger); font-weight: bold; }
+
+        .review-q-text { font-size: 1.1rem; margin-bottom: 20px; line-height: 1.5; color: #2b2d42; font-weight: 500; }
+        .review-option {
+            padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 10px;
+            background: #ffffff; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+            font-size: 1rem; color: #444; transition: all 0.2s;
+        }
+        .review-option.opt-correct {
+            background-color: #e8f5e9; border: 2px solid #2e7d32; color: #1b5e20; font-weight: 600;
+        }
+        .review-option.opt-incorrect {
+            background-color: #ffebee; border: 2px solid #c62828; color: #b71c1c; font-weight: 600;
+        }
+        .review-option.opt-normal { opacity: 0.65; background: #f8f9fa; }
+        .opt-tag { font-size: 0.85rem; padding: 4px 10px; border-radius: 5px; font-weight: bold; white-space: nowrap; }
+        .tag-correct { background: #2e7d32; color: white; box-shadow: 0 2px 5px rgba(46,125,50,0.3); }
+        .tag-user-wrong { background: #c62828; color: white; box-shadow: 0 2px 5px rgba(198,40,40,0.3); }
+
         @media (max-width: 900px) {
             #home-menu { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); padding: 0 16px; }
-            #quiz-section { padding: 0 16px 24px; }
+            #quiz-section, #review-section { padding: 0 16px 24px; }
             .exam-layout { flex-direction: column; }
             .side-col { position: static; width: 100%; top: auto; }
             .palette-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
@@ -124,7 +184,7 @@
             .login-card { padding: 28px 18px; }
             #home-menu { grid-template-columns: 1fr; gap: 14px; }
             .card { padding: 24px 16px; }
-            #quiz-section { padding: 0 12px 20px; }
+            #quiz-section, #review-section { padding: 0 12px 20px; }
             #quiz-section > div:first-child { margin-bottom: 16px !important; flex-wrap: wrap; align-items: flex-start; gap: 10px; }
             #quiz-title { margin-left: 0 !important; width: 100%; font-size: 1.1rem; }
             #timer-container { margin-left: 0; width: fit-content; font-size: 1rem; padding: 6px 12px; }
@@ -140,6 +200,9 @@
             .palette-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
             .modal-content { padding: 22px 18px; width: 94%; }
             .result-row { font-size: 1rem; }
+            .review-header-card { padding: 18px 15px; flex-direction: column; align-items: flex-start; }
+            .review-card { padding: 18px 14px; }
+            .review-option { flex-direction: column; align-items: flex-start; gap: 6px; }
         }
 
         @media (max-width: 420px) {
@@ -185,18 +248,40 @@
                     <div class="result-row"><span>Số câu sai:</span><strong id="res-incorrect" style="color: var(--danger);">0</strong></div>
                     <div class="result-row"><span style="color: var(--primary);">Tổng điểm:</span><strong id="res-score" style="color: var(--primary); font-size: 1.3rem;">0.00</strong></div>
                 </div>
-                <button class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;" onclick="closeResult()">Trở về danh sách chương</button>
+                <button class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(67, 97, 238, 0.25);" onclick="showReview()">🔍 Xem lại chi tiết bài làm & lời giải</button>
+                <button class="btn" style="width: 100%; padding: 12px; font-size: 1.05rem; background: var(--bg-light); border: 1px solid var(--border); color: #555;" onclick="closeResult()">🏠 Trở về danh sách chương</button>
             </div>
         </div>
 
         <div id="home-menu">
-            <div class="card" onclick="openModeModal('Chương 1: Khái niệm, đối tượng, phương pháp', 'chuong1')"><h3>Chương 1</h3></div>
-            <div class="card" onclick="openModeModal('Chương 2: Cơ sở, quá trình hình thành', 'chuong2')"><h3>Chương 2</h3></div>
-            <div class="card" onclick="openModeModal('Chương 3: Độc lập dân tộc & CNXH', 'chuong3')"><h3>Chương 3</h3></div>
-            <div class="card" onclick="openModeModal('Chương 4: Đảng Cộng sản & Nhà nước', 'chuong4')"><h3>Chương 4</h3></div>
-            <div class="card" onclick="openModeModal('Chương 5: Đại đoàn kết toàn dân tộc', 'chuong5')"><h3>Chương 5</h3></div>
-            <div class="card" onclick="openModeModal('Chương 6: Văn hóa, đạo đức, con người', 'chuong6')"><h3>Chương 6</h3></div>
-            <div class="card" style="border-top-color: var(--danger)" onclick="openModeModal('Đề Thi Tổng Hợp Cuối Kì', 'tong_hop')"><h3 style="color: var(--danger)">Thi Tổng Hợp</h3><p>Mô phỏng 40 Câu / 60 Phút</p></div>
+            <div class="card" onclick="openModeModal('Chương 1: Đối tượng, phương pháp và chức năng của Kinh tế chính trị Mác - Lênin', 'chuong1')">
+                <h3>Chương 1</h3>
+                <p>Đối tượng, phương pháp và chức năng của Kinh tế chính trị Mác - Lênin</p>
+            </div>
+            <div class="card" onclick="openModeModal('Chương 2: Hàng hóa, thị trường và vai trò của các chủ thể tham gia thị trường', 'chuong2')">
+                <h3>Chương 2</h3>
+                <p>Hàng hóa, thị trường và vai trò của các chủ thể tham gia thị trường</p>
+            </div>
+            <div class="card" onclick="openModeModal('Chương 3: Giá trị thặng dư trong nền kinh tế thị trường', 'chuong3')">
+                <h3>Chương 3</h3>
+                <p>Giá trị thặng dư trong nền kinh tế thị trường</p>
+            </div>
+            <div class="card" onclick="openModeModal('Chương 4: Cạnh tranh và độc quyền trong nền kinh tế thị trường', 'chuong4')">
+                <h3>Chương 4</h3>
+                <p>Cạnh tranh và độc quyền trong nền kinh tế thị trường</p>
+            </div>
+            <div class="card" onclick="openModeModal('Chương 5: Kinh tế thị trường định hướng XHCN và các quan hệ lợi ích kinh tế ở Việt Nam', 'chuong5')">
+                <h3>Chương 5</h3>
+                <p>Kinh tế thị trường định hướng XHCN và các quan hệ lợi ích kinh tế ở Việt Nam</p>
+            </div>
+            <div class="card" onclick="openModeModal('Chương 6: Công nghiệp hóa, hiện đại hóa và hội nhập kinh tế quốc tế của Việt Nam', 'chuong6')">
+                <h3>Chương 6</h3>
+                <p>Công nghiệp hóa, hiện đại hóa và hội nhập kinh tế quốc tế của Việt Nam</p>
+            </div>
+            <div class="card" style="border-top-color: var(--danger)" onclick="openModeModal('Đề Thi Tổng Hợp Cuối Kì', 'tong_hop')">
+                <h3 style="color: var(--danger)">Thi Tổng Hợp</h3>
+                <p>Mô phỏng đề thi cuối kì<br>(40 Câu / 60 Phút)</p>
+            </div>
         </div>
 
         <div id="quiz-section">
@@ -235,6 +320,34 @@
                 </div>
             </div>
         </div>
+
+        <div id="review-section">
+            <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                <button class="btn" onclick="exitReview()">← Quay lại danh sách chương</button>
+                <button class="btn btn-primary" style="background: var(--success); border: none; padding: 10px 20px; font-size: 1rem;" onclick="retryCurrentQuiz()">🔄 Làm lại bài thi này</button>
+            </div>
+
+            <div class="review-header-card">
+                <div>
+                    <h2 id="review-title" style="margin: 0 0 8px 0; color: var(--primary);">Tên bài thi</h2>
+                    <span id="review-mode-badge" style="padding: 5px 12px; background: #e9ecef; border-radius: 20px; font-size: 0.9rem; font-weight: bold; color: #555;"></span>
+                </div>
+                <div class="review-stats">
+                    <div class="stat-badge stat-correct"><span>✅ Đúng:</span> <strong id="rev-correct">0</strong></div>
+                    <div class="stat-badge stat-incorrect"><span>❌ Sai/Bỏ trống:</span> <strong id="rev-incorrect">0</strong></div>
+                    <div class="stat-badge stat-score"><span>⭐ Điểm số:</span> <strong id="rev-score">0.00</strong></div>
+                </div>
+            </div>
+
+            <div class="filter-container">
+                <button class="filter-btn active" id="filter-all" onclick="filterReview('all')">Tất cả (<span id="count-all">0</span>)</button>
+                <button class="filter-btn" id="filter-correct" onclick="filterReview('correct')">✅ Làm đúng (<span id="count-correct">0</span>)</button>
+                <button class="filter-btn" id="filter-incorrect" onclick="filterReview('incorrect')">❌ Làm sai / Bỏ trống (<span id="count-incorrect">0</span>)</button>
+                <button class="filter-btn" id="filter-flagged" onclick="filterReview('flagged')">⚑ Đã đặt cờ (<span id="count-flagged">0</span>)</button>
+            </div>
+
+            <div id="review-list"></div>
+        </div>
     </div>
 
     <script>
@@ -243,7 +356,7 @@
         }
         
 
-        // Đưa toàn bộ các câu hỏi của 6 chương Tư tưởng Hồ Chí Minh vào đây
+        // Ngân hàng câu hỏi trắc nghiệm Kinh tế chính trị Mác - Lênin
        const questionDatabase = {
             "chuong1": [
                 { question: "Câu 1. Thuật ngữ khoa học \"kinh tế chính trị\" xuất hiện lần đầu tiên vào năm nào?", options: ["A. 1610", "B. 1615", "C. 1612", "D. 1618"], correctIndex: 1 },
@@ -782,6 +895,7 @@
             }
 
             document.getElementById('home-menu').style.display = 'none';
+            document.getElementById('review-section').style.display = 'none';
             document.getElementById('quiz-section').style.display = 'block';
             document.getElementById('quiz-title').innerText = pendingChapterTitle;
             const modeBadge = document.getElementById('mode-badge');
@@ -800,6 +914,7 @@
                 stopTimer();
                 document.getElementById('home-menu').style.display = 'grid';
                 document.getElementById('quiz-section').style.display = 'none';
+                document.getElementById('review-section').style.display = 'none';
             }
         }
 
@@ -885,6 +1000,144 @@
             closeModal('result-modal');
             document.getElementById('home-menu').style.display = 'grid';
             document.getElementById('quiz-section').style.display = 'none';
+            document.getElementById('review-section').style.display = 'none';
+        }
+
+        let currentFilter = 'all';
+
+        function showReview() {
+            closeModal('result-modal');
+            document.getElementById('quiz-section').style.display = 'none';
+            document.getElementById('home-menu').style.display = 'none';
+            document.getElementById('review-section').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            let score = 0;
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let flaggedCount = flaggedStatus.filter(f => f).length;
+
+            userAnswers.forEach((ans, index) => {
+                if (ans === currentQuizData[index].correctIndex) {
+                    score++;
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            });
+
+            const total = currentQuizData.length;
+            document.getElementById('review-title').innerText = pendingChapterTitle || document.getElementById('quiz-title').innerText;
+            const modeText = activeMode === 'practice' ? '📖 Chế độ Ôn luyện' : '⏱️ Chế độ Thi thử';
+            const modeBadge = document.getElementById('review-mode-badge');
+            modeBadge.innerText = modeText;
+            modeBadge.style.color = activeMode === 'practice' ? '#2a9d8f' : '#e63946';
+
+            document.getElementById('rev-correct').innerText = `${correctCount} / ${total}`;
+            document.getElementById('rev-incorrect').innerText = `${incorrectCount}`;
+            document.getElementById('rev-score').innerText = `${(correctCount / total * 10).toFixed(2)} Điểm`;
+
+            document.getElementById('count-all').innerText = total;
+            document.getElementById('count-correct').innerText = correctCount;
+            document.getElementById('count-incorrect').innerText = incorrectCount;
+            document.getElementById('count-flagged').innerText = flaggedCount;
+
+            filterReview('all');
+        }
+
+        function filterReview(type) {
+            currentFilter = type;
+            ['all', 'correct', 'incorrect', 'flagged'].forEach(f => {
+                const btn = document.getElementById(`filter-${f}`);
+                if (btn) btn.className = (f === type) ? 'filter-btn active' : 'filter-btn';
+            });
+
+            const container = document.getElementById('review-list');
+            let html = '';
+            let displayedCount = 0;
+
+            currentQuizData.forEach((q, index) => {
+                const userAns = userAnswers[index];
+                const isCorrect = (userAns === q.correctIndex);
+                const isFlagged = flaggedStatus[index];
+
+                if (type === 'correct' && !isCorrect) return;
+                if (type === 'incorrect' && isCorrect) return;
+                if (type === 'flagged' && !isFlagged) return;
+
+                displayedCount++;
+                const cleanQuestionText = q.question.replace(/^Câu\s*\d+[\.\:\-]\s*/i, '');
+                
+                let badgeHtml = '';
+                if (userAns === null) {
+                    badgeHtml += `<span class="badge-result badge-unanswered">⚪ Chưa trả lời</span>`;
+                } else if (isCorrect) {
+                    badgeHtml += `<span class="badge-result badge-correct">✅ Làm đúng</span>`;
+                } else {
+                    badgeHtml += `<span class="badge-result badge-incorrect">❌ Làm sai</span>`;
+                }
+
+                if (isFlagged) {
+                    badgeHtml += `<span class="badge-flagged">⚑ Đã đặt cờ</span>`;
+                }
+
+                let optionsHtml = '';
+                q.options.forEach((opt, optIndex) => {
+                    let optClass = 'review-option';
+                    let tagHtml = '';
+
+                    if (optIndex === q.correctIndex) {
+                        optClass += ' opt-correct';
+                        tagHtml = `<span class="opt-tag tag-correct">✓ Đáp án đúng</span>`;
+                    } else if (optIndex === userAns && optIndex !== q.correctIndex) {
+                        optClass += ' opt-incorrect';
+                        tagHtml = `<span class="opt-tag tag-user-wrong">✕ Bạn chọn sai</span>`;
+                    } else {
+                        optClass += ' opt-normal';
+                    }
+
+                    optionsHtml += `
+                        <div class="${optClass}">
+                            <span>${opt}</span>
+                            ${tagHtml}
+                        </div>
+                    `;
+                });
+
+                html += `
+                    <div class="review-card">
+                        <div class="review-card-header">
+                            <span class="review-q-title">Câu ${index + 1}</span>
+                            <div class="review-badges">${badgeHtml}</div>
+                        </div>
+                        <div class="review-q-text">${cleanQuestionText}</div>
+                        <div>
+                            ${optionsHtml}
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (displayedCount === 0) {
+                html = `<div style="text-align: center; padding: 40px 20px; background: white; border-radius: 10px; border: 1px dashed var(--border); color: #888;">
+                    <p style="font-size: 1.15rem; margin: 0;">Không có câu hỏi nào thuộc mục lọc này.</p>
+                </div>`;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function exitReview() {
+            document.getElementById('review-section').style.display = 'none';
+            document.getElementById('home-menu').style.display = 'grid';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryCurrentQuiz() {
+            if(confirm("Bạn có muốn làm lại bài thi này từ đầu không?")) {
+                document.getElementById('review-section').style.display = 'none';
+                initQuiz(activeMode);
+            }
         }
     </script>
 </body>
