@@ -351,12 +351,7 @@
     </div>
 
     <script>
-       // MÃ KHÓA PHIÊN BẢN (Phải giống hệt bên file index.html)
-        const CURRENT_SESSION = "DuyAnh_KHOA_V2"; 
-
-        // Kiểm tra xem mã khóa có khớp không
-        if (localStorage.getItem('sessionKey') !== CURRENT_SESSION) {
-            localStorage.removeItem('sessionKey');
+       if (localStorage.getItem('isLoggedIn') !== 'true') {
             window.location.href = 'index.html';
         }
         

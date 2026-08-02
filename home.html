@@ -221,22 +221,17 @@
     <!-- Nút đăng xuất -->
     <button class="btn-logout" onclick="handleLogout()">Đăng xuất</button>
 
-<script>
-        // MÃ KHÓA PHIÊN BẢN (Phải giống hệt mã bạn đặt bên file index.html)
-        const CURRENT_SESSION = "DuyAnh_KHOA_V2"; 
-
-        // BẢO MẬT: Kiểm tra xem mã khóa trên máy có khớp với phiên bản mới nhất không
+    <script>
+        // BẢO MẬT: Kiểm tra xem đã đăng nhập chưa. Nếu chưa, đuổi về index.html
         window.onload = function() {
-            if (localStorage.getItem('sessionKey') !== CURRENT_SESSION) {
-                // Nếu không khớp (do chưa đăng nhập hoặc bạn đã đổi mã khóa), đuổi ra trang index
-                localStorage.removeItem('sessionKey');
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
                 window.location.href = 'index.html';
             }
         };
 
-        // Nút Đăng xuất
+        // Xóa phiên và quay về đăng nhập
         function handleLogout() {
-            localStorage.removeItem('sessionKey');
+            localStorage.removeItem('isLoggedIn');
             window.location.href = 'index.html';
         }
     </script>
