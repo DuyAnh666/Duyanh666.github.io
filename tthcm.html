@@ -2978,21 +2978,41 @@
             document.getElementById('timer-container').style.display = 'none';
         }
 
+        function shuffleArray(items) {
+            const array = [...items];
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function shuffleQuestionOptions(question) {
+            const optionPairs = question.options.map((option, originalIndex) => ({ option, originalIndex }));
+            const shuffledPairs = shuffleArray(optionPairs);
+            return {
+                ...question,
+                options: shuffledPairs.map(pair => pair.option),
+                correctIndex: shuffledPairs.findIndex(pair => pair.originalIndex === question.correctIndex)
+            };
+        }
+
         function initQuiz(mode) {
             activeMode = mode;
             closeModal('mode-modal');
             if (pendingChapterKey === 'tong_hop') {
-                const matrix = { chuong2: 10, chuong3: 10, chuong6: 10, chuong1: 3, chuong4: 3, chuong5: 4 };
+                const matrix = { chuong1: 4, chuong2: 8, chuong3: 8, chuong4: 4, chuong5: 4, chuong6: 8 };
                 let allExamQuestions = [];
                 for (let key in matrix) {
                     if (questionDatabase[key] && questionDatabase[key].length > 0) {
-                        let chQuestions = [...questionDatabase[key]];
-                        chQuestions.sort(() => 0.5 - Math.random());
-                        allExamQuestions = allExamQuestions.concat(chQuestions.slice(0, matrix[key]));
+                        let chQuestions = shuffleArray(questionDatabase[key]);
+                        allExamQuestions = allExamQuestions.concat(
+                            chQuestions.slice(0, matrix[key]).map(shuffleQuestionOptions)
+                        );
                     }
                 }
                 if (allExamQuestions.length === 0) { alert("Ngân hàng câu hỏi trống!"); return; }
-                currentQuizData = allExamQuestions.sort(() => 0.5 - Math.random());
+                currentQuizData = shuffleArray(allExamQuestions);
                 if(mode === 'exam') startTimer(60); else stopTimer();
             } else {
                 if (!questionDatabase[pendingChapterKey] || questionDatabase[pendingChapterKey].length === 0) {
