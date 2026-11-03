@@ -28,6 +28,7 @@ window.COURSE = {
                 { value: 'Nhóm 2', label: 'Nhóm 2' },
                 { value: 'Nhóm 4', label: 'Nhóm 4' },
                 { value: 'Nhóm 5', label: 'Nhóm 5' },
+                { value: 'Nhóm 6', label: 'Nhóm 6' },
                 { value: 'Nhóm 7', label: 'Nhóm 7' },
                 { value: 'Nhóm 9', label: 'Nhóm 9' },
                 { value: 'Nhóm 11', label: 'Nhóm 11' }
