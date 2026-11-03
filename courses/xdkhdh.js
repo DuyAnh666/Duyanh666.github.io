@@ -23,9 +23,12 @@ window.COURSE = {
     filters: [
         {
             id: 'group', label: 'Nhóm', target: 'question', field: 'group', all: 'Tất cả các nhóm', showCount: true,
-            options: [
+                        options: [
                 { value: 'Nhóm 1', label: 'Nhóm 1' },
                 { value: 'Nhóm 4', label: 'Nhóm 4' },
+                { value: 'Nhóm 5', label: 'Nhóm 5' },
+                { value: 'Nhóm 7', label: 'Nhóm 7' },
+                { value: 'Nhóm 9', label: 'Nhóm 9' },
                 { value: 'Nhóm 11', label: 'Nhóm 11' }
             ]
         },

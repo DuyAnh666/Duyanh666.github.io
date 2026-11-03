@@ -604,3 +604,4 @@
         submit, enterReview, setReviewFilter, restart, toTopics, exit
     };
 })();
+
