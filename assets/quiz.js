@@ -312,10 +312,15 @@
 
     function promptExam() {
         const vals = filterValues();
+        const pool = examPool(vals);
+        if (pool.length === 0) {
+            alert('Chưa có câu hỏi trong ngân hàng đề thi thử.');
+            return;
+        }
         const suffix = (EXAM.poolFilters || []).map(id => vals[id]).filter(v => v && v !== 'all');
         pending = {
             title: EXAM.title + (suffix.length ? ` (${suffix.join(', ')})` : ''),
-            questions: buildExam(examPool(vals)),
+            questions: buildExam(pool),
             mode: 'test',
             timeMinutes: EXAM.minutes
         };
