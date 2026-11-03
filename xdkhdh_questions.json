@@ -898,5 +898,905 @@
     "chapter": "c2",
     "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
     "group": "Nhóm 4"
+  },
+  {
+    "id": 61,
+    "question": "Câu 1: (NB) Phương án nào sau đây mô tả đúng vị trí môn tin học ở cấp THPT theo chương trình GDPT 2018?",
+    "options": [
+      "A. Bắt buộc, có sự phân hóa theo hai định hướng.",
+      "B. Lựa chọn và bình đẳng với các môn học khác.",
+      "C. Ghép cơ học, kết hợp với Công nghệ và Nghệ thuật.",
+      "D. Bắt buộc, thuộc nhóm Công nghệ số định hướng nghề nghiệp."
+    ],
+    "correctIndex": 1,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 62,
+    "question": "Câu 2: (NB) Theo Chương trình GDPT 2018, nội dung nào sau đây không thuộc mục tiêu chung của môn Tin học?",
+    "options": [
+      "A. Góp phần hình thành và phát triển các phẩm chất chủ yếu cùng năng lực chung được quy định trong Chương trình tổng thể.",
+      "B. Góp phần chủ yếu giúp học sinh hình thành và rèn luyện năng lực tin học thích ứng an toàn với cuộc sống số.",
+      "C. Mở rộng hiểu biết sâu sắc về các thành tựu công nghệ thông tin và truyền thông hiện đại của những nước tiên tiến.",
+      "D. Trang bị hệ thống học vấn tin học phổ thông thông qua ba mạch kiến thức cốt lõi hoà quyện là DL, ICT và CS."
+    ],
+    "correctIndex": 2,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 63,
+    "question": "Câu 3: (NB) Trong Chương trình Giáo dục phổ thông môn Tin học 2018, nội dung môn học được phát triển trên ba mạch kiến thức nào sau đây?",
+    "options": [
+      "A. Học vấn số hoá phổ thông (DL), Tin học ứng dụng, Khoa học máy tính (CS).",
+      "B. Học vấn số hoá phổ thông (DL), Công nghệ thông tin và truyền thông (ICT), Khoa học máy tính (CS).",
+      "C. Công nghệ thông tin và truyền thông (ICT), Khoa học máy tính (CS), Giải quyết vấn đề với sự trợ giúp của máy tính.",
+      "D. Học vấn số hoá phổ thông (DL), Công nghệ thông tin và truyền thông (ICT), Hướng nghiệp với tin học."
+    ],
+    "correctIndex": 1,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 64,
+    "question": "Câu 4: (TH) Vì sao quan điểm đồng nhất việc học Tin học với việc học sử dụng máy tính và phần mềm là chưa chính xác?",
+    "options": [
+      "A. Sử dụng phần mềm thuộc mạch Ứng dụng tin học, trong khi mục tiêu cốt lõi của môn học là đào tạo chuyên sâu về kĩ thuật lập trình.",
+      "B. Sử dụng máy tính và phần mềm chỉ là một phần; Tin học còn phát triển tư duy máy tính và năng lực giải quyết vấn đề.",
+      "C. Kĩ năng thao tác trên các phần mềm ứng dụng hiện nay đã được tích hợp và chuyển giao cho môn Công nghệ đảm nhiệm.",
+      "D. Phần mềm thay đổi nhanh, còn Tin học cần ưu tiên các nguyên lí và phương pháp giải quyết vấn đề có tính ổn định."
+    ],
+    "correctIndex": 1,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 65,
+    "question": "Câu 5: (TH) Phương án nào sau đây thể hiện đúng sự phát triển nâng cao về mục tiêu tư duy giải quyết vấn đề từ cấp trung học cơ sở lên cấp trung học phổ thông trong Chương trình môn Tin học?",
+    "options": [
+      "A. THCS giúp học sinh bước đầu làm quen với công nghệ số, còn THPT tập trung tạo ra và chia sẻ sản phẩm số đơn giản phục vụ học tập.",
+      "B. THCS trang bị kỹ năng biết chia một vấn đề lớn thành những nhiệm vụ nhỏ hơn, còn THPT yêu cầu kỹ thuật thiết kế thuật toán và tổ chức dữ liệu.",
+      "C. THCS yêu cầu học sinh hiểu biết cơ bản về hệ thống máy tính, còn THPT giúp học sinh đưa ra ý tưởng và chuyển giao nhiệm vụ cho máy tính thực hiện.",
+      "D. THCS dừng ở việc tạo ra và chia sẻ sản phẩm số đơn giản, còn THPT nâng cấp lên việc quen thuộc với các dịch vụ và phần mềm thông dụng hơn."
+    ],
+    "correctIndex": 1,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 66,
+    "question": "Câu 6: (TH) Theo định hướng giáo dục STEM trong Chương trình giáo dục phổ thông môn Tin học 2018, phương án nào sau đây nêu đúng về vai trò và cách tiếp cận của môn Tin học?",
+    "options": [
+      "A. Vận dụng kiến thức Tin học để hỗ trợ các môn học khác trong quá trình xây dựng và trình bày sản phẩm STEM.",
+      "B. Khai thác công nghệ thông tin để giải quyết nhiệm vụ, qua đó tạo điều kiện phát triển năng lực vận dụng kiến thức.",
+      "C. Kết hợp kiến thức và kĩ năng Tin học với các lĩnh vực STEM nhằm giải quyết vấn đề và tạo ra sản phẩm phù hợp.",
+      "D. Tổ chức hoạt động Tin học theo các nhiệm vụ STEM, chú trọng vận dụng kiến thức vào những tình huống thực tiễn."
+    ],
+    "correctIndex": 2,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 67,
+    "question": "Câu 7: (TH) Trong tiết thực hành Tin học, các nhóm học sinh chia sẻ sản phẩm số trên nền tảng học tập chung, nhận xét sản phẩm của nhóm khác theo tiêu chí do giáo viên cung cấp và điều chỉnh sản phẩm sau khi tiếp nhận phản hồi. Hoạt động trên của học sinh là minh chứng cho việc đạt được tiêu chuẩn cốt lõi nào dưới đây?",
+    "options": [
+      "A. NLa – Sử dụng và quản lí các phương tiện công nghệ thông tin và truyền thông.",
+      "B. NLb – Ứng xử phù hợp trong môi trường số.",
+      "C. NLd – Ứng dụng công nghệ thông tin và truyền thông trong học và tự học.",
+      "D. NLe – Hợp tác trong môi trường số."
+    ],
+    "correctIndex": 3,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 68,
+    "question": "Câu 8: (VD) Trong buổi sinh hoạt chuyên môn nhằm thiết kế bài dạy tích hợp STEM cho học sinh THCS, các giáo viên trong tổ Tin học đưa ra các ý kiến khác nhau về định hướng xây dựng nội dung. Căn cứ vào quan điểm xây dựng Chương trình môn Tin học trong CTGDPT 2018, phương án nào sau đây là quan điểm sư phạm phù hợp?",
+    "options": [
+      "A. Tổ chức cho học sinh làm ra sản phẩm số có hàm lượng công nghệ để phát triển tư duy mô hình hóa và kỹ năng giải quyết vấn đề thực tế.",
+      "B. Hướng dẫn học sinh vận dụng thuần thục các phần mềm đồ họa và ứng dụng văn phòng nhằm chuẩn bị chu đáo báo cáo sản phẩm cho môn học khác.",
+      "C. Yêu cầu học sinh tích hợp trực tiếp các thư viện mã nguồn mở vào dự án để sản phẩm công nghệ có khả năng thương mại hóa trên thị trường.",
+      "D. Ưu tiên rèn luyện cho học sinh các kỹ thuật sửa lỗi và tối ưu hóa mã nguồn thuật toán để nâng cao năng lực lập trình độc lập của bộ môn."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 69,
+    "question": "Câu 9: (VD) Một nhóm học sinh THCS tạo chương trình tính điểm trung bình của hai môn. Với điểm 8 và 6, chương trình hiển thị 8, trong khi kết quả cần là 7. Nhóm còn thời gian chỉnh sửa trước khi nộp. Phương án nào sau đây nên được thực hiện trước?",
+    "options": [
+      "A. Kiểm tra bước tính trung bình, sửa cách tính rồi chạy thử với dữ liệu khác.",
+      "B. Kiểm tra ô nhập dữ liệu, đổi cách hiển thị rồi chạy lại với hai điểm cũ.",
+      "C. Đổi bộ điểm thử nghiệm, ghi nhận kết quả mới rồi trình bày sản phẩm của nhóm.",
+      "D. Chọn phần mềm khác, nhập lại dữ liệu rồi đối chiếu giao diện giữa hai chương trình."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 70,
+    "question": "Câu 10: (VD) Trong dự án STEM chế tạo \"Hệ thống chuông báo giờ tự động\" ở cấp THCS, mô hình của nhóm học sinh gặp sự cố: thiết bị vẫn đổ chuông vào hai ngày cuối tuần dù trường nghỉ học. Kiểm tra thực tế cho thấy các linh kiện phần cứng và vi mạch đều hoạt động bình thường. Để khắc phục triệt để sự cố này, giúp hệ thống vận hành đúng yêu cầu, giải pháp nào sau đây là phù hợp?",
+    "options": [
+      "A. Lập trình lại chức năng đồng bộ thời gian thực cho hệ thống thông qua kết nối với máy chủ mạng.",
+      "B. Thêm câu lệnh kiểm tra lịch làm việc vào chương trình để thiết bị tự động ngắt tín hiệu phát ra.",
+      "C. Bổ sung đoạn mã kích hoạt chế độ tiết kiệm năng lượng cho thiết bị sau giờ học chiều Thứ Sáu.",
+      "D. Viết thêm mô-đun kết nối với phần mềm lịch trên máy tính để nhận lệnh ngắt nguồn hàng tuần."
+    ],
+    "correctIndex": 1,
+    "category": "c1_p12",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 71,
+    "question": "Câu 1. (NB) Phương án nào sau đây là đúng về ba mạch kiến thức của môn Tin học theo chương trình GDPT 2018?",
+    "options": [
+      "A. Học vấn số hoá (DL), Công nghệ thông tin và truyền thông (ICT), Khoa học máy tính (CS).",
+      "B. Công nghệ thông tin và truyền thông (ICT), Trí tuệ nhân tạo (AI), và Vạn vật kết nối (IoT).",
+      "C. Học vấn số hoá (DL), Trí tuệ nhân tạo (AI), và Khoa học giáo dục STEM.",
+      "D. Khoa học máy tính (CS), Vạn vật kết nối (IoT), và Công nghệ thông tin và truyền thông (ICT)."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 72,
+    "question": "Câu 2: (NB) Ở cấp trung học phổ thông, môn Tin học được phân hóa theo định hướng nghề nghiệp. Phương án nào sau đây nêu đúng hai định hướng của môn học?",
+    "options": [
+      "A. Tin học ứng dụng và Khoa học máy tính.",
+      "B. Tin học ứng dụng và Học vấn số hóa.",
+      "C. Khoa học máy tính và Học vấn số hóa.",
+      "D. Khoa học máy tính và Công nghệ thông tin."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 73,
+    "question": "Câu 3: (NB) Theo Chương trình GDPT 2018 môn Tin học, việc xây dựng các yêu cầu cần đạt về phẩm chất và năng lực không dựa trên căn cứ trực tiếp nào sau đây?",
+    "options": [
+      "A. Chuẩn đầu ra mô tả trong các tài liệu giáo dục quốc tế của những tổ chức uy tín như UNESCO và OECD.",
+      "B. Kết quả khảo sát mức độ đạt được về kiến thức và kỹ năng của học sinh theo chương trình môn học trước đây.",
+      "C. Quy định chỉ tiêu tuyển chọn sinh viên đầu vào của các trường đại học đào tạo chuyên ngành công nghệ thông tin.",
+      "D. Dự báo nhu cầu phát triển năng lực tin học của người học phục vụ cho Cách mạng công nghiệp lần thứ tư."
+    ],
+    "correctIndex": 2,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 74,
+    "question": "Câu 4: (TH) Việc khai thác các nguồn tài nguyên học tập trên môi trường số để mở rộng kiến thức ngoài nội dung trên lớp giúp học sinh hình thành năng lực thành phần nào sau đây?",
+    "options": [
+      "A. Năng lực sử dụng và quản lí các phương tiện công nghệ thông tin và truyền thông (NLa).",
+      "B. Năng lực ứng xử phù hợp trong môi trường số (NLb).",
+      "C. Năng lực ứng dụng công nghệ thông tin và truyền thông trong học và tự học (NLd).",
+      "D. Năng lực hợp tác trong môi trường số (NLe)."
+    ],
+    "correctIndex": 2,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 75,
+    "question": "Câu 5: (TH) Khi tìm hiểu về cấu trúc phân hóa của môn Tin học cấp THPT trong Chương trình GDPT 2018, nhận định nào sau đây diễn giải đúng về sự khác biệt giữa hai định hướng?",
+    "options": [
+      "A. Định hướng Khoa học máy tính nghiên cứu nguyên lý hoạt động hệ thống, còn định hướng Tin học ứng dụng khai thác các công cụ phần mềm.",
+      "B. Định hướng Khoa học máy tính trang bị kỹ thuật sửa chữa phần cứng, còn định hướng Tin học ứng dụng đào tạo các kỹ năng văn phòng cơ bản.",
+      "C. Định hướng Khoa học máy tính dành cho học sinh chuyên toán tự nhiên, còn định hướng Tin học ứng dụng phù hợp với học sinh khối xã hội.",
+      "D. Định hướng Khoa học máy tính yêu cầu tạo ra sản phẩm thương mại, còn định hướng Tin học ứng dụng phục vụ mục đích kiểm tra lý thuyết."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 76,
+    "question": "Câu 6: (TH) Khi xây dựng nội dung dạy học môn Tin học, giáo viên cần xác định mối quan hệ giữa các chủ đề và ba mạch kiến thức. Phương án nào sau đây mô tả đúng mối quan hệ đó?",
+    "options": [
+      "A. Mỗi chủ đề dành tỉ lệ tương đương cho các mạch kiến thức được triển khai.",
+      "B. Từng chủ đề thường có hai mạch chính; mạch thứ ba tùy theo cấp học.",
+      "C. Nội dung các mạch được phân bổ thành những nhóm chủ đề tương ứng ở mỗi cấp học.",
+      "D. Mức đóng góp của từng mạch thay đổi theo nội dung cụ thể của chủ đề."
+    ],
+    "correctIndex": 3,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 77,
+    "question": "Câu 7: (TH) Trong buổi sinh hoạt chuyên môn, các giáo viên trao đổi về cách tổ chức nội dung môn Tin học thành các mạch kiến thức. Phương án nào sau đây nêu đúng mục đích của cách tổ chức này?",
+    "options": [
+      "A. Giúp học sinh ghi nhớ các khái niệm và thuật ngữ Tin học cơ bản.",
+      "B. Giúp học sinh gắn kiến thức với năng lực Tin học cần hình thành.",
+      "C. Giúp giáo viên sắp xếp nội dung bài học theo trình tự thống nhất.",
+      "D. Giúp nhà trường phân bổ nội dung kiểm tra theo từng giai đoạn."
+    ],
+    "correctIndex": 1,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 78,
+    "question": "Câu 8: (VD) Một thư viện nhỏ có quầy mượn và phòng đọc. Máy tính ở hai khu vực cần dùng chung Internet và một máy in. Giáo viên muốn đánh giá yêu cầu “Trình bày và giải thích sơ lược được việc thiết kế mạng LAN cho một tổ chức nhỏ”. Phương án nào sau đây là nhiệm vụ phù hợp cho học sinh?",
+    "options": [
+      "A. Phác thảo mạng hai khu vực, giải thích cách dùng chung Internet và máy in.",
+      "B. Chọn thiết bị cho hai khu vực, giải thích chức năng và dự kiến số lượng cần dùng.",
+      "C. Vẽ tuyến dây giữa hai khu vực, giải thích vị trí lắp đặt và số cổng kết nối.",
+      "D. Nêu trình tự lắp mạng hai khu vực, giải thích cách kiểm tra tốc độ truy cập."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 79,
+    "question": "Câu 9: (VD) Trong buổi sinh hoạt chuyên môn nhằm thiết kế dự án học tập STEM có ứng dụng Tin học cho học sinh THCS, các giáo viên đưa ra nhiều quan điểm sư phạm khác nhau. Căn cứ vào định hướng nội dung và yêu cầu cần đạt của Chương trình GDPT 2018, phương án nào sau đây là quyết định sư phạm phù hợp?",
+    "options": [
+      "A. Hướng dẫn học sinh vận dụng tổng hợp các kiến thức liên môn để tạo ra những sản phẩm số phục vụ thực tiễn  học tập và đời sống.",
+      "B. Giao bài tập yêu cầu học sinh sử dụng phần mềm đồ họa chỉnh sửa ảnh nghệ thuật đơn thuần để làm đẹp cho sản phẩm báo cáo cuối khóa.",
+      "C. Yêu cầu học sinh tích hợp trực tiếp các thư viện mã nguồn mở phức tạp vào dự án nhằm mục đích thương mại hóa sản phẩm ra thị trường.",
+      "D. Tập trung toàn bộ thời lượng vào việc luyện tập cú pháp thuật toán viết mã nguồn nâng cao để phục vụ cho các kỳ thi học sinh giỏi."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 80,
+    "question": "Câu 10: (VD) Một giáo viên Tin học cấp THCS muốn thiết kế bài tập vận dụng cho học sinh, nhưng do phòng máy xảy ra sự cố kỹ thuật đột xuất, phần mềm dự kiến dùng cho cả lớp không thể khởi động được. Để giải quyết tình huống phát sinh này mà vẫn đảm bảo mục tiêu chất lượng, phương án nào sau đây là cách xử lí phù hợp với tình huống?",
+    "options": [
+      "A. Thay đổi phương pháp và nội dung tiếp cận, dựa trên hệ thống chuẩn biểu hiện năng lực.",
+      "B. Chuyển sang hệ thống bài tập lí thuyết về quy trình vận hành, lấy tài liệu sách giáo khoa làm thước đo.",
+      "C. Chia nhỏ bài học thành các nhiệm vụ ghi chép độc lập, lấy từng thành phần năng lực làm thước đo.",
+      "D. Phân tách lớp học theo định hướng chuyên sâu khoa học, lấy thế mạnh nghề nghiệp làm thước đo."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p34",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 81,
+    "question": "Câu 1: (NB) Khi đánh giá kết quả học tập môn Tin học, phương án nào sau đây nêu đúng nội dung được đánh giá chủ yếu?",
+    "options": [
+      "A. Năm phẩm chất chủ yếu, ba năng lực chung và kết quả qua từng học kỳ.",
+      "B. Kiến thức ghi nhớ, thao tác phần mềm và mức hoàn tất bài thực hành.",
+      "C. Năm thành phần năng lực Tin học, đối chiếu với yêu cầu cần đạt.",
+      "D. Sản phẩm số, thái độ học tập và điểm kiểm tra qua từng chủ đề."
+    ],
+    "correctIndex": 2,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 82,
+    "question": "Câu 2: (NB) Theo Chương trình GDPT 2018 môn Tin học, quy định định mức tối thiểu về số học sinh sử dụng chung một máy tính trong giờ thực hành ở cấp Trung học cơ sở là phương án nào dưới đây?",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "correctIndex": 1,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 83,
+    "question": "Câu 3: (NB) Khi tiến hành xây dựng phân phối chương trình môn Tin học, tổ chuyên môn cần căn cứ vào thông số nào sau đây để tính toán và chia số tiết cụ thể cho các mạch nội dung chính?",
+    "options": [
+      "A. Tỉ lệ thời lượng quy định cho từng mạch nội dung trong chương trình tổng thể.",
+      "B. Khả năng tiếp thu thực tế của từng lớp học được đánh giá từ năm học trước.",
+      "C. Số lượng thiết bị phần cứng hiện có tại phòng thực hành của nhà trường.",
+      "D. Cấu trúc và trình tự bài học được biên soạn trong cuốn sách giáo khoa được chọn."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 84,
+    "question": "Câu 4: (TH) Đối với quá trình đánh giá kết quả giáo dục môn Tin học, việc giáo viên lập hồ sơ học tập dưới dạng cơ sở dữ liệu đơn giản có ý nghĩa chủ yếu nào sau đây?",
+    "options": [
+      "A. Lưu trữ, cập nhật kết quả đánh giá thường xuyên nhằm xác định hiện tại năng lực tin học của học sinh ở đâu trên trục phát triển năng lực.",
+      "B. Tự động hóa hoàn toàn quy trình chấm điểm và đánh giá trên hệ thống nhằm thay thế những bài kiểm tra định kỳ bắt buộc trên lớp.",
+      "C. Tự động số hóa hồ sơ học tập nhằm hạn chế tối đa việc giáo viên phải trực tiếp theo dõi, ghi chép quá trình thao tác ở trên máy tính.",
+      "D. Thiết lập hệ thống xếp hạng thành tích công khai với mục đích thúc đẩy sự cạnh tranh điểm số giữa các học sinh trong toàn bộ khóa học."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 85,
+    "question": "Câu 5: (TH) Một nhóm học sinh tìm cách giúp các bạn trong trường nhớ lịch trả sách thư viện. Các em tạo bảng nhắc hạn điện tử, nhờ một nhóm bạn dùng thử rồi chỉnh sửa theo phản hồi. Cách tổ chức dạy học nào sau đây được thể hiện rõ nhất qua hoạt động này?",
+    "options": [
+      "A. Liên hệ thực tiễn, tạo sản phẩm số và kiểm chứng hiệu quả của giải pháp.",
+      "B. Tăng thời lượng thực hành, tạo cơ hội thao tác và luyện sử dụng phần mềm.",
+      "C. Phát huy hợp tác, phân chia vai trò và tự quản lý tiến độ trong nhóm.",
+      "D. Đánh giá kết quả dựa trên hình thức, chức năng và mức hoàn thiện của sản phẩm."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 86,
+    "question": "Câu 6: (TH) Trong giờ học giải quyết vấn đề với sự trợ giúp của máy tính, một nhóm đề xuất nhiều cách giải và dùng sơ đồ để thể hiện mối liên hệ giữa các bước. Nội dung đánh giá nào sau đây phù hợp với trọng tâm của mạch Khoa học máy tính (CS)?",
+    "options": [
+      "A. Sáng tạo và tư duy hệ thống khi học sinh đề xuất cách giải.",
+      "B. Ứng xử phù hợp trong tình huống số theo các quy tắc đã học.",
+      "C. Vận dụng kĩ năng tạo sản phẩm số và mức độ hoàn thiện.",
+      "D. Tiến bộ cá nhân so với yêu cầu cần đạt của giai đoạn học tập."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 87,
+    "question": "Câu 7: (TH) Chương trình môn Tin học 2018 định hướng nội dung dạy học không phụ thuộc vào thiết bị phần cứng hay phần mềm cụ thể. Theo đó, yêu cầu bắt buộc đối với hoạt động kiểm tra đánh giá là phương án nào dưới đây?",
+    "options": [
+      "A. Tập trung đo lường năng lực giải quyết vấn đề và vận dụng kiến thức tạo ra sản phẩm.",
+      "B. Ưu tiên kiểm tra hệ thống lý thuyết nền tảng để giảm bớt áp lực thực hành trên máy tính.",
+      "C. Hướng tới việc xây dựng nhiều phiên bản đề thi khác nhau tương ứng với từng công cụ phần mềm.",
+      "D. Dựa trên việc sử dụng các phần mềm giả lập để tạo sự thống nhất cho mọi điều kiện cơ sở vật chất."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 88,
+    "question": "Câu 8: (VD) Khi dạy chủ đề E “Ứng dụng tin học”, giáo viên muốn phát huy khả năng tự học, hợp tác và tính chủ động của học sinh. Cách tiếp cận nào dưới đây phù hợp với phương pháp dạy học tích cực?",
+    "options": [
+      "A. Học sinh xác định nhu cầu thực tế, đề xuất giải pháp, tạo sản phẩm số và kiểm chứng hiệu quả sử dụng.",
+      "B. Giáo viên nêu vấn đề thực tiễn, minh họa thao tác phần mềm rồi hướng dẫn học sinh thực hành tạo sản phẩm số theo mẫu.",
+      "C. Các nhóm phân tích sản phẩm số có sẵn, thảo luận ưu nhược điểm và lựa chọn giải pháp phù hợp với yêu cầu thực tế.",
+      "D. Với nhiệm vụ chung đã xác định, từng thành viên phân công công việc, phối hợp thực hiện sản phẩm số theo nhiệm vụ và tiêu chí đánh giá do giáo viên xác định."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 89,
+    "question": "Câu 9: (VD) Với bài học Tin học thiên về lí thuyết, thời lượng trên lớp không đủ để thực hành ngay. Phương pháp nào sau đây phù hợp để tổ chức “Hoạt động 4: Vận dụng”?",
+    "options": [
+      "A. Giao yêu cầu vận dụng của một cụm bài học dưới dạng dự án nhỏ để học sinh thực hiện tại nhà.",
+      "B. Lồng ghép yêu cầu vận dụng vào phần kiểm tra kiến thức đầu giờ của tiết học tiếp theo để tiết kiệm thời gian.",
+      "C. Chuyển đổi mục tiêu vận dụng thành các bài tập trắc nghiệm lý thuyết để học sinh hoàn thành nhanh trên giấy.",
+      "D. Thiết kế một môi trường giả định bằng lời nói để học sinh thảo luận nhóm thay cho việc thao tác trên máy."
+    ],
+    "correctIndex": 0,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 90,
+    "question": "Câu 10: (VD) Ban tổ chức hội chợ sách dùng bảng tính do một học sinh thiết kế để theo dõi thu, chi. Khi chạy thử, một khoản chi bị nhập nhầm rồi sửa; số dư cuối ngày vẫn trông hợp lý nhưng chưa được kiểm chứng. Giáo viên muốn biết bảng có xử lý đúng khi dữ liệu thay đổi hay không. Phương án nào sau đây giúp đánh giá phù hợp?",
+    "options": [
+      "A. Rà nhãn cột, định dạng tiền và vùng nhập, bảo đảm người dùng phân biệt khoản thu, khoản chi và ngày ghi nhận.",
+      "B. Yêu cầu học sinh giải thích công thức, chỉ vùng nhập và nêu cách cập nhật khi một giao dịch được điều chỉnh.",
+      "C. Nhập bộ giao dịch thử, sửa một khoản chi, đối chiếu tổng thu và số dư sau sửa với phép tính độc lập.",
+      "D. Đối chiếu bảng với mẫu giáo viên bằng bộ dữ liệu ban đầu, kiểm tra các trường nhập và tổng cuối ngày."
+    ],
+    "correctIndex": 2,
+    "category": "c1_p56",
+    "chapter": "c1",
+    "topic": "Chương 1: Phần 5, 6 (Phương pháp giáo dục & Đánh giá kết quả)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 91,
+    "question": "Câu 1: (NB) Phương án nào sau đây là phù hợp trong khâu quản lý kế hoạch giáo dục nhà trường?",
+    "options": [
+      "A. Khảo sát nhu cầu, phân công nhiệm vụ, tổng kết hoạt động và xếp loại cuối năm.",
+      "B. Xác định nội dung, chuẩn bị thiết bị, tổ chức giảng dạy và kiểm tra học sinh.",
+      "C. Xây dựng kế hoạch, tổ chức thực hiện, kiểm tra giám sát, điều chỉnh hoàn thiện.",
+      "D. Thống nhất mục tiêu, triển khai chuyên đề, sơ kết học kỳ và báo cáo kết quả."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 92,
+    "question": "Câu 2: (NB) Ở cấp THPT, văn bản nào sau đây của Bộ GD&ĐT cung cấp các hướng dẫn và phụ lục mẫu chi tiết cho việc xây dựng kế hoạch giáo dục của nhà trường theo Chương trình Giáo dục phổ thông (GDPT) 2018?",
+    "options": [
+      "A. Công văn 5512/BGDDT-GDTrH ngày 18/12/2020.",
+      "B. Công văn 4555/BGDDT-GDTrH ngày 18/12/2020.",
+      "C. Công văn 3280/BGDDT-GDTrH ngày 18/12/2020.",
+      "D. Công văn 2345/BGDDT-GDTrH ngày 18/12/2020."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 93,
+    "question": "Câu 3: (NB) Khi xây dựng kế hoạch giáo dục, nhà trường cần căn cứ quy định của Bộ Giáo dục và Đào tạo về khung kế hoạch thời gian năm học. Phương án nào sau đây nêu đúng tổng số tuần triển khai giảng dạy trong một năm?",
+    "options": [
+      "A. 33.",
+      "B. 34.",
+      "C. 35.",
+      "D. 36."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 94,
+    "question": "Câu 4: (TH) Phương án nào sau đây thể hiện đúng mối quan hệ giữa kế hoạch giáo dục nhà trường và kế hoạch của giáo viên?",
+    "options": [
+      "A. Kế hoạch giáo viên quyết định mục tiêu chung và nội dung của nhà trường.",
+      "B. Kế hoạch cấp trường định hướng kế hoạch dạy học, giáo dục của giáo viên.",
+      "C. Hai kế hoạch được xây dựng độc lập theo mục tiêu riêng của từng cấp học.",
+      "D. Kế hoạch cấp trường tổng hợp các bài dạy của giáo viên sau khi năm học kết thúc."
+    ],
+    "correctIndex": 1,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 95,
+    "question": "Câu 5: (TH) Một trường THPT tự xây dựng và hoàn thiện kế hoạch giáo dục, sau đó mời phụ huynh và các tổ chức địa phương hỗ trợ triển khai. Phương án nào sau đây nhận xét phù hợp về việc phát huy xã hội hóa giáo dục trong cách làm này?",
+    "options": [
+      "A. Kết nối nhà trường, gia đình và cộng đồng trong xây dựng, thực hiện hoạt động giáo dục.",
+      "B. Huy động nguồn lực địa phương, các nhà hảo tâm để bổ sung thiết bị, phòng học và phương tiện dạy học.",
+      "C. Mời gia đình hỗ trợ học sinh thực hiện nhiệm vụ học tập ngoài giờ lên lớp.",
+      "D. Phối hợp với tổ chức địa phương để triển khai hoạt động ngoại khóa cho học sinh."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 96,
+    "question": "Câu 6: (TH) Khi tổ chuyên môn Tin học thực hiện xây dựng KHDH theo định hướng phát triển năng lực, nhận định nào sau đây nêu đúng vị trí của sách giáo khoa so với chương trình môn học?",
+    "options": [
+      "A. Có sự phối hợp khi triển khai, song còn hạn chế cơ hội tham gia góp ý trong quá trình xây dựng kế hoạch.",
+      "B. Bảo đảm sự tham gia xuyên suốt, bởi hỗ trợ thực hiện đã thể hiện vai trò đóng góp vào việc hình thành kế hoạch.",
+      "C. Phát huy quyền chủ động của các bên, vì tách biệt khâu xây dựng và triển khai giúp phân định trách nhiệm giáo dục.",
+      "D. Tạo điều kiện để gia đình và cộng đồng xác định mục tiêu giáo dục, dựa trên các hoạt động đã được nhà trường lựa chọn.."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 97,
+    "question": "Câu 7: (TH) Khi thiết lập phân phối chương trình môn Tin học, nguyên tắc nào sau đây cần được ưu tiên tuân thủ khi xác định thời điểm giảng dạy cho các cụm chuyên đề lựa chọn?",
+    "options": [
+      "A. Tránh bố trí lịch dạy chuyên đề trùng với các tuần đã ấn định cho kiểm tra, đánh giá định kỳ.",
+      "B. Bố trí dồn thời lượng chuyên đề vào cuối học kì II để học sinh có đủ thời gian hoàn thiện các dự án thực hành.",
+      "C. Tích hợp nội dung chuyên đề vào các tiết học cốt lõi có chủ đề tương đồng để tối ưu hóa quỹ thời gian bộ môn.",
+      "D. Thiết kế lịch học chuyên đề linh hoạt vào các tuần dự phòng để không làm gián đoạn mạch kiến thức của môn học chính khóa."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 98,
+    "question": "Câu 8: (VD) Tại một trường THPT, khối 12 có 10 lớp nhưng chỉ có một phòng máy tính gồm 30 máy hoạt động tốt và hai giáo viên Tin học. Để đảm bảo thực hiện môn Tin học lựa chọn đúng theo hướng dẫn xây dựng kế hoạch giáo dục nhà trường, giải pháp phân phối thời gian nào sau đây là phù hợp?",
+    "options": [
+      "A. Tổ chức cho toàn bộ các lớp học dồn vào học kỳ một để giải phóng thời gian cho giáo viên bồi dưỡng chuyên môn vào học kỳ hai.",
+      "B. Bố trí một số lớp học ở học kỳ một và các lớp còn lại học ở học kỳ hai nhằm tối ưu hóa công suất phòng máy tính.",
+      "C. Yêu cầu toàn bộ học sinh tự thực hành tại nhà và chỉ bố trí các tiết lý thuyết trên lớp để tránh quá tải cho phòng máy.",
+      "D. Chia đều hai tiết mỗi tuần cho tất cả các lớp trong suốt ba mươi lăm tuần thực học nhằm đảm bảo tiến độ đồng bộ cả trường."
+    ],
+    "correctIndex": 1,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 99,
+    "question": "Câu 9: (VD) Trong buổi sinh hoạt chuyên môn theo nghiên cứu bài học để hoàn thiện kế hoạch dạy học chủ đề thuật toán môn Tin học, tổ chuyên môn tiến hành dự giờ tiết dạy của một giáo viên. Sau khi quan sát, giáo viên nhận thấy nhiều học sinh còn lúng túng và chưa vẽ được sơ đồ khối giải quyết bài toán. Trong quy trình phân tích hoạt động học để xây dựng kế hoạch giáo dục nhà trường, tổ chuyên môn cần thực hiện bước xử lý sư phạm nào sau đây?",
+    "options": [
+      "A. Phân tích nguyên nhân dẫn đến khó khăn để kịp thời đề xuất biện pháp khắc phục và hoàn thiện kế hoạch bài dạy.",
+      "B. Tiến hành bỏ phiếu xếp loại tiết dạy của giáo viên để làm căn cứ đánh giá thi đua chuyên môn cuối năm.",
+      "C. Yêu cầu giáo viên thay thế nội dung vẽ sơ đồ khối bằng bài tập lý thuyết trắc nghiệm trên máy tính nhằm tránh quá tải.",
+      "D. Giáo viên trực tiếp thao tác mẫu lại các bước vẽ sơ đồ trên bảng để toàn bộ học sinh trong lớp chép lại vào vở."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 100,
+    "question": "Câu 10: (VD) Đầu năm học, tổ chuyên môn Tin học tại một trường THPT phân tích đặc điểm tình hình để lập kế hoạch giáo dục. Kết quả khảo sát cho thấy số lượng học sinh khối 10 tăng mạnh, trong khi hệ thống máy tính tại phòng thực hành đã xuống cấp và không cài đặt được các phần mềm học tập cần thiết. Trước thực tế này, phương án nào sau đây giúp tổ chuyên môn xây dựng kế hoạch khả thi cho mạch Tin học ứng dụng (ICT)?",
+    "options": [
+      "A. Khai thác các nền tảng đồ họa trực tuyến hoặc phần mềm mã nguồn mở có chức năng tương đương để tổ chức thực hành.",
+      "B. Chuyển đổi trọng tâm phân phối chương trình sang việc giảng dạy chuyên sâu mạch Khoa học máy tính (CS) để giảm phụ thuộc cấu hình.",
+      "C. Tăng cường trình chiếu video hướng dẫn các kĩ thuật đồ họa phức tạp và tổ chức cho học sinh thảo luận phân tích quy trình.",
+      "D. Chuyển các tiết thực hành thành hoạt động làm việc nhóm để phác thảo ý tưởng và thiết kế bố cục sản phẩm."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p1",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 101,
+    "question": "Câu 1: (NB) Kế hoạch giáo dục của tổ chuyên môn bao gồm những kế hoạch nào sau đây?",
+    "options": [
+      "A. Phân công giáo viên và kiểm tra, đánh giá định kỳ.",
+      "B. Dạy học cá nhân và bài dạy của từng giáo viên.",
+      "C. Hoạt động của nhà trường và giáo dục địa phương.",
+      "D. Dạy học môn học và tổ chức các hoạt động giáo dục."
+    ],
+    "correctIndex": 3,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 102,
+    "question": "Câu 2: (NB) Dựa trên sơ đồ quy trình xây dựng kế hoạch giáo dục của tổ chuyên môn, nhiệm vụ phân phối chương trình được thực hiện thuộc bước nào sau đây?",
+    "options": [
+      "A. 1: Phân tích đặc điểm tình hình.",
+      "B. 2: Xây dựng kế hoạch dạy học.",
+      "C. 3: Xây dựng kế hoạch tổ chức các hoạt động giáo dục.",
+      "D. 4: Rà soát, hoàn thiện kế hoạch giáo dục của tổ chuyên môn."
+    ],
+    "correctIndex": 1,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 103,
+    "question": "Câu 3: (NB) Theo cấu trúc khung kế hoạch tổ chức các hoạt động giáo dục của tổ chuyên môn, ngoài các cột về :“Chủ đề, Yêu cầu cần đạt, Số tiết, Thời điểm và Địa điểm”. Khung kế hoạch còn quy định những thông tin nào sau đây?",
+    "options": [
+      "A. Phương pháp giảng dạy, ghi chú và thang điểm đánh giá thường xuyên.",
+      "B. Tiến trình hoạt động trên lớp, nhiệm vụ của học sinh và sản phẩm học tập.",
+      "C. Đơn vị chủ trì, lực lượng phối hợp và các điều kiện thực hiện hoạt động.",
+      "D. Phạm vi và nội dung sử dụng, cấu hình máy tính yêu cầu, công cụ kiểm tra."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 104,
+    "question": "Câu 4: (TH) Sự tham gia của các thành viên tổ chuyên môn trong quá trình xây dựng kế hoạch có ý nghĩa nào sau đây?",
+    "options": [
+      "A. Bảo đảm việc xây dựng kế hoạch có tính thống nhất và sự đồng thuận về mục tiêu chung.",
+      "B. Giúp san sẻ trách nhiệm chính của tổ trưởng chuyên môn cho tất cả các thành viên trong tổ.",
+      "C. Tạo cơ sở để mỗi giáo viên thiết kế một bản phân phối chương trình của riêng mình.",
+      "D. Hỗ trợ giáo viên cá nhân hóa các nhiệm vụ ngay trong quá trình cùng xây dựng kế hoạch chung."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 105,
+    "question": "Câu 5: (TH) Khi xây dựng kế hoạch giáo dục của tổ chuyên môn, yêu cầu bảo đảm \"tính pháp lý\" được thể hiện thông qua định hướng nào sau đây?",
+    "options": [
+      "A. Dựa trên năng lực chuyên môn và nguyện vọng đăng ký lịch làm việc của các giáo viên.",
+      "B. Theo mỗi nhu cầu học tập thực tế và các sở thích cá nhân của từng nhóm học sinh trong lớp.",
+      "C. Căn cứ vào văn bản hướng dẫn nhiệm vụ năm học và khung kế hoạch chương  của trường.",
+      "D. Bám sát danh mục các thiết bị thực hành và hệ thống phòng máy tính thực tế của nhà trường."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 106,
+    "question": "Câu 6: (TH) Để bảo đảm tính khả thi, kế hoạch giáo dục của tổ chuyên môn cần được xây dựng dựa vào nguyên tắc nào sau đây?",
+    "options": [
+      "A. Dựa vào khung kế hoạch thời gian năm học do UBND tỉnh ban hành.",
+      "B. Căn cứ vào đặc điểm học sinh, đội ngũ và điều kiện cơ sở vật chất.",
+      "C. Bảo đảm sự thống nhất về tiến độ và nội dung giữa các môn học.",
+      "D. Cho phép điều chỉnh nội dung khi có thay đổi về thực tiễn giảng dạy."
+    ],
+    "correctIndex": 1,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 107,
+    "question": "Câu 7: (TH) Việc xây dựng kế hoạch giáo dục của tổ chuyên môn mang lại ý nghĩa như thế nào đối với công tác quản lý của nhà trường?",
+    "options": [
+      "A. Là cơ sở để các tổ chuyên môn phối hợp thực hiện các quy định quản lý chuyên môn.",
+      "B. Giúp bảo đảm tính thống nhất và là căn cứ theo dõi, đánh giá thực hiện kế hoạch giáo dục.",
+      "C. Tạo tiền đề để giáo viên điều chỉnh nội dung, phương pháp dạy học phù hợp với điều kiện và nhu cầu học sinh.",
+      "D. Phục vụ cho công tác phân bổ thời lượng và sắp xếp lịch dạy cho giáo viên trong tổ."
+    ],
+    "correctIndex": 1,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 108,
+    "question": "Câu 8: (VD) Trong quá trình thực hiện kế hoạch giáo dục, tổ Tin học đối mặt với ba thay đổi đột ngột: Thời lượng học kỳ II bị rút ngắn; Phải bổ sung một chuyên đề mới theo chỉ đạo của Sở GD&ĐT; Học sinh khối 12 cần ưu tiên tối đa cho việc ôn tập thi tốt nghiệp. Tổ chuyên môn cần vận dụng các nguyên tắc xây dựng kế hoạch nào sau đây để đưa ra giải pháp điều chỉnh tối ưu?",
+    "options": [
+      "A. Ưu tiên cắt bỏ một số nội dung không cần thiết trong chương trình để có đủ thời lượng dạy chuyên đề của Sở, thời gian còn lại dồn để ôn thi.",
+      "B. Đảm bảo quyền lợi khối 12: giữ nguyên kế hoạch khối 10, 11 nhưng dạy với nhịp độ nhanh hơn, dùng thời gian để tăng cường ôn tập cho khối 12.",
+      "C. Tinh giản các nội dung không cốt lõi, tích hợp các bài học tương đồng, bố trí chuyên đề mới và dành thời gian ôn tập trọng tâm cho khối 12.",
+      "D. Áp dụng giải pháp công bằng: giảm đều một phần thời lượng của tất cả các chủ đề hiện có để chia sẻ cho chuyên đề mới và thời gian ôn tập."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 109,
+    "question": "Câu 9: (VD) Khi xây dựng phân phối chương trình môn Tin học, tổ chuyên môn nhận thấy học sinh của trường cần thêm thời gian để tiếp cận các khái niệm nền tảng trong mạch Lập trình so với thời lượng gợi ý trong sách giáo khoa tỉnh lựa chọn. Phương án nào sau đây thể hiện cách phân bổ thời lượng phù hợp với đặc điểm học sinh?",
+    "options": [
+      "A. Đề xuất với Hiệu trưởng xin tăng thêm tổng thời lượng môn học nhằm mục đích có đủ quỹ thời gian ôn tập nền tảng trước khi dạy bài mới.",
+      "B. Phân bổ đồng đều quỹ thời gian quy định cho các mạch nội dung nhằm đảm bảo học sinh có cơ hội tiếp cận đầy đủ các kiến thức từ cơ bản đến nâng cao.",
+      "C. Thiết kế lại cấu trúc bài học thành chủ đề mới, căn cứ vào mức độ phức tạp của các yêu cầu cần đạt để tăng thêm thời lượng phân bổ sao cho phù hợp.",
+      "D. Tính toán số tiết dựa trên tỷ lệ phần trăm thời lượng quy định, sau đó giáo viên bộ môn sắp xếp lại thứ tự bài học sao cho phù hợp với trình độ từng lớp."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 110,
+    "question": "Câu 10: (VD) Trong tiết thực hành \"Kết nối PC với các thiết bị số thông dụng\" ở lớp 12, nhà trường chưa trang bị các thiết bị số mới. Giải pháp tổ chức dạy học nào dưới đây vừa đảm bảo tiến độ vừa đáp ứng đúng yêu cầu cần đạt?",
+    "options": [
+      "A. Tổ chức cho học sinh quan sát cổng cắm trên vỏ máy tính và vẽ sơ đồ nguyên lý ghép nối ra giấy để ghi nhớ thao tác.",
+      "B. Dùng thiết bị cũ, hỏng để thao tác cắm cáp vật lí và dùng video, hình ảnh để mô phỏng phần kết nối logic.",
+      "C. Tập trung hướng dẫn học sinh thao tác cài đặt các trình điều khiển (driver) trên hệ điều hành để thay thế cho quá trình ghép nối phần cứng.",
+      "D. Khuyến khích học sinh mang thiết bị thông minh từ gia đình đến phòng máy để các nhóm có đầy đủ công cụ thực hành cấu hình mạng."
+    ],
+    "correctIndex": 1,
+    "category": "c2_p2",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 111,
+    "question": "Câu 1 (NB): Căn cứ vào các tiêu chí trong Công văn số 5555/BGDĐT-GDTrH và đặc điểm của Chương trình giáo dục phổ thông 2018, phương án nào sau đây nêu đúng số lượng yêu cầu cần đáp ứng khi xây dựng kế hoạch bài dạy (KHBD) cho một chủ đề?",
+    "options": [
+      "A. 4.",
+      "B. 5.",
+      "C. 6.",
+      "D. 7."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 112,
+    "question": "Câu 2: (NB) Phương án nào sau đây xác định đúng các thành phần cơ bản của một hoạt động học trong kế hoạch bài dạy theo định hướng tại Công văn 5512/BGDĐT-GDTrH?",
+    "options": [
+      "A. Mục tiêu, nội dung, sản phẩm và tổ chức thực hiện hoạt động.",
+      "B. Yêu cầu cần đạt, phân phối chương trình, kiểm tra và tổng kết.",
+      "C. Kiến thức trọng tâm, tài liệu tham khảo, thời khóa biểu và điểm.",
+      "D. Nội dung bài học, phương pháp giảng dạy, phiếu điểm và xếp loại."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 113,
+    "question": "Câu 3 (NB): Trong quy trình 4 bước xây dựng kế hoạch bài dạy môn Tin học, sau khi hoàn thành \"Bước 1: Xác định mục tiêu của bài dạy\", giáo viên thực hiện bước tiếp theo nào sau đây?",
+    "options": [
+      "A. Xác định chuỗi các hoạt động học và mục tiêu của từng hoạt động.",
+      "B. Xây dựng chi tiết kịch bản tổ chức cho các hoạt động dạy học cụ thể.",
+      "C. Lựa chọn danh mục thiết bị phòng máy và phần mềm thực hành tương ứng.",
+      "D. Rà soát và hoàn thiện tổng thể cấu trúc của bản kế hoạch bài dạy."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 114,
+    "question": "Câu 4. (TH) Một mục tiêu trong dự thảo kế hoạch bài dạy được viết: “Giáo viên hướng dẫn học sinh sử dụng câu lệnh rẽ nhánh để giải quyết bài toán”. Phương án nào sau đây xác định nội dung cần điều chỉnh để mục tiêu thể hiện kết quả học tập mong đợi?",
+    "options": [
+      "A. Cụ thể hóa dạng bài toán để xác định phạm vi kiến thức được triển khai trong tiết học.",
+      "B. Bổ sung điều kiện thực hành để làm rõ thiết bị và học liệu hỗ trợ quá trình học tập.",
+      "C. Diễn đạt thành hành động học sinh thực hiện được sau khi hoàn thành bài học.",
+      "D. Xác định mức độ hướng dẫn để phân biệt nhiệm vụ của giáo viên và nhiệm vụ của học sinh."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 115,
+    "question": "Câu 5. (TH) Hai giáo viên dạy cùng một bài học nhưng lựa chọn nhiệm vụ, học liệu và thời lượng cho từng hoạt động khác nhau. Phương án nào sau đây giải thích sự khác biệt này?",
+    "options": [
+      "A. Nội dung và trình tự của bộ sách đang sử dụng quyết định cách phân chia hoạt động và thời lượng.",
+      "B. Kinh nghiệm tổ chức lớp học quyết định mức yêu cầu cần đạt và cách lựa chọn nhiệm vụ tương ứng.",
+      "C. Sự đồng thuận của tổ chuyên môn là căn cứ xác nhận mức độ phù hợp của từng phương án tổ chức.",
+      "D. Yêu cầu cần đạt được cụ thể hóa qua cách tổ chức phù hợp với người học và điều kiện dạy học."
+    ],
+    "correctIndex": 3,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 116,
+    "question": "Câu 6. (TH) Khi thiết kế bài học mới, giáo viên sử dụng một nhiệm vụ giúp học sinh huy động kiến thức từ bài trước để phát hiện vấn đề cần tìm hiểu. Cách thiết kế này tạo cơ sở cho quá trình học tập theo phương án nào sau đây?",
+    "options": [
+      "A. Kết nối hiểu biết sẵn có với vấn đề mới để hình thành kiến thức.",
+      "B. Đánh giá mức độ ghi nhớ bài cũ của học sinh trước khi chuyển sang nội dung mới.",
+      "C. Tổng hợp lại nội dung trọng tâm của bài trước để đảm bảo tính hệ thống cho chủ đề.",
+      "D. Ôn tập lại các quy trình thực hành cũ nhằm duy trì phản xạ kĩ năng."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 117,
+    "question": "Câu 7 (TH): Khi phân tích yêu cầu về sự đa dạng trong hình thức, phương pháp và kỹ thuật dạy học, quan điểm nào sau đây phù hợp với định hướng xây dựng kế hoạch bài dạy?",
+    "options": [
+      "A. Kết hợp các phương pháp dạy học trong từng hoạt động, bảo đảm mỗi bài học có sự thay đổi về cách thức tổ chức.",
+      "B. Lựa chọn phương pháp dạy học phù hợp với nội dung từng hoạt động, đồng thời sử dụng cách tổ chức đã phát huy hiệu quả qua các bài học.",
+      "C. Sử dụng phương pháp hợp lí, tránh chỉ dùng một cách dạy ở nhiều hoạt động và kết hợp các phương pháp khi cần thiết.",
+      "D. Phối hợp các phương pháp dạy học trong bài học, lựa chọn hình thức tổ chức phù hợp với đặc điểm của từng hoạt động."
+    ],
+    "correctIndex": 2,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 118,
+    "question": "Câu 8 (VD): Trong kế hoạch bài dạy Bài 9: An toàn trên không gian mạng (thuộc Chủ đề 2: Mạng máy tính và Internet), giáo viên giao nhiệm vụ thiết kế Infographic hướng dẫn bảo vệ tài khoản cá nhân tại nhà. Kế hoạch đã quy định sản phẩm, thời hạn nộp và tiêu chí đánh giá, nhưng sau khi nhận bài, giáo viên chỉ ghi điểm rồi chuyển sang chủ đề mới. Cách điều chỉnh nào sau đây phù hợp?",
+    "options": [
+      "A. Gửi điểm kèm nhận xét riêng cho từng bài, sau đó sử dụng thời gian tiết học để triển khai nội dung tiếp theo.",
+      "B. Chọn một số sản phẩm để trình bày ở tiết sau, tổ chức nhận xét theo tiêu chí và tổng kết những điểm cần cải thiện.",
+      "C. Yêu cầu mỗi người tự đối chiếu sản phẩm với tiêu chí, chỉnh sửa tại nhà rồi nộp lại bản hoàn thiện cho giáo viên.",
+      "D. Trình chiếu một số sản phẩm tiêu biểu ở tiết sau, phân tích cách trình bày và ghi nhận mức độ tham gia của người học."
+    ],
+    "correctIndex": 1,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 119,
+    "question": "Câu 9 (VD): Khi dạy bài \"Thuật toán sắp xếp\" (Định hướng Khoa học máy tính), phòng máy của trường bất ngờ mất điện. Để duy trì mục tiêu phát triển tư duy máy tính trong kế hoạch bài dạy, giáo viên nên điều chỉnh kế hoạch tổ chức hoạt động theo cách nào dưới đây?",
+    "options": [
+      "A. Sử dụng các bộ thẻ số bằng bìa cứng và tổ chức cho học sinh đóng vai mô phỏng lại các bước thuật toán.",
+      "B. Thực hiện vẽ sơ đồ thuật toán lên bảng đen và yêu cầu cả lớp chú ý lắng nghe để ghi chép lại các bước xử lý.",
+      "C. Cung cấp các trạng thái của dãy số sau mỗi lượt sắp xếp, yêu cầu học sinh ghép với các bước thuật toán tương ứng.",
+      "D. Phát phiếu học tập chứa các đoạn mã lệnh in sẵn và yêu cầu học sinh thảo luận nhóm để tìm ra lỗi sai cú pháp."
+    ],
+    "correctIndex": 0,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
+  },
+  {
+    "id": 120,
+    "question": "Câu 10. (VD) Trong bài học viết chương trình tìm kiếm, giáo viên đặt mục tiêu phát triển năng lực giao tiếp và hợp tác, với biểu hiện học sinh biết phân công, phối hợp và trao đổi để hoàn thành nhiệm vụ. Dự thảo hiện đánh giá qua chương trình của nhóm và phần trình bày của đại diện. Phương án nào sau đây bổ sung minh chứng phù hợp với mục tiêu này?",
+    "options": [
+      "A. Yêu cầu từng em giải thích một đoạn mã, dựa vào mức độ tương thích để nhận xét khả năng phối hợp.",
+      "B. Quan sát quá trình làm việc nhóm kết hợp với nhật ký và đánh giá chéo giữa các thành viên.",
+      "C. Thu nhật kí số dòng lệnh từng em đã viết và dùng tỉ lệ đóng góp để nhận xét chất lượng hợp tác.",
+      "D. Ghi nhận thời gian hoàn thành, số lỗi của sản phẩm và dùng kết quả để nhận xét sự phối hợp."
+    ],
+    "correctIndex": 1,
+    "category": "c2_p4",
+    "chapter": "c2",
+    "topic": "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
+    "group": "Nhóm 1"
   }
 ]
