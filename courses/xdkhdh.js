@@ -25,6 +25,7 @@ window.COURSE = {
             id: 'group', label: 'Nhóm', target: 'question', field: 'group', all: 'Tất cả các nhóm', showCount: true,
                         options: [
                 { value: 'Nhóm 1', label: 'Nhóm 1' },
+                { value: 'Nhóm 2', label: 'Nhóm 2' },
                 { value: 'Nhóm 4', label: 'Nhóm 4' },
                 { value: 'Nhóm 5', label: 'Nhóm 5' },
                 { value: 'Nhóm 7', label: 'Nhóm 7' },
