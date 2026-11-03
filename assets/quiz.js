@@ -26,6 +26,14 @@
     const isGraded = q => Number.isInteger(q.correctIndex);
     const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+    function stripSourcePrefix(text) {
+        if (!text) return '';
+        let cleaned = text.replace(/^(?:(?:câu|câu hỏi|question)\s*\d+[^:\.\n]*[:\.\-]\s*|\d+[\.:]\s*)/i, '').trim();
+        cleaned = cleaned.replace(/^(?:\((?:nhận biết|thông hiểu|vận dụng|nb|th|vd)\)|\[(?:nhận biết|thông hiểu|vận dụng|nb|th|vd)\])\s*[:\.\-]?\s*/i, '').trim();
+        if (!cleaned) return text;
+        return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+    }
+
     function shuffle(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -163,7 +171,7 @@
                     </div>
                     <div class="palette-grid" id="palette-grid"></div>
                     <div class="side-legend">
-                        <div class="legend-row"><div class="legend-dot" style="background: #e2e8f0; border: 1px solid #94a3b8;"></div><span>Đã chọn đáp án</span></div>
+                        <div class="legend-row"><div class="legend-dot" style="background: #eff6ff; border: 1px solid #93c5fd;"></div><span>Đã chọn đáp án</span></div>
                         <div class="legend-row"><div class="legend-dot" style="background: #ffffff; border: 1px solid #cbd5e1;"></div><span>Chưa trả lời</span></div>
                         <div class="legend-row"><div class="legend-dot" style="background: var(--warning);"></div><span>Đã đặt cờ xem lại</span></div>
                     </div>
@@ -386,7 +394,8 @@
         const topic = TOPICS.find(t => t.id === q.category);
 
         $('q-index-text').textContent = `Câu ${i + 1} / ${quiz.length}`;
-        $('q-text').textContent = q.question;
+        const cleanText = stripSourcePrefix(q.question);
+        $('q-text').innerHTML = `<span class="q-num">Câu ${i + 1}.</span> ${esc(cleanText)}`;
 
         const flagBtn = $('btn-flag');
         flagBtn.classList.toggle('active', flags[i]);
