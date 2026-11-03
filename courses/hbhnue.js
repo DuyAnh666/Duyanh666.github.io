@@ -41,17 +41,6 @@ window.COURSE = {
             ]
         }
     ],
-    cardTags(topic, { qs }) {
-        const graded = qs.filter(q => Number.isInteger(q.correctIndex)).length;
-        return [
-            { cls: 'tag-pill', text: topic.badge },
-            { cls: 'tag-sub', text: `${graded}/${qs.length} có đáp án` }
-        ];
-    },
-    questionTags: (q, topic) => ({
-        main: { text: topic ? topic.badge : 'Sư phạm' },
-        sub: sourceOf(q)
-    }),
     feedbackInfo: q => `Nguồn tài liệu tham khảo: ${sourceOf(q)}`,
     unverifiedNote: q => q.answerConflict
         ? `<span style="color: var(--warning);">Lưu ý: Câu hỏi ghi nhận mâu thuẫn đáp án giữa các nguồn tài liệu gốc (không tính vào điểm thi). Nguồn: ${sourceOf(q)}.</span>`

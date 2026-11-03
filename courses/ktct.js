@@ -28,10 +28,6 @@ window.COURSE = {
             ]
         }
     ],
-    cardTags: topic => [
-        { cls: 'tag-pill', text: topic.badge },
-        { cls: 'tag-sub', text: 'Lý luận cơ bản' }
-    ],
     feedbackInfo: (q, topic) => `Chương: ${topic ? topic.title : ''}`,
     topics: [
         {

@@ -48,18 +48,6 @@ window.COURSE = {
             ]
         }
     ],
-    cardTags(topic, { qs, values }) {
-        const n = level => qs.filter(q => q.level === level).length;
-        return [
-            { cls: 'tag-pill', text: topic.chapterTitle },
-            { cls: 'tag-sub', text: values.group === 'all' ? 'Tổng hợp các nhóm' : values.group },
-            { cls: 'tag-matrix', text: `${n('NB')} NB • ${n('TH')} TH • ${n('VD')} VD` }
-        ];
-    },
-    questionTags: q => ({
-        main: { text: q.levelName || 'Nhận biết', cls: 'tag-level ' + (q.level || 'NB').toLowerCase() },
-        sub: q.group || ''
-    }),
     feedbackInfo: (q, topic) =>
         `Mức độ: <strong>${q.levelName || ''}</strong> • Chủ đề: ${q.topic || ''} • Nguồn: ${q.group || ''}`,
     topics: [

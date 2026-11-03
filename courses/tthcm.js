@@ -28,10 +28,6 @@ window.COURSE = {
             ]
         }
     ],
-    cardTags: topic => [
-        { cls: 'tag-pill', text: topic.badge },
-        { cls: 'tag-sub', text: 'Tư tưởng - Chính trị' }
-    ],
     feedbackInfo: (q, topic) => `Chương: ${topic ? topic.title : ''}`,
     topics: [
         {

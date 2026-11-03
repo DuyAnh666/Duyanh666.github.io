@@ -105,7 +105,6 @@
                 <div class="exam-banner-info">
                     <h2>${EXAM.title}</h2>
                     <p>${C.banner.desc}</p>
-                    <div class="exam-meta-tags" id="banner-tags"></div>
                 </div>
                 <div>
                     <button class="btn-exam-start" onclick="Quiz.promptExam()">Vào thi thử (${EXAM.minutes} phút - ${EXAM.total} câu)</button>
@@ -128,7 +127,6 @@
         <div id="quiz-section">
             <div class="quiz-topbar">
                 <div class="topbar-left">
-                    <span class="badge-mode" id="quiz-mode-badge"></span>
                     <span id="quiz-topic-title" style="font-weight: 600; font-size: 0.95rem; color: var(--text-main);"></span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
@@ -142,11 +140,7 @@
                     <div class="question-card">
                         <div class="q-meta">
                             <span class="q-index" id="q-index-text"></span>
-                            <div class="q-meta-badges">
-                                <span class="tag-pill" id="q-tag-main"></span>
-                                <span class="tag-sub" id="q-tag-sub" style="display: none;"></span>
-                                <button class="btn-flag" id="btn-flag" onclick="Quiz.toggleFlag()">Đặt cờ</button>
-                            </div>
+                            <button class="btn-flag" id="btn-flag" onclick="Quiz.toggleFlag()">Đặt cờ</button>
                         </div>
                         <div class="q-text" id="q-text"></div>
                         <div class="options-list" id="options-list"></div>
@@ -180,7 +174,6 @@
 
     <div class="modal-overlay" id="start-modal">
         <div class="modal-content">
-            <div style="margin-bottom: 12px;"><span class="badge-mode" id="start-modal-badge"></span></div>
             <h3 class="modal-title" id="start-modal-title"></h3>
             <p class="modal-desc" id="start-modal-desc"></p>
             <div class="modal-actions">
@@ -222,20 +215,6 @@
         return pool;
     }
 
-    function renderBannerTags() {
-        const vals = filterValues();
-        const ctx = { values: vals, count: examPool(vals).length, total: ALL.length };
-        const tags = [
-            { text: C.banner.highlight || `${EXAM.total} câu trắc nghiệm`, highlight: true },
-            { text: `Thời gian: ${EXAM.minutes} phút` },
-            { text: 'Thang điểm: 10.0' },
-            { text: C.banner.bank(ctx) }
-        ];
-        $('banner-tags').innerHTML = tags
-            .map(t => `<span class="exam-meta-tag${t.highlight ? ' highlight' : ''}">${esc(t.text)}</span>`)
-            .join('');
-    }
-
     function renderTopics() {
         const vals = filterValues();
         const search = $('search-input').value.trim().toLowerCase();
@@ -252,13 +231,9 @@
             visible++;
             total += qs.length;
 
-            const tags = (C.cardTags ? C.cardTags(topic, { qs, values: vals }) : [{ cls: 'tag-pill', text: topic.badge }])
-                .map(t => `<span class="${t.cls}">${esc(t.text)}</span>`).join('');
-
             return `
                 <div class="topic-card">
                     <div>
-                        <div class="card-tags">${tags}</div>
                         <h3 class="topic-title">${topic.title}</h3>
                         <p class="topic-desc">${topic.desc}</p>
                     </div>
@@ -275,12 +250,10 @@
         $('topics-grid').innerHTML = html ||
             '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">Không tìm thấy chủ đề phù hợp với bộ lọc hiện tại.</div>';
         $('filter-counter').textContent = `Hiển thị ${visible} ${UNIT} (${total} câu hỏi)`;
-        renderBannerTags();
     }
 
     // ---------- Start modal ----------
-    function openStartModal(badge, title, desc, btnText) {
-        $('start-modal-badge').textContent = badge;
+    function openStartModal(title, desc, btnText) {
         $('start-modal-title').textContent = title;
         $('start-modal-desc').textContent = desc;
         $('btn-start-action').textContent = btnText;
@@ -306,12 +279,12 @@
 
         if (selectedMode === 'practice') {
             openStartModal(
-                'Chế độ: Luyện tập (Không giới hạn thời gian)', topic.title,
+                topic.title,
                 `${UNIT_CAP} gồm ${qs.length} câu hỏi. Bạn có thể kiểm tra đáp án và giải thích ngay sau mỗi câu trả lời.`,
                 'Bắt đầu làm bài');
         } else {
             openStartModal(
-                `Chế độ: Thi thử (${minutes} phút)`, topic.title,
+                topic.title,
                 `${UNIT_CAP} gồm ${qs.length} câu hỏi. Thời gian làm bài ${minutes} phút. Điểm số và kết quả sẽ hiển thị sau khi nộp bài.`,
                 'Bắt đầu thi');
         }
@@ -339,7 +312,7 @@
             timeMinutes: EXAM.minutes
         };
         openStartModal(
-            `Thi thử tổng hợp (${EXAM.minutes} phút - ${EXAM.total} câu)`, EXAM.title,
+            EXAM.title,
             `Đề thi gồm ${EXAM.total} câu hỏi ${EXAM.note}. Thời gian làm bài ${EXAM.minutes} phút, tự động nộp bài khi hết giờ và chấm theo thang điểm 10.`,
             'Bắt đầu làm bài thi');
     }
@@ -367,7 +340,6 @@
         show('btn-submit', 'inline-block');
         $('btn-submit').textContent = 'Nộp bài';
         $('quiz-topic-title').textContent = cfg.title;
-        $('quiz-mode-badge').textContent = mode === 'practice' ? 'Chế độ: Luyện tập' : 'Chế độ: Thi thử';
 
         const badge = $('quiz-timer');
         if (mode === 'test' && cfg.timeMinutes > 0) {
@@ -414,15 +386,6 @@
         const topic = TOPICS.find(t => t.id === q.category);
 
         $('q-index-text').textContent = `Câu ${i + 1} / ${quiz.length}`;
-
-        const tags = C.questionTags ? C.questionTags(q, topic) : { main: { text: topic ? topic.badge : '' } };
-        const main = $('q-tag-main');
-        main.textContent = tags.main.text;
-        main.className = tags.main.cls || 'tag-pill';
-        const sub = $('q-tag-sub');
-        sub.style.display = tags.sub ? 'inline-block' : 'none';
-        sub.textContent = tags.sub || '';
-
         $('q-text').textContent = q.question;
 
         const flagBtn = $('btn-flag');
@@ -550,7 +513,6 @@
     function enterReview() {
         closeModal('result-modal');
         reviewing = true;
-        $('quiz-mode-badge').textContent = 'Chế độ: Xem lại bài thi';
         show('quiz-timer', 'none');
         show('review-filters', 'flex');
         $('btn-submit').textContent = 'Trở về danh sách';
