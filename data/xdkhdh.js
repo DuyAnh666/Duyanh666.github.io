@@ -2216,7 +2216,7 @@ window.QUESTIONS = [
             "A. Cách phân tích và thiết kế các thuật toán ở mức chuyên sâu.",
             "B. Thế giới công nghệ số và những công cụ số gần gũi.",
             "C. Cách tổ chức dữ liệu và quản trị các hệ thống máy tính.",
-            "D. Cách tổ chức dữ liệu và quản trị các hệ thống máy tính."
+            "D. Kĩ thuật thiết kế vi mạch và quản trị mạng truyền thông nâng cao."
         ],
         correctIndex: 1,
         category: "c1_p12",
@@ -5839,7 +5839,7 @@ window.QUESTIONS = [
             "C. Là môn học tự chọn, nội dung hoàn toàn phụ thuộc vào năng lực giảng dạy của giáo viên.",
             "D. Lồng ghép trong các hoạt động trải nghiệm và hướng nghiệp."
         ],
-        correctIndex: 1,
+        correctIndex: 0,
         category: "c1_p12",
         chapter: "c1",
         topic: "Chương 1: Phần 1, 2 (Đặc điểm môn học & Mục tiêu chương trình)",
@@ -6009,7 +6009,7 @@ window.QUESTIONS = [
             "C. Hợp tác trong môi trường số.",
             "D. Ứng dụng công nghệ thông tin và truyền thông trong học và tự học."
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         category: "c1_p34",
         chapter: "c1",
         topic: "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
