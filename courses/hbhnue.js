@@ -5,9 +5,7 @@ window.COURSE = {
     subtitle: 'Cổng ôn tập và thi thử trắc nghiệm kiến thức giáo dục & nghề giáo',
     unit: 'chủ đề',
     banner: {
-        desc: 'Bộ đề 20 câu hỏi trắc nghiệm ngẫu nhiên bao quát toàn diện các chủ đề (Giáo dục, Chính sách, Văn hóa, Tiếng Anh). Thời gian làm bài 10 phút, tự động chấm điểm theo thang điểm 10.',
-        highlight: 'Đề thi chuẩn: 20 câu / 10 phút',
-        bank: ({ total }) => `Ngân hàng: ${total} câu hỏi`
+        desc: 'Bộ đề 20 câu hỏi trắc nghiệm ngẫu nhiên bao quát toàn diện các chủ đề (Giáo dục, Chính sách, Văn hóa, Tiếng Anh). Thời gian làm bài 10 phút, tự động chấm điểm theo thang điểm 10.'
     },
     exam: {
         title: 'Đề thi thử tổng hợp Hiểu biết Sư phạm',
@@ -31,14 +29,7 @@ window.COURSE = {
             ]
         },
         {
-            id: 'category', label: 'Chủ đề', target: 'topic', field: 'id', all: 'Tất cả chủ đề',
-            options: [
-                { value: 'giao_duc', label: 'Giáo dục & Nghề giáo' },
-                { value: 'chinh_sach', label: 'Chính sách & Pháp luật GD' },
-                { value: 'van_hoa', label: 'Văn hóa & Xã hội' },
-                { value: 'tieng_anh', label: 'Tiếng Anh & Thuật ngữ' },
-                { value: 'khac', label: 'Hiểu biết chung & Khác' }
-            ]
+            id: 'category', label: 'Chủ đề', target: 'topic', field: 'id', all: 'Tất cả chủ đề'
         }
     ],
     feedbackInfo: q => `Nguồn tài liệu tham khảo: ${sourceOf(q)}`,
@@ -47,34 +38,29 @@ window.COURSE = {
         : `Chưa xác định được đáp án chính xác từ tài liệu gốc. Nguồn: ${sourceOf(q)}.`,
     topics: [
         {
-            "id": "giao_duc",
-            "badge": "Giáo dục",
-            "title": "Giáo dục & Nghề giáo",
-            "desc": "Lịch sử giáo dục, phương pháp dạy học tích cực, đạo đức nhà giáo, hệ thống giáo dục quốc dân."
+            id: 'giao_duc',
+            title: 'Giáo dục & Nghề giáo',
+            desc: 'Lịch sử giáo dục, phương pháp dạy học tích cực, đạo đức nhà giáo, hệ thống giáo dục quốc dân.'
         },
         {
-            "id": "chinh_sach",
-            "badge": "Chính sách",
-            "title": "Chính sách & Pháp luật GD",
-            "desc": "Luật Giáo dục, Nghị quyết 29-NQ/TW, đổi mới GDPT, chế độ chính sách đối với nhà giáo và học sinh."
+            id: 'chinh_sach',
+            title: 'Chính sách & Pháp luật GD',
+            desc: 'Luật Giáo dục, Nghị quyết 29-NQ/TW, đổi mới GDPT, chế độ chính sách đối với nhà giáo và học sinh.'
         },
         {
-            "id": "van_hoa",
-            "badge": "Văn hóa",
-            "title": "Văn hóa & Xã hội",
-            "desc": "Lịch sử văn hóa Việt Nam, phong trào thi đua xây dựng trường học thân thiện, truyền thống sư phạm."
+            id: 'van_hoa',
+            title: 'Văn hóa & Xã hội',
+            desc: 'Lịch sử văn hóa Việt Nam, phong trào thi đua xây dựng trường học thân thiện, truyền thống sư phạm.'
         },
         {
-            "id": "tieng_anh",
-            "badge": "Ngoại ngữ",
-            "title": "Tiếng Anh & Thuật ngữ",
-            "desc": "Thuật ngữ giáo dục, từ vựng và câu hỏi trắc nghiệm tiếng Anh chuyên ngành sư phạm."
+            id: 'tieng_anh',
+            title: 'Tiếng Anh & Thuật ngữ',
+            desc: 'Thuật ngữ giáo dục, từ vựng và câu hỏi trắc nghiệm tiếng Anh chuyên ngành sư phạm.'
         },
         {
-            "id": "khac",
-            "badge": "Tổng hợp",
-            "title": "Hiểu biết chung & Khác",
-            "desc": "Kiến thức xã hội, kỹ năng nghề nghiệp, quy định ngành và hiểu biết tổng hợp sư phạm."
+            id: 'khac',
+            title: 'Hiểu biết chung & Khác',
+            desc: 'Kiến thức xã hội, kỹ năng nghề nghiệp, quy định ngành và hiểu biết tổng hợp sư phạm.'
         }
     ]
 };

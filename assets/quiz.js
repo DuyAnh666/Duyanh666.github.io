@@ -12,11 +12,35 @@
 
     const C = window.COURSE;
     const ALL = window.QUESTIONS;
-    const TOPICS = C.topics;
-    const FILTERS = C.filters || [];
+    const TOPICS = C.topics || [];
     const EXAM = C.exam;
-    const UNIT = C.unit || 'chủ đề';
+    const SUBTITLE = C.subtitle || 'Hệ thống trắc nghiệm ôn tập và thi thử chuẩn Đại học Sư phạm Hà Nội';
+    const UNIT = C.unit || 'chương';
     const UNIT_CAP = UNIT.charAt(0).toUpperCase() + UNIT.slice(1);
+    const TOPIC_MINUTES = C.topicMinutes || (n => (n <= 30 ? 25 : 40));
+    const FEEDBACK_INFO = C.feedbackInfo || ((q, topic) => `${UNIT_CAP}: ${topic ? topic.title : ''}`);
+
+    const FILTERS = (C.filters || [
+        {
+            id: 'chapter',
+            label: UNIT_CAP,
+            target: 'topic',
+            field: 'id',
+            all: `Tất cả các ${UNIT}`
+        }
+    ]).map(f => {
+        if (f.options) return f;
+        const seen = new Set();
+        const options = [];
+        TOPICS.forEach(t => {
+            const val = t[f.field || 'id'];
+            if (!val || seen.has(val)) return;
+            seen.add(val);
+            const label = t.shortTitle || (t.title.includes(':') ? t.title.split(':')[0].trim() : t.title);
+            options.push({ value: val, label });
+        });
+        return { ...f, options };
+    });
 
     // ---------- Helpers ----------
     const $ = id => document.getElementById(id);
@@ -100,11 +124,17 @@
     // ---------- Page skeleton ----------
     function renderApp() {
         document.title = `${C.title} - Ôn tập HNUE`;
+        const bannerDesc = (C.banner && C.banner.desc) || '';
         $('app').innerHTML = `
     <header>
-        <a href="home.html" class="back-home">Trang chủ</a>
-        <h1>${C.title}</h1>
-        <div class="brand-subtitle">${C.subtitle}</div>
+        <div class="course-header-inner">
+            <a href="home.html" class="back-home">Trang chủ</a>
+            <div class="header-copy">
+                <h1>${C.title}</h1>
+                <div class="brand-subtitle">${SUBTITLE}</div>
+            </div>
+            <div class="course-header-spacer"></div>
+        </div>
     </header>
 
     <div id="main-app">
@@ -112,7 +142,7 @@
             <div class="exam-banner-card">
                 <div class="exam-banner-info">
                     <h2>${EXAM.title}</h2>
-                    <p>${C.banner.desc}</p>
+                    <p>${bannerDesc}</p>
                 </div>
                 <div>
                     <button class="btn-exam-start" onclick="Quiz.promptExam()">Vào thi thử (${EXAM.minutes} phút - ${EXAM.total} câu)</button>
@@ -122,7 +152,7 @@
             <div class="filters-panel">
                 <div class="filters-row">
                     ${FILTERS.map(filterHtml).join('')}
-                    <div class="filter-group">
+                    <div class="filter-group filter-group-search">
                         <input type="text" id="search-input" class="filter-search" placeholder="Tìm kiếm theo từ khóa..." oninput="Quiz.applyFilters()">
                     </div>
                     <div class="filter-counter" id="filter-counter"></div>
@@ -135,9 +165,9 @@
         <div id="quiz-section">
             <div class="quiz-topbar">
                 <div class="topbar-left">
-                    <span id="quiz-topic-title" style="font-weight: 600; font-size: 0.95rem; color: var(--text-main);"></span>
+                    <span id="quiz-topic-title" class="quiz-topic-heading"></span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="topbar-right">
                     <span class="badge-timer" id="quiz-timer" style="display: none;">00:00</span>
                     <button class="btn-exit-quiz" onclick="Quiz.exit()">Thoát</button>
                 </div>
@@ -162,7 +192,10 @@
                 </div>
 
                 <div class="quiz-side-column">
-                    <div class="side-title">Danh sách câu hỏi</div>
+                    <div class="side-header">
+                        <div class="side-title">Danh sách câu hỏi</div>
+                        <div class="side-progress" id="side-progress"></div>
+                    </div>
                     <div class="review-filter-bar" id="review-filters" style="display: none;">
                         <button class="review-pill active" onclick="Quiz.setReviewFilter('all', this)">Tất cả</button>
                         <button class="review-pill" onclick="Quiz.setReviewFilter('correct', this)">Đúng</button>
@@ -256,7 +289,7 @@
         }).join('');
 
         $('topics-grid').innerHTML = html ||
-            '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">Không tìm thấy chủ đề phù hợp với bộ lọc hiện tại.</div>';
+            '<div class="empty-state">Không tìm thấy chủ đề phù hợp với bộ lọc hiện tại.</div>';
         $('filter-counter').textContent = `Hiển thị ${visible} ${UNIT} (${total} câu hỏi)`;
     }
 
@@ -282,7 +315,7 @@
             return;
         }
 
-        const minutes = selectedMode === 'test' ? C.topicMinutes(qs.length) : 0;
+        const minutes = selectedMode === 'test' ? TOPIC_MINUTES(qs.length) : 0;
         pending = { title: topic.title, questions: qs, mode: selectedMode, timeMinutes: minutes };
 
         if (selectedMode === 'practice') {
@@ -437,7 +470,7 @@
                 <div style="font-weight: 600; color: ${ok ? 'var(--success)' : 'var(--danger)'}; margin-bottom: 4px;">
                     ${ok ? 'Chính xác!' : 'Chưa chính xác.'} Đáp án đúng: ${'ABCD'[q.correctIndex]}
                 </div>
-                <div style="color: var(--text-muted); font-size: 0.85rem;">${C.feedbackInfo ? C.feedbackInfo(q, topic) : ''}</div>`;
+                <div style="color: var(--text-muted); font-size: 0.85rem;">${FEEDBACK_INFO(q, topic)}</div>`;
         } else {
             fb.classList.remove('show');
         }
@@ -467,6 +500,10 @@
     }
 
     function renderPalette() {
+        const answeredCount = answers.filter(a => a !== null).length;
+        const progEl = $('side-progress');
+        if (progEl) progEl.textContent = `${answeredCount}/${quiz.length} đã chọn`;
+
         let html = '';
         quiz.forEach((q, i) => {
             const verified = isGraded(q);
@@ -571,6 +608,17 @@
         document.addEventListener('click', e => {
             if (e.target.classList.contains('modal-overlay')) e.target.style.display = 'none';
         });
+        document.addEventListener('keydown', e => {
+            if ($('quiz-section').style.display !== 'block') return;
+            if ($('start-modal').style.display === 'flex' || $('result-modal').style.display === 'flex') return;
+            if (e.key === 'ArrowLeft' && idx > 0) {
+                e.preventDefault();
+                nav(-1);
+            } else if (e.key === 'ArrowRight' && idx < quiz.length - 1) {
+                e.preventDefault();
+                nav(1);
+            }
+        });
     });
 
     window.Quiz = {
@@ -580,4 +628,3 @@
         submit, enterReview, setReviewFilter, restart, toTopics, exit
     };
 })();
-
