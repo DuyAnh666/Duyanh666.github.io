@@ -8084,9 +8084,9 @@ window.QUESTIONS = [
             "D. Kế hoạch bài dạy và kế hoạch kiểm tra nội bộ của tổ chuyên môn."
         ],
         correctIndex: 0,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "NB",
         levelName: "Nhận biết"
@@ -8101,9 +8101,9 @@ window.QUESTIONS = [
             "D. Xây dựng kế hoạch giáo dục cá nhân cho từng giáo viên."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "NB",
         levelName: "Nhận biết"
@@ -8118,9 +8118,9 @@ window.QUESTIONS = [
             "D. Bản kế hoạch chi tiết về việc tổ chức các hoạt động giảng dạy và giáo dục của từng giáo viên theo từng học kỳ và từng tháng trong năm học."
         ],
         correctIndex: 0,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "NB",
         levelName: "Nhận biết"
@@ -8135,9 +8135,9 @@ window.QUESTIONS = [
             "D. Giữ nguyên thời lượng theo sách giáo khoa mà không cần xem xét thêm."
         ],
         correctIndex: 2,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "TH",
         levelName: "Thông hiểu"
@@ -8152,9 +8152,9 @@ window.QUESTIONS = [
             "D. Giáo viên lựa chọn hình thức dạy học theo đặc điểm học sinh, đồng thời phối hợp sử dụng thiết bị hiện có để thực hiện các nhiệm vụ giáo dục được giao."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "TH",
         levelName: "Thông hiểu"
@@ -8169,9 +8169,9 @@ window.QUESTIONS = [
             "D. Rà soát danh mục thiết bị dạy học và phòng học bộ môn hiện có."
         ],
         correctIndex: 2,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "TH",
         levelName: "Thông hiểu"
@@ -8186,9 +8186,9 @@ window.QUESTIONS = [
             "D. Xây dựng kế hoạch với các nhiệm vụ và thời hạn cố định để bảo đảm tiến độ thực hiện thống nhất, hạn chế điều chỉnh trong năm học."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "TH",
         levelName: "Thông hiểu"
@@ -8203,9 +8203,9 @@ window.QUESTIONS = [
             "D. Ưu tiên thực hiện các hoạt động thuận lợi, đồng thời chuyển những nội dung chưa phù hợp sang giai đoạn tiếp theo của năm học."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "VD",
         levelName: "Vận dụng"
@@ -8220,9 +8220,9 @@ window.QUESTIONS = [
             "D. Kết quả biểu quyết theo đa số ý kiến của các thành viên trong tổ."
         ],
         correctIndex: 0,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "VD",
         levelName: "Vận dụng"
@@ -8237,9 +8237,9 @@ window.QUESTIONS = [
             "D. Rà soát tiến độ chương trình và lịch kiểm tra, ưu tiên bố trí thiết bị cho các lớp có nhu cầu thực hành cao, đồng thời duy trì kế hoạch đã thống nhất và báo cáo tổ trưởng khi phát sinh trở ngại vượt quá khả năng xử lí."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 3",
         level: "VD",
         levelName: "Vận dụng"
@@ -8917,9 +8917,9 @@ window.QUESTIONS = [
             "D. Kế hoạch bài dạy của giáo viên gắn với mục tiêu từng môn học."
         ],
         correctIndex: 0,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "NB",
         levelName: "Nhận biết"
@@ -8934,9 +8934,9 @@ window.QUESTIONS = [
             "D. Phân tích đặc điểm tình hình → Xây dựng kế hoạch tổ chức các hoạt động giáo dục → Xây dựng kế hoạch dạy học → Rà soát, hoàn thiện kế hoạch giáo dục của tổ chuyên môn."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "NB",
         levelName: "Nhận biết"
@@ -8951,9 +8951,9 @@ window.QUESTIONS = [
             "D. Hoạt động kiểm tra, đánh giá và phân công nhiệm vụ."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "NB",
         levelName: "Nhận biết"
@@ -8968,9 +8968,9 @@ window.QUESTIONS = [
             "D. Phân bổ lại nhiệm vụ giảng dạy giữa các giáo viên, đồng thời duy trì thời điểm kiểm tra theo kế hoạch ban đầu."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "TH",
         levelName: "Thông hiểu"
@@ -8985,9 +8985,9 @@ window.QUESTIONS = [
             "D. Tạo ra hình thức dự giờ, thanh tra định kỳ do hiệu trưởng tiến hành ở từng bộ môn."
         ],
         correctIndex: 2,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "TH",
         levelName: "Thông hiểu"
@@ -9002,9 +9002,9 @@ window.QUESTIONS = [
             "D. Lịch thi chung do Sở Giáo dục và Đào tạo ban hành áp dụng đồng bộ cho tất cả các môn học."
         ],
         correctIndex: 0,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "TH",
         levelName: "Thông hiểu"
@@ -9019,9 +9019,9 @@ window.QUESTIONS = [
             "D. Hỗ trợ phân công nhiệm vụ giảng dạy cho từng giáo viên."
         ],
         correctIndex: 2,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "TH",
         levelName: "Thông hiểu"
@@ -9036,9 +9036,9 @@ window.QUESTIONS = [
             "D. Phân tích tình hình học sinh và thiết bị, điều chỉnh tiến độ theo đề xuất của giáo viên, thống nhất lịch giữa các khối, phân công nhiệm vụ rồi hoàn thiện dự thảo sau phê duyệt."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "VD",
         levelName: "Vận dụng"
@@ -9053,9 +9053,9 @@ window.QUESTIONS = [
             "D. Vào tuần cuối cùng của năm học sau khi nhà trường đã hoàn thành xong toàn bộ việc tổng kết và kiểm tra, đánh giá định kỳ cho tất cả các khối lớp."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "VD",
         levelName: "Vận dụng"
@@ -9070,9 +9070,9 @@ window.QUESTIONS = [
             "D. Chờ tổ trưởng chuyên môn xây dựng kế hoạch riêng cho từng giáo viên."
         ],
         correctIndex: 0,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 8",
         level: "VD",
         levelName: "Vận dụng"
@@ -9699,9 +9699,9 @@ window.QUESTIONS = [
             "D. Tính linh hoạt."
         ],
         correctIndex: 2,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "NB",
         levelName: "Nhận biết"
@@ -9716,9 +9716,9 @@ window.QUESTIONS = [
             "D. Sử dụng thiết bị và quản lí phòng học bộ môn."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "NB",
         levelName: "Nhận biết"
@@ -9733,9 +9733,9 @@ window.QUESTIONS = [
             "D. Thống kê số lớp, giáo viên và thiết bị dạy học."
         ],
         correctIndex: 3,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "NB",
         levelName: "Nhận biết"
@@ -9750,9 +9750,9 @@ window.QUESTIONS = [
             "D. Kế hoạch của tổ điều chỉnh theo lịch dạy của từng giáo viên."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "TH",
         levelName: "Thông hiểu"
@@ -9767,9 +9767,9 @@ window.QUESTIONS = [
             "D. Cập nhật lịch của tổ, giữ đủ nội dung và yêu cầu cần đạt."
         ],
         correctIndex: 3,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "TH",
         levelName: "Thông hiểu"
@@ -9784,9 +9784,9 @@ window.QUESTIONS = [
             "D. Mức độ hoàn thành chủ đề, lịch nghỉ và số bài thực hành dự kiến."
         ],
         correctIndex: 0,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "TH",
         levelName: "Thông hiểu"
@@ -9801,9 +9801,9 @@ window.QUESTIONS = [
             "D. Tổng hợp các ý kiến thành kế hoạch riêng cho từng khối lớp."
         ],
         correctIndex: 2,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "TH",
         levelName: "Thông hiểu"
@@ -9818,9 +9818,9 @@ window.QUESTIONS = [
             "D. 10A dùng phiếu từng bước; 10B nhận thêm nhiệm vụ mở rộng."
         ],
         correctIndex: 2,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "VD",
         levelName: "Vận dụng"
@@ -9835,9 +9835,9 @@ window.QUESTIONS = [
             "D. 10B giữ sáng thứ Ba; 10A chuyển sang chiều thứ Sáu."
         ],
         correctIndex: 0,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "VD",
         levelName: "Vận dụng"
@@ -9852,9 +9852,9 @@ window.QUESTIONS = [
             "D. Dời sang 8/11, xin khối lớp đổi lịch kiểm tra đã sắp xếp."
         ],
         correctIndex: 1,
-        category: "c2_p23",
+        category: "c2_p2",
         chapter: "c2",
-        topic: "Chương 2: Phần 2, 3 (Kế hoạch giáo dục tổ chuyên môn & Đổi mới PPDH)",
+        topic: "Chương 2: Phần 2 (Xây dựng KHGD tổ chuyên môn)",
         group: "Nhóm 10",
         level: "VD",
         levelName: "Vận dụng"
