@@ -433,7 +433,10 @@
 
         $('q-index-text').textContent = `Câu ${i + 1} / ${quiz.length}`;
         const cleanText = stripSourcePrefix(q.question);
-        $('q-text').innerHTML = `<span class="q-num">Câu ${i + 1}.</span> ${esc(cleanText)}`;
+        const imgHtml = q.image
+            ? `<div class="q-image-wrap"><img class="q-image" src="${q.image}" alt="Hình minh họa câu hỏi"></div>`
+            : '';
+        $('q-text').innerHTML = `<span class="q-num">Câu ${i + 1}.</span> ${esc(cleanText)}${imgHtml}`;
 
         const flagBtn = $('btn-flag');
         flagBtn.classList.toggle('active', flags[i]);
