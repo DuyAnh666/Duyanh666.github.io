@@ -609,14 +609,25 @@
             if (e.target.classList.contains('modal-overlay')) e.target.style.display = 'none';
         });
         document.addEventListener('keydown', e => {
+            if (e.ctrlKey || e.altKey || e.metaKey) return;
             if ($('quiz-section').style.display !== 'block') return;
             if ($('start-modal').style.display === 'flex' || $('result-modal').style.display === 'flex') return;
+            const tag = e.target && e.target.tagName;
+            if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') {
+                if (e.target.type !== 'radio') return;
+            }
             if (e.key === 'ArrowLeft' && idx > 0) {
                 e.preventDefault();
                 nav(-1);
             } else if (e.key === 'ArrowRight' && idx < quiz.length - 1) {
                 e.preventDefault();
                 nav(1);
+            } else {
+                const optIdx = 'abcd'.indexOf(e.key.toLowerCase());
+                if (optIdx !== -1 && quiz[idx] && optIdx < quiz[idx].options.length) {
+                    e.preventDefault();
+                    select(optIdx);
+                }
             }
         });
     });
