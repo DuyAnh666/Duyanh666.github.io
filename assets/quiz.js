@@ -372,9 +372,6 @@
 
     // ---------- Session ----------
     function startSession(cfg) {
-        if (document.activeElement && typeof document.activeElement.blur === 'function') {
-            document.activeElement.blur();
-        }
         quiz = cfg.questions;
         idx = 0;
         answers = new Array(quiz.length).fill(null);
@@ -612,42 +609,14 @@
             if (e.target.classList.contains('modal-overlay')) e.target.style.display = 'none';
         });
         document.addEventListener('keydown', e => {
-            if (e.ctrlKey || e.altKey || e.metaKey) return;
             if ($('quiz-section').style.display !== 'block') return;
             if ($('start-modal').style.display === 'flex' || $('result-modal').style.display === 'flex') return;
-
-            if (e.key === 'ArrowLeft' || e.code === 'ArrowLeft') {
-                if (idx > 0) {
-                    e.preventDefault();
-                    nav(-1);
-                }
-                return;
-            }
-            if (e.key === 'ArrowRight' || e.code === 'ArrowRight') {
-                if (idx < quiz.length - 1) {
-                    e.preventDefault();
-                    nav(1);
-                }
-                return;
-            }
-
-            const codeMap = {
-                KeyA: 0, KeyB: 1, KeyC: 2, KeyD: 3,
-                Digit1: 0, Digit2: 1, Digit3: 2, Digit4: 3,
-                Numpad1: 0, Numpad2: 1, Numpad3: 2, Numpad4: 3
-            };
-            const keyMap = {
-                a: 0, b: 1, c: 2, d: 3, đ: 3,
-                '1': 0, '2': 1, '3': 2, '4': 3
-            };
-            const key = (e.key || '').toLowerCase();
-            const optIdx = (e.code && e.code in codeMap)
-                ? codeMap[e.code]
-                : (key in keyMap ? keyMap[key] : -1);
-
-            if (optIdx !== -1 && quiz[idx] && optIdx < quiz[idx].options.length) {
+            if (e.key === 'ArrowLeft' && idx > 0) {
                 e.preventDefault();
-                select(optIdx);
+                nav(-1);
+            } else if (e.key === 'ArrowRight' && idx < quiz.length - 1) {
+                e.preventDefault();
+                nav(1);
             }
         });
     });
