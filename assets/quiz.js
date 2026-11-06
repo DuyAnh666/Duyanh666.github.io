@@ -623,7 +623,9 @@
                 e.preventDefault();
                 nav(1);
             } else {
-                const optIdx = 'abcd'.indexOf(e.key.toLowerCase());
+                const key = e.key.toLowerCase();
+                let optIdx = 'abcd'.indexOf(key);
+                if (optIdx === -1) optIdx = '1234'.indexOf(key);
                 if (optIdx !== -1 && quiz[idx] && optIdx < quiz[idx].options.length) {
                     e.preventDefault();
                     select(optIdx);
