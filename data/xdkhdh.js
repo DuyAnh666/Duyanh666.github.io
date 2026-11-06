@@ -1361,7 +1361,7 @@ window.QUESTIONS = [
     },
     {
         id: 81,
-        question: "Câu 2: (NB) Theo Chương trình GDPT 2018 môn Tin học, quy định định mức tối thiểu về số học sinh sử dụng chung một máy tính trong giờ thực hành ở cấp Trung học cơ sở là phương án nào dưới đây?",
+        question: "Câu 2: (NB) Theo điều kiện thực hiện Chương trình GDPT 2018 môn Tin học về định mức thiết bị tối thiểu, số học sinh tối đa sử dụng chung một máy tính trong giờ thực hành ở cấp Trung học cơ sở là phương án nào dưới đây?",
         options: [
             "A. 1",
             "B. 2",
@@ -1601,10 +1601,10 @@ window.QUESTIONS = [
         id: 95,
         question: "Câu 6: (TH) Khi tổ chuyên môn Tin học thực hiện xây dựng KHDH theo định hướng phát triển năng lực, nhận định nào sau đây nêu đúng vị trí của sách giáo khoa so với chương trình môn học?",
         options: [
-            "A. Có sự phối hợp khi triển khai, song còn hạn chế cơ hội tham gia góp ý trong quá trình xây dựng kế hoạch.",
-            "B. Bảo đảm sự tham gia xuyên suốt, bởi hỗ trợ thực hiện đã thể hiện vai trò đóng góp vào việc hình thành kế hoạch.",
-            "C. Phát huy quyền chủ động của các bên, vì tách biệt khâu xây dựng và triển khai giúp phân định trách nhiệm giáo dục.",
-            "D. Tạo điều kiện để gia đình và cộng đồng xác định mục tiêu giáo dục, dựa trên các hoạt động đã được nhà trường lựa chọn.."
+            "A. Chương trình môn học là căn cứ pháp lệnh, còn sách giáo khoa là tài liệu cụ thể hóa yêu cầu cần đạt để tổ chuyên môn tham khảo xây dựng kế hoạch.",
+            "B. Sách giáo khoa là văn bản pháp lý cao nhất, quy định cứng trình tự bài học và thời lượng mà tổ chuyên môn bắt buộc phải tuân thủ nguyên vẹn.",
+            "C. Chương trình môn học và sách giáo khoa có giá trị pháp lý ngang nhau, cho phép tổ chuyên môn tùy ý lược bỏ các yêu cầu cần đạt không có trong sách.",
+            "D. Sách giáo khoa quyết định toàn bộ mục tiêu đánh giá định kỳ, còn chương trình môn học chỉ đóng vai trò định hướng chung cho hoạt động ngoại khóa."
         ],
         correctIndex: 0,
         category: "c2_p1",
@@ -3150,7 +3150,7 @@ window.QUESTIONS = [
         options: [
             "A. Tin học ứng dụng và Khoa học dữ liệu.",
             "B. Công nghệ thông tin và Lập trình ứng dụng.",
-            "C. Tin học văn phòng và Khoa học máy tính.",
+            "C. Tin học ứng dụng và Khoa học máy tính.",
             "D. Học vấn số hóa và Kỹ thuật máy tính."
         ],
         correctIndex: 2,
@@ -3476,7 +3476,7 @@ window.QUESTIONS = [
             "C. Khung kế hoạch thời gian năm học của Ủy ban nhân dân cấp tỉnh.",
             "D. Hướng dẫn nhiệm vụ giáo dục trung học của Sở Giáo dục và Đào tạo."
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         category: "c2_p1",
         chapter: "c2",
         topic: "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
@@ -3846,7 +3846,7 @@ window.QUESTIONS = [
         question: "Câu 3 (Nhận biết): Ở giai đoạn giáo dục cơ bản, phương án nào sau đây phản ánh đúng cách tổ chức môn Tin học trong chương trình?",
         options: [
             "A. Là môn lựa chọn, được phân hóa xuyên suốt từ lớp 3 đến lớp 9 theo định hướng nghề nghiệp.",
-            "B. Là môn bắt buộc, được phân hóa xuyên suốt từ lớp 3 đến lớp 9 nhằm hình thành năng lực tin học.",
+            "B. Là môn bắt buộc, được tổ chức hệ thống và xuyên suốt từ lớp 3 đến lớp 9 nhằm hình thành năng lực tin học.",
             "C. Là môn bắt buộc, được tích hợp xuyên suốt từ lớp 3 đến lớp 9 nhằm phát triển năng lực công nghệ số.",
             "D. Là môn lựa chọn, được tổ chức xuyên suốt từ lớp 3 đến lớp 9 nhằm hoàn thiện năng lực tin học."
         ],
@@ -4970,7 +4970,7 @@ window.QUESTIONS = [
             "A. Tổ chức một chuyên đề thực hành, hướng dẫn học sinh sử dụng các công cụ tìm kiếm và một số kỹ thuật xử lý dữ liệu để thu thập thông tin từ nhiều nguồn trên Internet.",
             "B. Cài đặt phần mềm trên máy tính thư viện nhằm giới hạn phạm vi truy cập, chỉ cho phép học sinh sử dụng những nguồn tài liệu đã được giáo viên lựa chọn và kiểm duyệt trước.",
             "C. Tổ chức một buổi chuyên đề tập trung vào việc giới thiệu các nguyên tắc hoạt động của công cụ tìm kiếm, giúp học sinh hiểu cách hệ thống lựa chọn và sắp xếp thông tin trên Internet.",
-            "D. Tổ chức một dự án học tập liên môn, yêu cầu học sinh sử dụng công cụ tìm kiếm và công cụ số để thu thập, đánh giá và khai thác tài liệu phục vụ nhiệm vụ học tập. Đáp án: Câu 1 NB 2 NB 3 NB 4 TH 5 TH 6 TH 7 TH 8 VD 9 VD 10 VD Đáp án A D B C B A A C C D"
+            "D. Tổ chức một dự án học tập liên môn, yêu cầu học sinh sử dụng công cụ tìm kiếm và công cụ số để thu thập, đánh giá và khai thác tài liệu phục vụ nhiệm vụ học tập."
         ],
         correctIndex: 3,
         category: "c1_p12",
@@ -5089,7 +5089,7 @@ window.QUESTIONS = [
             "A. Một nhiệm vụ học tập có khả năng bồi dưỡng đồng thời nhiều thành phần năng lực môn học.",
             "B. Từng thao tác riêng biệt sẽ tương ứng với một tiêu chí đánh giá năng lực hoàn toàn độc lập.",
             "C. Quá trình làm việc nhóm trực tuyến ưu tiên phát triển khía cạnh giao tiếp xã hội số hóa.",
-            "D. Kết quả của sản phẩm số phản ánh năng lực sử dụng phần mềm đồ họa trên máy tính. lắp ráp và bảo trì phần cứng máy tính trong các phòng học thực hành."
+            "D. Kết quả của sản phẩm số phản ánh năng lực sử dụng phần mềm đồ họa trên máy tính."
         ],
         correctIndex: 0,
         category: "c1_p34",
@@ -5835,7 +5835,7 @@ window.QUESTIONS = [
         question: "Câu 1: Trong Chương trình GDPT 2018 môn Tin học, vị trí và tính chất của môn học ở giai đoạn giáo dục định hướng nghề nghiệp (Cấp THPT) được quy định là môn học như thế nào sau đây? (Nhận biết)",
         options: [
             "A. Nhóm công nghệ và nghệ thuật, được xếp vào danh mục các môn học lựa chọn theo nguyện vọng học sinh.",
-            "B. Phân hóa theo định hướng ICT/CS và thuộc nhóm môn học lựa chọn.",
+            "B. Thuộc nhóm môn Khoa học tự nhiên và là môn học bắt buộc có phân hóa đối với mọi học sinh.",
             "C. Là môn học tự chọn, nội dung hoàn toàn phụ thuộc vào năng lực giảng dạy của giáo viên.",
             "D. Lồng ghép trong các hoạt động trải nghiệm và hướng nghiệp."
         ],
@@ -6262,7 +6262,7 @@ window.QUESTIONS = [
             "A. Giữ nguyên nhịp độ giảng dạy chung cho cả lớp, yêu cầu nhóm học sinh khá giỏi chờ đợi và hỗ trợ giữ trật tự phòng máy trong khi giáo viên trực tiếp giảng lại lý thuyết cho nhóm còn lại.",
             "B. Cho phép nhóm khá giỏi tự do truy cập Internet tìm hiểu kiến thức tự chọn, đồng thời chủ động giảm bớt mức độ Yêu cầu cần đạt của bài học đối với nhóm học sinh đang gặp khó khăn.",
             "C. Yêu cầu toàn bộ học sinh tạm dừng thực hành trên máy tính để quay lại nghe giảng giải chi tiết từng bước chạy thuật toán trên bảng nhằm đảm bảo sự đồng bộ tuyệt đối về tiến độ.",
-            "D. Giao các bài toán mở rộng tối ưu hóa thuật toán cho nhóm khá giỏi, đồng thời sử dụng phần mềm mô phỏng trực quan kết hợp hỗ trợ đồng đẳng để trợ"
+            "D. Giao các bài toán mở rộng tối ưu hóa thuật toán cho nhóm khá giỏi, đồng thời sử dụng phần mềm mô phỏng trực quan kết hợp hỗ trợ đồng đẳng để trợ giúp nhóm gặp khó khăn."
         ],
         correctIndex: 3,
         category: "c1_p56",
@@ -6684,10 +6684,10 @@ window.QUESTIONS = [
         id: 394,
         question: "Câu 5 (Thông hiểu) Điểm khác biệt cơ bản giữa tính \"kế thừa\" và tính \"mở\" trong quan điểm xây dựng chương trình môn Tin học là gì?",
         options: [
-            "A. Tính kế thừa nhấn mạnh sự tiếp nối những thành quả đã có, tính mở nhấn mạnh khả năng điều chỉnh chương trình theo điều kiện thực tế.",
-            "B. Tính kế thừa nhấn mạnh sự tiếp nối những thành quả đã có, tính mở nhấn mạnh khả năng đa dạng hóa cách thức tổ chức học tập.",
-            "C. Tính kế thừa nhấn mạnh sự phát huy những thành quả đã có, tính mở nhấn mạnh khả năng thay đổi nội dung theo yêu cầu mới.",
-            "D. Tính kế thừa nhấn mạnh sự phát huy những thành quả đã có, tính mở nhấn mạnh khả năng mở rộng các hình thức học tập."
+            "A. Tính kế thừa yêu cầu giữ nguyên toàn bộ nội dung chương trình cũ, còn tính mở cho phép cắt bỏ các mạch kiến thức cốt lõi theo điều kiện thực tế.",
+            "B. Tính kế thừa nhấn mạnh sự tiếp nối và phát huy những ưu điểm của chương trình đã có, còn tính mở nhấn mạnh khả năng linh hoạt lựa chọn nội dung, học liệu và đa dạng hóa cách thức tổ chức dạy học phù hợp thực tiễn.",
+            "C. Tính kế thừa bắt buộc sử dụng cố định một ngôn ngữ lập trình duy nhất, còn tính mở cho phép giáo viên tự ý hạ thấp chuẩn yêu cầu cần đạt của chương trình.",
+            "D. Tính kế thừa chỉ áp dụng cho giai đoạn giáo dục định hướng nghề nghiệp, còn tính mở chỉ áp dụng đối với các hoạt động trải nghiệm ngoại khóa ở cấp tiểu học."
         ],
         correctIndex: 1,
         category: "c1_p12",
@@ -7634,7 +7634,7 @@ window.QUESTIONS = [
     },
     {
         id: 450,
-        question: "Câu 3 (NB): Trong các phát biểu sau, những phát biểu nào là thành phần của năng lực tin học cần hình thành và phát triển cho học sinh theo Chương trình môn Tin học 2018?",
+        question: "Câu 3 (NB): Trong các phát biểu sau: (1) Sử dụng và quản lý các phương tiện công nghệ thông tin và truyền thông; (2) Ứng xử phù hợp trong môi trường số; (3) Giải quyết vấn đề với sự hỗ trợ của công nghệ thông tin và truyền thông; (4) Phát triển năng lực nghiên cứu khoa học trong công nghệ thông tin; (5) Ứng dụng công nghệ thông tin và truyền thông trong học và tự học; (6) Hợp tác trong môi trường số. Những phát biểu nào là thành phần của năng lực tin học cần hình thành và phát triển cho học sinh theo Chương trình môn Tin học 2018?",
         options: [
             "A. 1,2,4,6.",
             "B. 2,3,4,5,6.",
@@ -8678,7 +8678,7 @@ window.QUESTIONS = [
             "C. Tăng cường cơ hội lựa chọn nội dung học tập theo sở thích của từng học sinh.",
             "D. Tạo điều kiện phát triển đồng thời kiến thức ứng dụng và khoa học máy tính."
         ],
-        correctIndex: 1,
+        correctIndex: 0,
         category: "c1_p34",
         chapter: "c1",
         topic: "Chương 1: Phần 3, 4 (Yêu cầu cần đạt & Nội dung chương trình)",
