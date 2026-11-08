@@ -106,7 +106,7 @@ window.QUESTIONS = [
         question: "Câu 7 (Thông hiểu): Trong Chương trình GDPT 2018, môn Tin học được xác định giữ vai trò trung tâm kết nối và hỗ trợ đắc lực cho giáo dục STEM/STEAM. Sự đóng góp cốt lõi này xuất phát từ lý do nào sau đây?",
         options: [
             "A. Môn Tin học đóng vai trò chủ đạo nhờ cung cấp hệ thống phần mềm máy tính và công cụ đa phương tiện phục vụ cho việc mô phỏng, trình bày, báo cáo kết quả dự án STEM.",
-            "B. Môn Tin học hình thành cho học sinh Tư duy máy tính và là công nghệ nền tảng hội tụ đủ cả bốn yếu tố S, T, E, M giúp kết nối hiệu quả các lĩnh vực STEM.",
+            "B. Môn Tin học góp phần hình thành tư duy máy tính và cung cấp công cụ, phương pháp xử lí thông tin để kết nối, hỗ trợ giải quyết các vấn đề liên môn trong giáo dục STEM.",
             "C. Môn Tin học tích hợp toàn bộ nội dung giáo dục cốt lõi của môn Toán, Vật lí, Hóa học và Công nghệ vào mạch Khoa học máy tính để triển khai dạy học liên môn toàn diện.",
             "D. Môn Tin học trang bị nội dung bắt buộc về lắp ráp, lập trình điều khiển robot giáo dục ở tất cả các cấp học để giúp học sinh tạo ra sản phẩm tự động hóa thực tế."
         ],
@@ -426,7 +426,7 @@ window.QUESTIONS = [
     },
     {
         id: 26,
-        question: "Câu 6 (Thông hiểu): Phương pháp đo lường nào sau đây được áp dụng trong quá trình triển khai kiểm tra đánh giá kết quả giáo dục phổ thông theo Chương trình môn Tin học mới đối với các chủ đề học tập có nội dung trọng tâm thuộc mạch kiến thức Khoa học máy tính để bám sát bản chất và mục tiêu chính của nội dung?",
+        question: "Câu 6 (Thông hiểu): Khi đánh giá các chủ đề có trọng tâm thuộc mạch Khoa học máy tính (CS), nội dung nào sau đây cần được chú trọng để phản ánh đúng mục tiêu phát triển năng lực tin học?",
         options: [
             "A. Quan sát thái độ, tình cảm và hành vi ứng xử cụ thể của các em khi tương tác trong môi trường số.",
             "B. Đánh giá mức độ thành thạo các kĩ năng thao tác phần mềm nhằm tạo ra những sản phẩm ứng dụng.",
@@ -566,7 +566,7 @@ window.QUESTIONS = [
         options: [
             "A. Cắt giảm hoàn toàn thời lượng của môn học đó khỏi khung kế hoạch giáo dục năm học và chuyển đổi thành hình thức hoạt động tự học ngoại khóa bắt buộc cho học sinh.",
             "B. Bắt buộc phải chia đều chính xác số tiết cho tất cả 35 tuần của năm học nhằm đảm bảo tính đồng bộ hình thức giống như các môn học chính diện khác trong nhà trường.",
-            "C. Linh hoạt bố trí dạy học theo từng một phần hai học kì nhưng vẫn phải bảo đảm chương trình môn học được thực hiện đầy đủ trong cả hai học kì.",
+            "C. Chủ động bố trí số tiết linh hoạt giữa các tuần, bảo đảm mạch kiến thức, đủ tổng thời lượng và triển khai môn học phù hợp trong cả năm học.",
             "D. Yêu cầu giáo viên bộ môn tự biên soạn lại toàn bộ nội dung kiến thức thành tài liệu tóm tắt để học sinh tự nghiên cứu tại nhà thay vì tổ chức các giờ lên lớp trực tiếp."
         ],
         correctIndex: 2,
@@ -1636,7 +1636,7 @@ window.QUESTIONS = [
         question: "Câu 8: (VD) Tại một trường THPT, khối 12 có 10 lớp nhưng chỉ có một phòng máy tính gồm 30 máy hoạt động tốt và hai giáo viên Tin học. Để đảm bảo thực hiện môn Tin học lựa chọn đúng theo hướng dẫn xây dựng kế hoạch giáo dục nhà trường, giải pháp phân phối thời gian nào sau đây là phù hợp?",
         options: [
             "A. Tổ chức cho toàn bộ các lớp học dồn vào học kỳ một để giải phóng thời gian cho giáo viên bồi dưỡng chuyên môn vào học kỳ hai.",
-            "B. Bố trí một số lớp học ở học kỳ một và các lớp còn lại học ở học kỳ hai nhằm tối ưu hóa công suất phòng máy tính.",
+            "B. Phân bổ lịch thực hành lệch pha giữa các lớp trong suốt năm học, phối hợp lịch giáo viên và phòng máy để bảo đảm đủ số tiết.",
             "C. Yêu cầu toàn bộ học sinh tự thực hành tại nhà và chỉ bố trí các tiết lý thuyết trên lớp để tránh quá tải cho phòng máy.",
             "D. Chia đều hai tiết mỗi tuần cho tất cả các lớp trong suốt ba mươi lăm tuần thực học nhằm đảm bảo tiến độ đồng bộ cả trường."
         ],
@@ -1739,7 +1739,7 @@ window.QUESTIONS = [
         options: [
             "A. Dựa trên năng lực chuyên môn và nguyện vọng đăng ký lịch làm việc của các giáo viên.",
             "B. Theo mỗi nhu cầu học tập thực tế và các sở thích cá nhân của từng nhóm học sinh trong lớp.",
-            "C. Căn cứ vào văn bản hướng dẫn nhiệm vụ năm học và khung kế hoạch chương  của trường.",
+            "C. Căn cứ vào văn bản hướng dẫn nhiệm vụ năm học và kế hoạch giáo dục của nhà trường.",
             "D. Bám sát danh mục các thiết bị thực hành và hệ thống phòng máy tính thực tế của nhà trường."
         ],
         correctIndex: 2,
@@ -1790,7 +1790,7 @@ window.QUESTIONS = [
         options: [
             "A. Ưu tiên cắt bỏ một số nội dung không cần thiết trong chương trình để có đủ thời lượng dạy chuyên đề của Sở, thời gian còn lại dồn để ôn thi.",
             "B. Đảm bảo quyền lợi khối 12: giữ nguyên kế hoạch khối 10, 11 nhưng dạy với nhịp độ nhanh hơn, dùng thời gian để tăng cường ôn tập cho khối 12.",
-            "C. Tinh giản các nội dung không cốt lõi, tích hợp các bài học tương đồng, bố trí chuyên đề mới và dành thời gian ôn tập trọng tâm cho khối 12.",
+            "C. Sắp xếp, tích hợp hợp lí các bài học tương đồng nhưng vẫn đáp ứng đầy đủ yêu cầu cần đạt; bố trí chuyên đề mới và thời gian ôn tập phù hợp.",
             "D. Áp dụng giải pháp công bằng: giảm đều một phần thời lượng của tất cả các chủ đề hiện có để chia sẻ cho chuyên đề mới và thời gian ôn tập."
         ],
         correctIndex: 2,
@@ -1823,7 +1823,7 @@ window.QUESTIONS = [
         question: "Câu 10: (VD) Trong tiết thực hành \"Kết nối PC với các thiết bị số thông dụng\" ở lớp 12, nhà trường chưa trang bị các thiết bị số mới. Giải pháp tổ chức dạy học nào dưới đây vừa đảm bảo tiến độ vừa đáp ứng đúng yêu cầu cần đạt?",
         options: [
             "A. Tổ chức cho học sinh quan sát cổng cắm trên vỏ máy tính và vẽ sơ đồ nguyên lý ghép nối ra giấy để ghi nhớ thao tác.",
-            "B. Dùng thiết bị cũ, hỏng để thao tác cắm cáp vật lí và dùng video, hình ảnh để mô phỏng phần kết nối logic.",
+            "B. Tận dụng thiết bị cũ còn sử dụng an toàn để học sinh thực hành kết nối; dùng video, hình ảnh minh họa các kiểu kết nối chưa có thiết bị phù hợp.",
             "C. Tập trung hướng dẫn học sinh thao tác cài đặt các trình điều khiển (driver) trên hệ điều hành để thay thế cho quá trình ghép nối phần cứng.",
             "D. Khuyến khích học sinh mang thiết bị thông minh từ gia đình đến phòng máy để các nhóm có đầy đủ công cụ thực hành cấu hình mạng."
         ],
@@ -1837,14 +1837,14 @@ window.QUESTIONS = [
     },
     {
         id: 109,
-        question: "Câu 1 (NB): Căn cứ vào các tiêu chí trong Công văn số 5555/BGDĐT-GDTrH và đặc điểm của Chương trình giáo dục phổ thông 2018, phương án nào sau đây nêu đúng số lượng yêu cầu cần đáp ứng khi xây dựng kế hoạch bài dạy (KHBD) cho một chủ đề?",
+        question: "Câu 1 (NB): Theo Công văn 5555/BGDĐT-GDTrH, nhóm tiêu chí “Kế hoạch và tài liệu dạy học” gồm bao nhiêu tiêu chí phân tích bài học?",
         options: [
             "A. 4.",
             "B. 5.",
             "C. 6.",
             "D. 7."
         ],
-        correctIndex: 2,
+        correctIndex: 0,
         category: "c2_p4",
         chapter: "c2",
         topic: "Chương 2: Phần 4 (Xây dựng kế hoạch bài dạy)",
@@ -1942,9 +1942,9 @@ window.QUESTIONS = [
         question: "Câu 7 (TH): Khi phân tích yêu cầu về sự đa dạng trong hình thức, phương pháp và kỹ thuật dạy học, quan điểm nào sau đây phù hợp với định hướng xây dựng kế hoạch bài dạy?",
         options: [
             "A. Kết hợp các phương pháp dạy học trong từng hoạt động, bảo đảm mỗi bài học có sự thay đổi về cách thức tổ chức.",
-            "B. Lựa chọn phương pháp dạy học phù hợp với nội dung từng hoạt động, đồng thời sử dụng cách tổ chức đã phát huy hiệu quả qua các bài học.",
+            "B. Sử dụng cố định phương pháp đã phát huy hiệu quả ở bài trước cho tất cả hoạt động, không cần xem xét mục tiêu từng nhiệm vụ.",
             "C. Sử dụng phương pháp hợp lí, tránh chỉ dùng một cách dạy ở nhiều hoạt động và kết hợp các phương pháp khi cần thiết.",
-            "D. Phối hợp các phương pháp dạy học trong bài học, lựa chọn hình thức tổ chức phù hợp với đặc điểm của từng hoạt động."
+            "D. Bắt buộc thay đổi ít nhất ba phương pháp trong mọi bài học, không phụ thuộc nội dung và điều kiện tổ chức."
         ],
         correctIndex: 2,
         category: "c2_p4",
@@ -1973,7 +1973,7 @@ window.QUESTIONS = [
     },
     {
         id: 117,
-        question: "Câu 9 (VD): Khi dạy bài \"Thuật toán sắp xếp\" (Định hướng Khoa học máy tính), phòng máy của trường bất ngờ mất điện. Để duy trì mục tiêu phát triển tư duy máy tính trong kế hoạch bài dạy, giáo viên nên điều chỉnh kế hoạch tổ chức hoạt động theo cách nào dưới đây?",
+        question: "Câu 9 (VD): Khi dạy bài “Thuật toán sắp xếp”, phòng máy bất ngờ mất điện. Để học sinh vẫn trực tiếp trải nghiệm, mô phỏng và kiểm chứng từng bước thuật toán mà không cần máy tính, giáo viên nên tổ chức hoạt động nào phù hợp nhất?",
         options: [
             "A. Sử dụng các bộ thẻ số bằng bìa cứng và tổ chức cho học sinh đóng vai mô phỏng lại các bước thuật toán.",
             "B. Thực hiện vẽ sơ đồ thuật toán lên bảng đen và yêu cầu cả lớp chú ý lắng nghe để ghi chép lại các bước xử lý.",
@@ -2296,12 +2296,12 @@ window.QUESTIONS = [
     },
     {
         id: 136,
-        question: "Câu 8 (Vận dụng): Lan chuẩn bị đăng kí môn học ở lớp 10. Trong phương án ban đầu, Lan không chọn Tin học, Công nghệ hoặc Nghệ thuật vì cho rằng đã đủ số môn ở các nhóm khác. Để phương án phù hợp với quy định nêu trong chương trình tổng thể, Lan nên điều chỉnh như thế nào?",
+        question: "Câu 8 (Vận dụng): Lan chuẩn bị đăng kí lớp 10 và dự kiến chọn bốn môn Địa lí, Giáo dục kinh tế và pháp luật, Vật lí, Hóa học. Lan không chọn Tin học, Công nghệ, Âm nhạc hay Mĩ thuật. Theo quy định lựa chọn môn học hiện hành tại Thông tư 13/2022/TT-BGDĐT, nhận định nào sau đây đúng?",
         options: [
-            "A. Bổ sung cả Tin học, Công nghệ và Nghệ thuật vào phương án đã chọn.",
-            "B. Bổ sung ít nhất một môn trong ba môn Tin học, Công nghệ hoặc Nghệ thuật.",
-            "C. Giữ nguyên phương án vì số môn ở các nhóm khác đã đáp ứng yêu cầu.",
-            "D. Thay một môn ở nhóm khác bằng hai môn thuộc nhóm Tin học, Công nghệ, Nghệ thuật."
+            "A. Phương án không hợp lệ vì Lan phải chọn đồng thời Tin học và Công nghệ.",
+            "B. Phương án hợp lệ về số lượng và danh mục môn lựa chọn nếu phù hợp với tổ hợp nhà trường tổ chức.",
+            "C. Phương án không hợp lệ vì bắt buộc chọn ít nhất một môn Tin học, Công nghệ, Âm nhạc hoặc Mĩ thuật.",
+            "D. Phương án chỉ hợp lệ khi Lan đưa Lịch sử vào danh sách bốn môn học lựa chọn."
         ],
         correctIndex: 1,
         category: "c1_p12",
@@ -2469,7 +2469,7 @@ window.QUESTIONS = [
         question: "Câu 8 (Vận dụng): Ở Lớp 5 (Chủ đề F), khi dạy yêu cầu “Chạy thử được chương trình”, giáo viên yêu cầu học sinh phải “phân tích và chứng minh tính đúng đắn của thuật toán trong mọi trường hợp”. Nhận định nào sau đây là chính xác?",
         options: [
             "A. Phù hợp, vì học sinh Lớp 5 cần rèn luyện tư duy phản biện và kiểm thử nâng cao.",
-            "B. Không phù hợp, vì học sinh chỉ cần nhập dữ liệu và chạy thử ra kết quả là đạt.",
+            "B. Không phù hợp vì yêu cầu ở lớp 5 là chạy thử được chương trình, không phải chứng minh tính đúng đắn của thuật toán trong mọi trường hợp.",
             "C. Phù hợp, vì việc chứng minh tính đúng đắn là yêu cầu bắt buộc của môn Tin học.",
             "D. Không phù hợp, vì Lớp 5 chưa được học ngôn ngữ lập trình mà chỉ học lý thuyết."
         ],
@@ -5036,7 +5036,7 @@ window.QUESTIONS = [
         question: "Câu 4 (Thông hiểu): Tại sao việc dạy học thuật toán, lập trình và chủ đề đạo đức pháp luật lại được xem là cơ hội tốt để bồi dưỡng các phẩm chất chủ yếu cho học sinh?",
         options: [
             "A. Vì những nội dung này cung cấp kiến thức nền tảng để học sinh tham gia thị trường lao động.",
-            "B. Vì đây là môi trường tạo ra nhiều tình huống bộc lộ hành vi ứng xử của người học trên không gian số.",
+            "B. Vì các nhiệm vụ giải quyết vấn đề, lập trình, kiểm thử, hợp tác và xử lí tình huống số tạo cơ hội bộc lộ tính trung thực, chăm chỉ, trách nhiệm và cách ứng xử.",
             "C. Vì các chủ đề này yêu cầu người học phải ghi nhớ nhiều quy tắc an toàn thông tin mạng.",
             "D. Vì thời lượng phân bổ cho các nội dung này chiếm đa số trong tổng thời lượng chương trình."
         ],
@@ -5700,7 +5700,7 @@ window.QUESTIONS = [
         options: [
             "A. Nêu bằng danh từ khái quát kết quả chung của cả chủ đề.",
             "B. Mô tả chi tiết hành động và lời giảng của giáo viên trên lớp.",
-            "C. Dùng động từ cụ thể, lượng hoá được, bao trùm yêu cầu cần đạt.",
+            "C. Diễn đạt bằng hành động hoặc biểu hiện cụ thể có thể quan sát, đánh giá, phù hợp với yêu cầu cần đạt.",
             "D. Liệt kê các đơn vị kiến thức theo trình tự trong sách giáo khoa."
         ],
         correctIndex: 2,
@@ -5834,7 +5834,7 @@ window.QUESTIONS = [
         id: 344,
         question: "Câu 1: Trong Chương trình GDPT 2018 môn Tin học, vị trí và tính chất của môn học ở giai đoạn giáo dục định hướng nghề nghiệp (Cấp THPT) được quy định là môn học như thế nào sau đây? (Nhận biết)",
         options: [
-            "A. Nhóm công nghệ và nghệ thuật, được xếp vào danh mục các môn học lựa chọn theo nguyện vọng học sinh.",
+            "A. Là môn học lựa chọn ở cấp THPT, góp phần đáp ứng nhu cầu học tập và định hướng nghề nghiệp của học sinh.",
             "B. Thuộc nhóm môn Khoa học tự nhiên và là môn học bắt buộc có phân hóa đối với mọi học sinh.",
             "C. Là môn học tự chọn, nội dung hoàn toàn phụ thuộc vào năng lực giảng dạy của giáo viên.",
             "D. Lồng ghép trong các hoạt động trải nghiệm và hướng nghiệp."
@@ -5851,7 +5851,7 @@ window.QUESTIONS = [
         id: 345,
         question: "Câu 2: Căn cứ vào quy định về kế hoạch giáo dục trong Chương trình GDPT 2018, vị trí của môn Tin học ở cấp Trung học phổ thông được xác định là môn học như thế nào dưới đây? (Nhận biết)",
         options: [
-            "A. Lựa chọn thuộc nhóm môn Công nghệ và Nghệ thuật.",
+            "A. Là môn học lựa chọn, thuộc danh mục chín môn học lựa chọn ở cấp THPT.",
             "B. Bắt buộc đối với tất cả học sinh từ lớp 10 đến lớp 12.",
             "C. Bắt buộc có phân hóa thuộc nhóm môn Khoa học tự nhiên.",
             "D. Tự chọn hoàn toàn không nằm trong kế hoạch giáo dục chính khóa."
@@ -6430,11 +6430,11 @@ window.QUESTIONS = [
         question: "Câu 9: Trong quá trình xây dựng khung thời gian năm học, nhà trường nhận thấy lịch thực hành của một số môn học tập trung vào cùng thời điểm, trong khi số phòng chức năng có thể sử dụng còn hạn chế. Tình trạng này gây khó khăn cho việc tổ chức dạy học theo kế hoạch đã dự kiến. Nhà trường nên lựa chọn giải pháp nào sau đây để khắc phục tình trạng trên mà vẫn bảo đảm yêu cầu cần đạt của chương trình? (Vận dụng)",
         options: [
             "A. Chuyển một số tiết thực hành sang tự học có hướng dẫn để giảm nhu cầu sử dụng phòng chức năng.",
-            "B. Giữ lịch của các môn học và phân công giáo viên luân phiên sử dụng phòng theo từng buổi.",
+            "B. Giữ nguyên lịch của các môn học và yêu cầu nhiều lớp đồng thời chia sẻ phòng chức năng khi bị trùng giờ.",
             "C. Rà soát lịch thực hành, phân bố lại thời gian giữa các môn và bảo đảm yêu cầu cần đạt của chương trình.",
             "D. Ưu tiên phòng chức năng cho các môn có nhiều nội dung thực hành và bố trí các môn còn lại theo lịch phù hợp."
         ],
-        correctIndex: 1,
+        correctIndex: 2,
         category: "c2_p1",
         chapter: "c2",
         topic: "Chương 2: Phần 1 (Xây dựng kế hoạch giáo dục nhà trường)",
@@ -7226,7 +7226,7 @@ window.QUESTIONS = [
     },
     {
         id: 426,
-        question: "Câu 8 (Vận dụng) Một môn học lựa chọn thuộc nhóm Khoa học tự nhiên có khối lượng 70 tiết/năm. Nếu nhà trường bố trí dạy dồn trong một học kỳ để giải quyết tình trạng thiếu giáo viên, việc xếp thời khóa biểu cần tuân thủ giới hạn nào dưới đây để không vi phạm quy định của Bộ Giáo dục?",
+        question: "Câu 8 (Vận dụng) Một môn học lựa chọn có thời lượng 70 tiết/năm. Để xử lí tình trạng thiếu giáo viên, nhà trường dự kiến sắp xếp tiết tập trung vào một số tuần (không phân bổ đều mỗi tuần) nhưng vẫn bố trí môn học trong cả năm. Khi lập thời khóa biểu, giới hạn nào sau đây cần tuân thủ?",
         options: [
             "A. Bố trí tổng số tiết học của học sinh không vượt quá 5 tiết trong một buổi học.",
             "B. Giới hạn định mức tiết dạy của giáo viên không vượt quá 17 tiết trong một tuần học.",
@@ -7243,7 +7243,7 @@ window.QUESTIONS = [
     },
     {
         id: 427,
-        question: "Câu 9 (Vận dụng) Một trường THPT có 8 lớp khối 10 với tổng số 560 tiết Tin học/năm (gồm 280 tiết lý thuyết và 280 tiết thực hành). Do chỉ có duy nhất một phòng máy tính công suất tối đa 20 tiết/tuần, nhà trường đối mặt nguy cơ quá tải hạ tầng nếu chia đều 35 tuần. Để giải quyết vướng mắc này mà vẫn bảo đảm khung thời lượng chương trình, công tác lập kế hoạch giáo dục của nhà trường cần thực hiện theo hướng nào sau đây?",
+        question: "Câu 9 (Vận dụng) Một trường THPT có 8 lớp khối 10 với tổng số 560 tiết Tin học/năm (gồm 280 tiết lý thuyết và 280 tiết thực hành). Trường chỉ có một phòng máy, tối đa 20 tiết thực hành/tuần. Dù tổng công suất phòng máy trong cả năm đủ đáp ứng nhu cầu, một số lớp lại được xếp các tiết thực hành trùng buổi. Nhà trường cần điều chỉnh kế hoạch theo hướng nào để sử dụng hiệu quả phòng máy mà vẫn bảo đảm thời lượng?",
         options: [
             "A. Tổ chức dạy học theo hình thức tích hợp lý thuyết với bài tập thực hành ngay tại phòng học văn hóa.",
             "B. Phân công hai giáo viên cùng phụ trách một ca lên lớp để chia đôi số lượng học sinh thực hành song song.",
@@ -7430,7 +7430,7 @@ window.QUESTIONS = [
     },
     {
         id: 438,
-        question: "Câu 10 (Vận dụng) Khi xây dựng mục \"Sản phẩm\" và \"Phương án đánh giá\" cho một hoạt động học trong kế hoạch bài dạy môn Tin học, cách xác định nào sau đây thể hiện đúng tinh thần đánh giá thường xuyên?",
+        question: "Câu 10 (Vận dụng) Trong giờ thực hành Tin học, giáo viên dự kiến một số học sinh sẽ mắc lỗi khi đang giải nhiệm vụ. Khi xây dựng mục “Sản phẩm” và phương án đánh giá, cách xác định nào ưu tiên việc phản hồi ngay tại thời điểm học sinh mắc lỗi để học sinh tự phân tích nguyên nhân và sửa lỗi?",
         options: [
             "A. Khoanh vùng các phán đoán sai lệch hoặc kết quả thực hành chưa hoàn chỉnh của học sinh, kèm cách đặt câu hỏi làm rõ nguyên nhân để học sinh tự xử lý trước khi tìm sự trợ giúp.",
             "B. Thiết lập các tiêu chí chất lượng cho sản phẩm hoàn chỉnh theo thang đo rubric, kèm quy trình cho học sinh đối chiếu kết quả để sửa lại thiếu sót trước khi kết thúc hoạt động.",
@@ -7707,7 +7707,7 @@ window.QUESTIONS = [
             "A. Chương trình giáo dục phổ thông 2006 theo cách tiếp cận nội dung, mang nặng lí thuyết, hàn lâm. Chương trình mới đặt mục tiêu hình thành và phát triển năng lực tin học cho mọi học sinh và có tính mở cao.",
             "B. Chú trọng năng lực tin học của học sinh; giúp học sinh sáng tạo ra các sản phẩm số của cá nhân và của nhóm; tăng cường kết hợp giáo dục tích hợp kiến thức các môn học khác nhau; khuyến khích áp dụng công nghệ kĩ thuật số để phát hiện và giải quyết các vấn đề thực tế.",
             "C. Chương trình mới quan tâm đúng mức đến nội dung về đạo đức, văn hóa, pháp luật và ảnh hưởng của tin học lên xã hội, đảm bảo nguyên lí “vừa dạy chữ vừa dạy người”, đặc biệt trong thời đại có sự kết nối cao của thế giới thực và thế giới ảo.",
-            "D. Khai thác chương trình Tin học thế giới, số hóa dữ liệu học liệu Tin học; nội dung Tin học gắn liền với thực tiễn, định hướng nghề nghiệp và giáo dục STEM; giúp học sinh phát triển tư duy sáng tạo kết hợp công nghệ số với công nghệ kỹ thuật."
+            "D. Chương trình 2018 yêu cầu tất cả nhà trường sử dụng một phần mềm và một ngôn ngữ lập trình thống nhất cho từng cấp học, không cho phép thay đổi theo điều kiện dạy học."
         ],
         correctIndex: 3,
         category: "c1_p34",
@@ -8059,12 +8059,12 @@ window.QUESTIONS = [
     },
     {
         id: 475,
-        question: "Câu 10 (VD): Trường THPT X có 10 lớp khối 10 nhưng chỉ có 01 phòng thực hành Tin học (tối đa xếp được 5 lớp/học kỳ nếu dạy chia đều số tiết). Để vừa khai thác hiệu quả phòng máy, vừa tuân thủ đúng hướng dẫn xây dựng kế hoạch giáo dục nhà trường, Ban giám hiệu nên lựa chọn phương án nào sau đây?",
+        question: "Câu 10 (VD): Trường THPT X có 10 lớp khối 10, mỗi lớp cần 35 tiết thực hành Tin học trong 35 tuần. Trường có một phòng máy, có thể tổ chức tối đa 20 tiết thực hành/tuần. Dù tổng công suất đáp ứng nhu cầu bình quân, lịch ban đầu lại xếp một số lớp thực hành trùng giờ. Để sử dụng hiệu quả phòng máy và bảo đảm chương trình trong cả năm học, nhà trường nên lựa chọn phương án nào?",
         options: [
-            "A. Bố trí dạy học linh hoạt theo từng nửa học kỳ đối với các nhóm lớp, bảo đảm môn Tin học được triển khai ở cả hai học kỳ cho tất cả các lớp.",
+            "A. Sắp xếp lịch thực hành lệch nhau giữa các lớp trong cả năm học, bảo đảm không trùng phòng và đủ số tiết theo chương trình.",
             "B. Chia 10 lớp thành 2 nhóm: 5 lớp học dứt điểm chương trình ở Học kỳ I, 5 lớp còn lại học ở Học kỳ II để tối ưu công suất khai thác phòng máy.",
             "C. Tách riêng toàn bộ phần lý thuyết dạy tại phòng học văn hóa ở Học kỳ I và dồn toàn bộ bài thực hành dạy tại phòng máy vào Học kỳ II.",
-            "D. Bố trí lịch học cách tuần (tuần lẻ học 5 lớp, tuần chẵn học 5 lớp) với thời lượng 2 tiết/tuần xuyên suốt 35 tuần học trong năm học."
+            "D. Chỉ xếp mỗi lớp 1 tiết thực hành vào các tuần được luân phiên sử dụng phòng máy, không bố trí các tiết thực hành còn thiếu."
         ],
         correctIndex: 0,
         category: "c2_p1",
