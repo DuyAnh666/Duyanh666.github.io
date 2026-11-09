@@ -5,11 +5,16 @@
 (function () {
     'use strict';
 
-    if (localStorage.getItem('isLoggedIn') !== 'true') {
+    if (window.QuizAuth) {
+        if (!QuizAuth.requireAuth()) return;
+    } else if (localStorage.getItem('isLoggedIn') !== 'true') {
         window.location.href = 'index.html';
         return;
     }
 
+    const COURSE_ID = (window.location.pathname.split('/').pop() || '')
+        .replace(/\.html.*$/i, '')
+        .toLowerCase();
     const C = window.COURSE;
     const ALL = window.QUESTIONS;
     const TOPICS = C.topics || [];
@@ -167,6 +172,7 @@
                     <div class="filter-group filter-group-search">
                         <input type="text" id="search-input" class="filter-search" placeholder="Tìm kiếm nội dung chủ đề..." oninput="Quiz.applyFilters()">
                     </div>
+                    <button type="button" class="btn-history" id="btn-course-history" onclick="Quiz.openHistory()">Lịch sử môn này (0)</button>
                     <div class="filter-counter" id="filter-counter"></div>
                 </div>
             </div>
@@ -269,6 +275,30 @@
                 <button class="btn-modal-secondary" onclick="Quiz.toTopics()">Về danh sách ${UNIT}</button>
             </div>
         </div>
+    </div>
+
+    <div class="modal-overlay" id="course-history-modal">
+        <div class="modal-content modal-history">
+            <div class="history-modal-header">
+                <h3>Lịch sử làm bài — ${esc(C.title)}</h3>
+                <button type="button" class="btn-exit-quiz" onclick="Quiz.closeModal('course-history-modal')">Đóng</button>
+            </div>
+            <div class="history-stats-grid">
+                <div class="history-stat-card">
+                    <div class="history-stat-label">Số lượt làm bài</div>
+                    <div class="history-stat-val" id="chist-count">0 bài</div>
+                </div>
+                <div class="history-stat-card">
+                    <div class="history-stat-label">Điểm trung bình</div>
+                    <div class="history-stat-val" id="chist-avg">0.00 / 10</div>
+                </div>
+                <div class="history-stat-card">
+                    <div class="history-stat-label">Điểm cao nhất</div>
+                    <div class="history-stat-val" id="chist-best">0.00 / 10</div>
+                </div>
+            </div>
+            <div class="history-list" id="course-history-list"></div>
+        </div>
     </div>`;
     }
 
@@ -277,6 +307,12 @@
         let pool = applyQuestionFilters(ALL, vals, EXAM.poolFilters || []);
         if (EXAM.gradedOnly) pool = pool.filter(isGraded);
         return pool;
+    }
+
+    function updateCourseHistoryBtn() {
+        if (!window.QuizAuth || !$('btn-course-history')) return;
+        const list = QuizAuth.getHistory(COURSE_ID);
+        $('btn-course-history').textContent = `Lịch sử môn này (${list.length})`;
     }
 
     function renderTopics() {
@@ -314,6 +350,7 @@
         $('topics-grid').innerHTML = html ||
             '<div class="empty-state">Chưa có câu hỏi hoặc chủ đề phù hợp với điều kiện lọc hiện tại.</div>';
         $('filter-counter').textContent = `Hiển thị ${visible} ${UNIT} (${total} câu hỏi)`;
+        updateCourseHistoryBtn();
     }
 
     // ---------- Start modal ----------
@@ -504,10 +541,11 @@
             fb.innerHTML = `<div style="color: var(--text-muted); font-size: 0.88rem;">${C.unverifiedNote ? C.unverifiedNote(q) : 'Câu hỏi chưa có đáp án xác định.'}</div>`;
         } else if (revealed) {
             const ok = answers[i] === q.correctIndex;
+            const unans = answers[i] === null;
             fb.classList.add('show', ok ? 'is-correct' : 'is-incorrect');
             fb.innerHTML = `
                 <div style="font-weight: 700; color: ${ok ? 'var(--success)' : 'var(--danger)'}; margin-bottom: 4px;">
-                    ${ok ? 'Chính xác!' : 'Chưa chính xác.'} Phương án đúng: ${'ABCD'[q.correctIndex]}
+                    ${ok ? 'Chính xác!' : (unans ? 'Chưa chọn đáp án.' : 'Chưa chính xác.')} Phương án đúng: ${'ABCD'[q.correctIndex]}
                 </div>
                 <div style="color: var(--text-secondary); font-size: 0.84rem;">${FEEDBACK_INFO(q, topic)}</div>`;
         } else {
@@ -562,6 +600,8 @@
             if (answers[i] !== null) {
                 cl += ' answered';
                 if ((reviewing || mode === 'practice') && verified) cl += answers[i] === q.correctIndex ? ' correct' : ' incorrect';
+            } else if (reviewing && verified) {
+                cl += ' incorrect';
             }
             html += `<div class="${cl}" onclick="Quiz.go(${i})">${i + 1}</div>`;
         });
@@ -591,13 +631,32 @@
         });
 
         const total = graded > 0 ? graded : quiz.length;
-        const score = total > 0 ? ((correct / total) * 10).toFixed(2) : 0;
+        const score = total > 0 ? ((correct / total) * 10).toFixed(2) : '0.00';
+        const timeSpentStr = mode === 'test' && initial > 0 ? fmtTime(initial - remaining) : 'Không giới hạn';
+
+        // Luu lich su lam bai cua tai khoan
+        if (window.QuizAuth) {
+            const records = quiz.map((q, i) => [ALL.indexOf(q), answers[i], flags[i] ? 1 : 0]);
+            QuizAuth.saveAttempt({
+                courseId: COURSE_ID,
+                courseTitle: C.title,
+                title: $('quiz-topic-title').textContent || C.title,
+                mode,
+                score,
+                correct,
+                total: quiz.length,
+                timeSpent: timeSpentStr,
+                records
+            }).then(() => {
+                updateCourseHistoryBtn();
+            });
+        }
 
         $('res-score').textContent = `${score} / 10`;
         $('res-correct').textContent = `${correct} câu`;
         $('res-incorrect').textContent = `${total - correct} câu`;
         $('res-total').textContent = `${quiz.length} câu`;
-        $('res-time').textContent = mode === 'test' && initial > 0 ? fmtTime(initial - remaining) : 'Không giới hạn';
+        $('res-time').textContent = timeSpentStr;
         if (C.levelStats) {
             Object.entries(levels).forEach(([k, [c, t]]) => { $('res-' + k).textContent = `${c} / ${t}`; });
         }
@@ -607,6 +666,8 @@
     function enterReview() {
         closeModal('result-modal');
         reviewing = true;
+        reviewFilter = 'all';
+        document.querySelectorAll('.review-pill').forEach((p, idxPill) => p.classList.toggle('active', idxPill === 0));
         show('quiz-timer', 'none');
         show('review-filters', 'flex');
         $('quiz-mode-badge').textContent = 'Xem lại bài làm';
@@ -626,8 +687,11 @@
         answers = new Array(quiz.length).fill(null);
         flags = new Array(quiz.length).fill(false);
         reviewing = false;
+        show('review-filters', 'none');
+        $('btn-submit').textContent = 'Nộp bài';
         $('quiz-mode-badge').textContent = mode === 'test' ? 'Thi thử' : 'Luyện tập';
         if (mode === 'test' && initial > 0) {
+            show('quiz-timer', 'inline-block');
             remaining = initial;
             startTimer();
         }
@@ -636,7 +700,11 @@
 
     function toTopics() {
         closeModal('result-modal');
+        closeModal('course-history-modal');
         stopTimer();
+        if (window.history && window.history.replaceState && window.location.search.includes('review=')) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
         show('quiz-section', 'none');
         show('topics-view', 'block');
         renderTopics();
@@ -646,10 +714,132 @@
         if (reviewing || confirm('Bạn có chắc chắn muốn thoát bài làm hiện tại? Kết quả chưa nộp sẽ không được lưu.')) toTopics();
     }
 
+    // ---------- Course History & Attempt Review ----------
+    function renderCourseHistoryModal() {
+        if (!window.QuizAuth) return;
+        const list = QuizAuth.getHistory(COURSE_ID);
+        const count = list.length;
+        const scores = list.map(i => parseFloat(i.score) || 0);
+        const avg = count > 0 ? (scores.reduce((a, b) => a + b, 0) / count).toFixed(2) : '0.00';
+        const best = count > 0 ? Math.max(...scores).toFixed(2) : '0.00';
+
+        $('chist-count').textContent = `${count} bài`;
+        $('chist-avg').textContent = `${avg} / 10`;
+        $('chist-best').textContent = `${best} / 10`;
+
+        const container = $('course-history-list');
+        if (count === 0) {
+            container.innerHTML = '<div class="empty-state" style="padding: 32px 16px;">Bạn chưa có lượt làm bài nào được lưu ở học phần này.</div>';
+            return;
+        }
+
+        container.innerHTML = list.map(item => {
+            const modeLabel = item.mode === 'test' ? 'Thi thử' : 'Luyện tập';
+            const canReview = Array.isArray(item.records) && item.records.length > 0;
+            return `
+                <div class="history-item">
+                    <div class="history-item-main">
+                        <div class="history-item-title">${esc(item.title)}</div>
+                        <div class="history-item-sub">
+                            <span>Chế độ: ${modeLabel}</span>
+                            <span>Đúng: ${item.correct}/${item.total} câu</span>
+                            <span>Thời gian: ${esc(item.timeSpent)}</span>
+                            <span>Nộp lúc: ${QuizAuth.formatDateTime(item.createdAt)}</span>
+                        </div>
+                    </div>
+                    <div class="history-item-right">
+                        <span class="history-score-badge">${esc(item.score)} / 10</span>
+                        ${canReview ? `<button type="button" class="btn-history-review" onclick="Quiz.reviewAttempt('${esc(item.id)}')">Xem lại chi tiết</button>` : ''}
+                        <button type="button" class="btn-history-del" onclick="Quiz.deleteAttempt('${esc(item.id)}')">Xóa</button>
+                    </div>
+                </div>`;
+        }).join('');
+    }
+
+    function openHistory() {
+        renderCourseHistoryModal();
+        show('course-history-modal', 'flex');
+    }
+
+    async function deleteAttempt(attemptId) {
+        if (!window.QuizAuth) return;
+        if (!confirm('Bạn có chắc chắn muốn xóa lượt làm bài này khỏi lịch sử?')) return;
+        await QuizAuth.deleteAttempt(attemptId);
+        updateCourseHistoryBtn();
+        renderCourseHistoryModal();
+    }
+
+    function reviewAttempt(attemptId) {
+        if (!window.QuizAuth) return;
+        const att = QuizAuth.getAttemptById(attemptId);
+        if (!att || !Array.isArray(att.records) || att.records.length === 0) {
+            alert('Không tìm thấy dữ liệu chi tiết của bài làm này.');
+            return;
+        }
+
+        const loadedQuestions = [];
+        const loadedAnswers = [];
+        const loadedFlags = [];
+
+        att.records.forEach(rec => {
+            const [qIdx, ansIdx, flagBit] = rec;
+            if (Number.isInteger(qIdx) && qIdx >= 0 && qIdx < ALL.length) {
+                loadedQuestions.push(ALL[qIdx]);
+                loadedAnswers.push(ansIdx === null || ansIdx === undefined ? null : ansIdx);
+                loadedFlags.push(Boolean(flagBit));
+            }
+        });
+
+        if (loadedQuestions.length === 0) {
+            alert('Dữ liệu câu hỏi của bài làm này không còn tương thích.');
+            return;
+        }
+
+        closeModal('course-history-modal');
+        quiz = loadedQuestions;
+        answers = loadedAnswers;
+        flags = loadedFlags;
+        mode = att.mode || 'test';
+        reviewing = true;
+        reviewFilter = 'all';
+        idx = 0;
+
+        show('topics-view', 'none');
+        show('quiz-section', 'block');
+        show('quiz-timer', 'none');
+        show('review-filters', 'flex');
+        document.querySelectorAll('.review-pill').forEach((p, idxPill) => p.classList.toggle('active', idxPill === 0));
+        $('quiz-mode-badge').textContent = `Xem lại lịch sử (${att.score}/10)`;
+        $('quiz-topic-title').textContent = att.title;
+        $('btn-submit').textContent = 'Trở về danh sách';
+        loadQuestion(0);
+    }
+
     // ---------- Init ----------
     document.addEventListener('DOMContentLoaded', () => {
         renderApp();
         renderTopics();
+
+        const checkUrlReview = () => {
+            const params = new URLSearchParams(window.location.search);
+            const revId = params.get('review');
+            if (revId && window.QuizAuth) {
+                const found = QuizAuth.getAttemptById(revId);
+                if (found) {
+                    reviewAttempt(revId);
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        if (!checkUrlReview() && window.QuizAuth) {
+            QuizAuth.syncHistoryFromCloud().then(() => {
+                updateCourseHistoryBtn();
+                checkUrlReview();
+            });
+        }
+
         document.addEventListener('click', e => {
             if (e.target.classList.contains('modal-overlay')) e.target.style.display = 'none';
         });
@@ -670,6 +860,7 @@
         applyFilters: renderTopics,
         promptTopic, promptExam, confirmStart, closeModal,
         select, toggleFlag, nav, go: loadQuestion,
-        submit, enterReview, setReviewFilter, restart, toTopics, exit
+        submit, enterReview, setReviewFilter, restart, toTopics, exit,
+        openHistory, reviewAttempt, deleteAttempt
     };
 })();
