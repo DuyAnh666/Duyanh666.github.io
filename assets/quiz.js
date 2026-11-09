@@ -285,7 +285,7 @@
         const strictCount = hasActiveQuestionFilter(vals);
         let visible = 0, total = 0;
 
-        const html = TOPICS.map((topic, index) => {
+        const html = TOPICS.map(topic => {
             if (!topicVisible(topic, vals)) return '';
             if (search && !topic.title.toLowerCase().includes(search) && !topic.desc.toLowerCase().includes(search)) return '';
 
@@ -295,22 +295,14 @@
             visible++;
             total += qs.length;
 
-            const unitTag = topic.chapter
-                ? `Chương ${String(topic.chapter).replace(/^c/i, '')}`
-                : `${UNIT_CAP} ${pad(index + 1)}`;
-
             return `
                 <div class="topic-card">
-                    <div>
-                        <div class="card-meta-row">
-                            <span class="card-tag">${esc(unitTag)}</span>
-                            <span class="card-spec">${qs.length} câu hỏi</span>
-                        </div>
+                    <div class="card-body">
                         <h3 class="topic-title">${topic.title}</h3>
                         <p class="topic-desc">${topic.desc}</p>
                     </div>
                     <div class="topic-footer">
-                        <span class="topic-count">Thời lượng thi: ${TOPIC_MINUTES(qs.length)} phút</span>
+                        <span class="topic-count">${qs.length} câu hỏi</span>
                         <div class="topic-actions">
                             <button class="btn-topic-practice" onclick="Quiz.promptTopic('${topic.id}', 'practice')">Luyện tập</button>
                             <button class="btn-topic-test" onclick="Quiz.promptTopic('${topic.id}', 'test')">Thi thử</button>

@@ -366,6 +366,7 @@ header p,
     border: 1px solid var(--primary-border);
     padding: 6px 12px;
     border-radius: var(--radius-sm);
+    white-space: nowrap;
 }
 
 .home-container {
@@ -423,44 +424,14 @@ header p,
     background: var(--primary-light);
 }
 
-.card-meta-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.card-tag {
-    font-size: 0.74rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--primary);
-    background: var(--primary-soft);
-    border: 1px solid var(--primary-border);
-    padding: 3px 9px;
-    border-radius: 5px;
-}
-
-.card-spec {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    background: var(--bg-subtle);
-    border: 1px solid var(--border);
-    padding: 3px 9px;
-    border-radius: 5px;
-}
-
 .card-body {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .course-card h2,
 .topic-title {
-    margin: 0 0 8px 0;
-    font-size: 1.06rem;
+    margin: 0 0 10px 0;
+    font-size: 1.08rem;
     font-weight: 700;
     color: var(--text-main);
     line-height: 1.44;
@@ -481,10 +452,6 @@ header p,
     line-height: 1.6;
 }
 
-.topic-desc {
-    margin-bottom: 18px;
-}
-
 .card-footer,
 .topic-footer {
     display: flex;
@@ -494,6 +461,7 @@ header p,
     border-top: 1px solid #f1f5f9;
     width: 100%;
     gap: 10px;
+    flex-wrap: nowrap;
 }
 
 .topic-count,
@@ -502,14 +470,18 @@ header p,
     font-weight: 600;
     color: var(--text-muted);
     background: var(--bg-subtle);
-    padding: 5px 11px;
+    padding: 6px 11px;
     border-radius: 6px;
     border: 1px solid var(--border);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .topic-actions {
     display: flex;
+    align-items: center;
     gap: 8px;
+    flex-shrink: 0;
 }
 
 /* ---------- Buttons ---------- */
@@ -523,6 +495,7 @@ header p,
     border-radius: var(--radius-sm);
     font-weight: 600;
     cursor: pointer;
+    white-space: nowrap;
     transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -530,6 +503,7 @@ header p,
     display: inline-block;
     padding: 7px 16px;
     font-size: 0.84rem;
+    flex-shrink: 0;
 }
 
 .course-card:hover .btn-enter,
@@ -549,6 +523,7 @@ header p,
     font-size: 0.84rem;
     font-weight: 600;
     cursor: pointer;
+    white-space: nowrap;
     transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
@@ -571,6 +546,7 @@ header p,
     font-weight: 600;
     font-size: 0.82rem;
     cursor: pointer;
+    white-space: nowrap;
     transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
@@ -639,6 +615,7 @@ header p,
     border: 1px solid rgba(255, 255, 255, 0.16);
     padding: 4px 11px;
     border-radius: 6px;
+    white-space: nowrap;
 }
 
 .btn-exam-start {
@@ -771,6 +748,7 @@ header p,
     border: 1px solid var(--primary-border);
     padding: 4px 10px;
     border-radius: 5px;
+    white-space: nowrap;
 }
 
 .quiz-topic-heading {
@@ -795,6 +773,7 @@ header p,
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.04em;
     border: 1px solid var(--border-hover);
+    white-space: nowrap;
 }
 
 .badge-timer.urgent {
@@ -818,6 +797,7 @@ header p,
     font-size: 0.84rem;
     font-weight: 600;
     cursor: pointer;
+    white-space: nowrap;
     transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
@@ -902,6 +882,7 @@ header p,
     padding: 5px 12px;
     border-radius: 6px;
     border: 1px solid var(--primary-border);
+    white-space: nowrap;
 }
 
 .q-tag-meta {
@@ -912,6 +893,7 @@ header p,
     padding: 4px 10px;
     border-radius: 6px;
     border: 1px solid var(--border);
+    white-space: nowrap;
 }
 
 .btn-flag {
@@ -923,6 +905,7 @@ header p,
     font-size: 0.82rem;
     font-weight: 600;
     cursor: pointer;
+    white-space: nowrap;
     transition: all 0.15s ease;
 }
 
