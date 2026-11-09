@@ -607,7 +607,6 @@
                 return `
                     <a href="${c.href}" class="nav-subdropdown-link${activeClass}">
                         <span class="nav-sublink-title">${escHtml(c.title)}</span>
-                        <span class="nav-sublink-meta">${escHtml(c.meta)}</span>
                     </a>
                 `;
             }).join('');
@@ -615,14 +614,10 @@
             return `
                 <div class="nav-dropdown-group">
                     <div class="nav-dropdown-parent">
-                        <div class="nav-parent-info">
-                            <span class="nav-parent-title">${escHtml(group.categoryName)}</span>
-                            <span class="nav-parent-sub">${group.courses.length} học phần</span>
-                        </div>
-                        <span class="nav-parent-tag">Nhánh</span>
+                        <span class="nav-parent-title">${escHtml(group.categoryName)}</span>
+                        <span class="nav-pill-count">${group.courses.length}</span>
                     </div>
                     <div class="nav-subdropdown">
-                        <div class="nav-subdropdown-header">${escHtml(group.categoryName)}</div>
                         ${subItems}
                     </div>
                 </div>
@@ -632,7 +627,7 @@
         const quickExamHtml = getAllCourses().map(c => `
             <a href="${c.href}?autoExam=1" class="nav-quick-link">
                 <span class="nav-sublink-title">${escHtml(c.title)}</span>
-                <span class="nav-sublink-meta">Đề ${escHtml(c.examSpec)}</span>
+                <span class="nav-pill-count">${escHtml(c.examSpec)}</span>
             </a>
         `).join('');
 
@@ -659,7 +654,6 @@
                             <span class="nav-pill-count">6 môn</span>
                         </button>
                         <div class="nav-dropdown-menu">
-                            <div class="nav-dropdown-caption">Di chuột vào khối kiến thức để chọn học phần</div>
                             ${multilevelCoursesHtml}
                         </div>
                     </div>
@@ -669,7 +663,6 @@
                             <span>Thi thử nhanh</span>
                         </button>
                         <div class="nav-dropdown-menu nav-dropdown-wide">
-                            <div class="nav-dropdown-caption">Chọn môn để mở ngay đề thi thử mô phỏng</div>
                             <div class="nav-quick-list">
                                 ${quickExamHtml}
                             </div>
@@ -698,7 +691,6 @@
                                 <div class="user-dropdown-meta">
                                     <div class="user-dropdown-name" id="drop-user-name">${escHtml(user.displayName)}</div>
                                     <div class="user-dropdown-username" id="drop-user-username">@${escHtml(user.username)}</div>
-                                    <span class="user-sync-badge">${getCloudMode() === 'firebase' ? 'Đồng bộ đám mây Firebase' : 'Lưu trữ trình duyệt'}</span>
                                 </div>
                             </div>
 
@@ -720,15 +712,12 @@
                             <div class="user-dropdown-list">
                                 <button type="button" class="user-dropdown-item" onclick="QuizAuth.openProfileModal()">
                                     <span class="dropdown-item-title">Thông tin cá nhân</span>
-                                    <span class="dropdown-item-sub">Xem hồ sơ, thống kê & đổi tên hiển thị</span>
                                 </button>
                                 <button type="button" class="user-dropdown-item" onclick="QuizAuth.triggerHistoryModal()">
                                     <span class="dropdown-item-title">Lịch sử làm bài</span>
-                                    <span class="dropdown-item-sub">Xem lại chi tiết các đề đã nộp</span>
                                 </button>
                                 <button type="button" class="user-dropdown-item" onclick="QuizAuth.openPasswordModal()">
                                     <span class="dropdown-item-title">Đổi mật khẩu</span>
-                                    <span class="dropdown-item-sub">Cập nhật mật khẩu bảo mật tài khoản</span>
                                 </button>
                             </div>
 

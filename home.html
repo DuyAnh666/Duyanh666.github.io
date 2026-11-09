@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cổng Ôn tập &amp; Thi thử Trực tuyến - HNUE</title>
-    <link rel="stylesheet" href="assets/quiz.css?v=8">
+    <link rel="stylesheet" href="assets/quiz.css?v=9">
 </head>
 <body>
 
@@ -13,28 +13,21 @@
     <main class="home-wrapper">
         <section class="home-hero-banner">
             <div class="home-hero-content">
-                <span class="home-hero-badge">Trường Đại học Sư phạm Hà Nội — Chuẩn mực • Sáng tạo • Tiên phong</span>
+                <span class="home-hero-badge">Trường Đại học Sư phạm Hà Nội</span>
                 <h1>Xin chào, <span id="welcome-user-name">Học viên</span>!</h1>
-                <p>
-                    Chào mừng bạn đến với Cổng Ôn tập và Thi thử Trực tuyến. Lựa chọn học phần bên dưới để luyện tập theo từng chương có giải thích tức thì hoặc làm đề thi thử tổng hợp theo thời gian thực.
-                </p>
-                <div class="home-hero-actions">
-                    <button type="button" class="btn-hero-primary" onclick="openHistoryModal()">Xem lịch sử làm bài</button>
-                    <button type="button" class="btn-hero-secondary" onclick="QuizAuth.openProfileModal()">Hồ sơ cá nhân</button>
-                </div>
             </div>
 
             <div class="home-hero-stats">
                 <div class="hero-stat-box">
-                    <span class="hero-stat-label">Tổng số lượt làm bài</span>
+                    <span class="hero-stat-label">Bài đã làm</span>
                     <span class="hero-stat-value" id="hero-stat-count">0 bài</span>
                 </div>
                 <div class="hero-stat-box">
-                    <span class="hero-stat-label">Điểm trung bình tích lũy</span>
+                    <span class="hero-stat-label">Điểm trung bình</span>
                     <span class="hero-stat-value" id="hero-stat-avg">0.00 / 10</span>
                 </div>
                 <div class="hero-stat-box">
-                    <span class="hero-stat-label">Thành tích cao nhất</span>
+                    <span class="hero-stat-label">Cao nhất</span>
                     <span class="hero-stat-value" id="hero-stat-best">0.00 / 10</span>
                 </div>
             </div>
@@ -47,7 +40,7 @@
                 <button type="button" class="cat-tab" onclick="setCategoryFilter('nvsp', this)">Khối Nghiệp vụ &amp; Chuyên ngành (2)</button>
             </div>
             <div class="home-search-box">
-                <input type="text" id="home-course-search" class="filter-search" placeholder="Tìm nhanh tên học phần..." oninput="renderCourseCatalog()">
+                <input type="text" id="home-course-search" class="filter-search" placeholder="Tìm nhanh học phần..." oninput="renderCourseCatalog()">
             </div>
         </div>
 
@@ -55,7 +48,7 @@
     </main>
 
     <footer class="site-footer">
-        Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội (136 Xuân Thủy, Cầu Giấy, Hà Nội)
+        Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội
     </footer>
 
     <div class="modal-overlay" id="history-modal">
@@ -101,8 +94,8 @@
         </div>
     </div>
 
-    <script src="assets/cloud-config.js?v=8"></script>
-    <script src="assets/auth.js?v=8"></script>
+    <script src="assets/cloud-config.js?v=9"></script>
+    <script src="assets/auth.js?v=9"></script>
     <script>
         const currentUser = QuizAuth.requireAuth();
         let activeCategory = 'all';
@@ -145,50 +138,27 @@
 
                 const filteredCourses = group.courses.filter(c => {
                     if (!query) return true;
-                    return c.title.toLowerCase().includes(query) || c.desc.toLowerCase().includes(query);
+                    return c.title.toLowerCase().includes(query);
                 });
 
                 if (filteredCourses.length === 0) return '';
 
-                const cardsHtml = filteredCourses.map(c => {
-                    const cHist = QuizAuth.getHistory(c.id);
-                    const attemptsCount = cHist.length;
-                    const bestScore = attemptsCount > 0
-                        ? Math.max(...cHist.map(i => parseFloat(i.score) || 0)).toFixed(2)
-                        : null;
-
-                    const progressTag = attemptsCount > 0
-                        ? `<span class="course-progress-pill practiced">Đã làm ${attemptsCount} bài • Cao nhất: ${bestScore}/10</span>`
-                        : `<span class="course-progress-pill">Chưa có bài làm</span>`;
-
-                    return `
-                        <div class="course-card">
-                            <div class="card-body">
-                                <div class="course-card-topline">
-                                    <span class="course-cat-tag">${escHtml(group.categoryShort)}</span>
-                                    ${progressTag}
-                                </div>
-                                <h2><a href="${c.href}" class="course-title-link">${escHtml(c.title)}</a></h2>
-                                <p>${escHtml(c.desc)}</p>
-                            </div>
-                            <div class="card-footer">
-                                <span class="card-unit-count">${escHtml(c.meta)}</span>
-                                <div class="topic-actions">
-                                    <a href="${c.href}?autoExam=1" class="btn-topic-practice" style="text-decoration:none;">Thi thử ngay</a>
-                                    <a href="${c.href}" class="btn-enter" style="text-decoration:none;">Vào học phần</a>
-                                </div>
-                            </div>
+                const cardsHtml = filteredCourses.map(c => `
+                    <a href="${c.href}" class="course-card">
+                        <div class="card-body">
+                            <h2>${escHtml(c.title)}</h2>
                         </div>
-                    `;
-                }).join('');
+                        <div class="card-footer">
+                            <span class="card-unit-count">${escHtml(c.meta)}</span>
+                            <span class="btn-enter">Vào học phần</span>
+                        </div>
+                    </a>
+                `).join('');
 
                 return `
                     <section class="catalog-section">
                         <div class="catalog-section-header">
-                            <div>
-                                <h2 class="catalog-section-title">${escHtml(group.categoryName)}</h2>
-                                <p class="catalog-section-desc">${escHtml(group.categoryDesc)}</p>
-                            </div>
+                            <h2 class="catalog-section-title">${escHtml(group.categoryName)}</h2>
                             <span class="home-count-badge">${filteredCourses.length} học phần</span>
                         </div>
                         <div class="home-container">

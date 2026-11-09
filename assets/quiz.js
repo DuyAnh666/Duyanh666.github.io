@@ -134,7 +134,6 @@
     // ---------- Page skeleton ----------
     function renderApp() {
         document.title = `${C.title} - Ôn tập HNUE`;
-        const bannerDesc = (C.banner && C.banner.desc) || '';
         $('app').innerHTML = `
     <div id="course-navbar-root"></div>
 
@@ -147,7 +146,6 @@
                     <span>${esc(C.title)}</span>
                 </div>
                 <h1>${C.title}</h1>
-                <div class="brand-subtitle">${SUBTITLE}</div>
             </div>
             <div class="course-subbanner-right">
                 <span class="course-header-meta">Đề chuẩn: ${EXAM.total} câu / ${EXAM.minutes} phút</span>
@@ -162,7 +160,6 @@
                 <div class="exam-banner-info">
                     <span class="exam-banner-eyebrow">Đề thi thử tổng hợp</span>
                     <h2>${EXAM.title}</h2>
-                    <p>${bannerDesc}</p>
                     <div class="exam-banner-specs">
                         <span class="exam-spec-pill">Số lượng: ${EXAM.total} câu hỏi</span>
                         <span class="exam-spec-pill">Thời gian: ${EXAM.minutes} phút</span>
@@ -343,7 +340,6 @@
                 <div class="topic-card">
                     <div class="card-body">
                         <h3 class="topic-title">${topic.title}</h3>
-                        <p class="topic-desc">${topic.desc}</p>
                     </div>
                     <div class="topic-footer">
                         <span class="topic-count">${qs.length} câu hỏi</span>
