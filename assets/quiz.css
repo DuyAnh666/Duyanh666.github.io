@@ -272,6 +272,20 @@ body.login-page {
 /* ==========================================================================
    2. SHARED MULTI-LEVEL NAVBAR & PERSONAL AVATAR MENU
    ========================================================================== */
+#app {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    min-height: 100vh;
+}
+
+#navbar-root,
+#course-navbar-root {
+    position: sticky;
+    top: 0;
+    z-index: 400;
+}
+
 .site-navbar {
     position: sticky;
     top: 0;
