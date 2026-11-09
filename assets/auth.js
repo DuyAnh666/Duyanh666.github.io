@@ -86,6 +86,14 @@
                     examSpec: '30 câu / 40 phút',
                     title: 'Xây dựng kế hoạch dạy học Tin học',
                     desc: 'Hệ thống trắc nghiệm GDPT 2018 theo nhóm học phần, đề thi chuẩn ma trận 3:4:3 (Nhận biết - Thông hiểu - Vận dụng).'
+                },
+                {
+                    id: 'dggd',
+                    href: 'dggd.html',
+                    meta: '5 chủ đề • Đề 40 câu',
+                    examSpec: '40 câu / 50 phút',
+                    title: 'Đánh giá trong giáo dục',
+                    desc: 'Hệ thống 229 câu hỏi trắc nghiệm theo 5 chủ đề: Đo lường, Đánh giá năng lực, Thông tư 22 & 27, Xây dựng công cụ và Kế hoạch KTĐG.'
                 }
             ]
         }
@@ -651,7 +659,7 @@
                     <div class="nav-item-dropdown">
                         <button type="button" class="nav-item-link nav-dropdown-trigger${isCourseActive ? ' active' : ''}">
                             <span>Học phần ôn tập</span>
-                            <span class="nav-pill-count">6 môn</span>
+                            <span class="nav-pill-count">${getAllCourses().length} môn</span>
                         </button>
                         <div class="nav-dropdown-menu">
                             ${multilevelCoursesHtml}
@@ -917,7 +925,7 @@
         document.getElementById('prof-stat-count').textContent = `${stats.count} bài`;
         document.getElementById('prof-stat-avg').textContent = `${stats.avg} / 10`;
         document.getElementById('prof-stat-best').textContent = `${stats.best} / 10`;
-        document.getElementById('prof-stat-courses').textContent = `${stats.coursesPracticed} / 6 môn`;
+        document.getElementById('prof-stat-courses').textContent = `${stats.coursesPracticed} / ${getAllCourses().length} môn`;
 
         document.getElementById('prof-input-displayname').value = user.displayName || '';
         document.getElementById('prof-input-username').value = user.username || '';

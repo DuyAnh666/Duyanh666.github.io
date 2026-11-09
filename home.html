@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cổng Ôn tập &amp; Thi thử Trực tuyến - HNUE</title>
-    <link rel="stylesheet" href="assets/quiz.css?v=9">
+    <link rel="stylesheet" href="assets/quiz.css?v=10">
 </head>
 <body>
 
@@ -35,9 +35,9 @@
 
         <div class="home-toolbar">
             <div class="home-category-tabs" id="home-category-tabs">
-                <button type="button" class="cat-tab active" onclick="setCategoryFilter('all', this)">Tất cả học phần (6)</button>
+                <button type="button" class="cat-tab active" onclick="setCategoryFilter('all', this)">Tất cả học phần (7)</button>
                 <button type="button" class="cat-tab" onclick="setCategoryFilter('llct', this)">Khối Lý luận chính trị (4)</button>
-                <button type="button" class="cat-tab" onclick="setCategoryFilter('nvsp', this)">Khối Nghiệp vụ &amp; Chuyên ngành (2)</button>
+                <button type="button" class="cat-tab" onclick="setCategoryFilter('nvsp', this)">Khối Nghiệp vụ &amp; Chuyên ngành (3)</button>
             </div>
             <div class="home-search-box">
                 <input type="text" id="home-course-search" class="filter-search" placeholder="Tìm nhanh học phần..." oninput="renderCourseCatalog()">
@@ -94,8 +94,8 @@
         </div>
     </div>
 
-    <script src="assets/cloud-config.js?v=9"></script>
-    <script src="assets/auth.js?v=9"></script>
+    <script src="assets/cloud-config.js?v=10"></script>
+    <script src="assets/auth.js?v=10"></script>
     <script>
         const currentUser = QuizAuth.requireAuth();
         let activeCategory = 'all';
@@ -138,7 +138,7 @@
 
                 const filteredCourses = group.courses.filter(c => {
                     if (!query) return true;
-                    return c.title.toLowerCase().includes(query);
+                    return c.title.toLowerCase().includes(query) || c.desc.toLowerCase().includes(query);
                 });
 
                 if (filteredCourses.length === 0) return '';
@@ -147,6 +147,7 @@
                     <a href="${c.href}" class="course-card">
                         <div class="card-body">
                             <h2>${escHtml(c.title)}</h2>
+                            <p>${escHtml(c.desc)}</p>
                         </div>
                         <div class="card-footer">
                             <span class="card-unit-count">${escHtml(c.meta)}</span>
