@@ -5,12 +5,6 @@
 (function () {
     'use strict';
 
-    if (typeof window !== 'undefined' && /\.github\.io$/i.test(window.location.hostname)) {
-        document.title = '404 Not Found';
-        document.documentElement.innerHTML = '<head><meta charset="UTF-8"><title>404 Not Found</title></head><body style="font-family:sans-serif;text-align:center;padding:80px 20px;color:#334155;"><h1>404</h1><p>Đường dẫn này không tồn tại hoặc đã ngừng hoạt động.</p></body>';
-        throw new Error('Domain disabled');
-    }
-
     const STORAGE_USERS_KEY = 'hnue_users_v1';
     const STORAGE_SESSION_KEY = 'hnue_current_user_v1';
     const STORAGE_HISTORY_PREFIX = 'hnue_history_v1_';
