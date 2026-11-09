@@ -1,11 +1,11 @@
 window.COURSE = {
     title: 'Kinh tế Chính trị Mác - Lênin',
     banner: {
-        desc: 'Mô phỏng kỳ thi kết thúc học phần với 40 câu hỏi trắc nghiệm ngẫu nhiên bao quát 6 chương, thời gian làm bài chuẩn 60 phút. Hỗ trợ 2 bộ câu hỏi độc lập (Bộ câu hỏi 1 và Bộ câu hỏi 2 - V2).'
+        desc: 'Mô phỏng kỳ thi kết thúc học phần với 40 câu hỏi trắc nghiệm ngẫu nhiên bao quát 6 chương, thời gian làm bài chuẩn 60 phút. Hỗ trợ 2 bộ câu hỏi độc lập (Bộ câu hỏi 1 và Bộ câu hỏi 2).'
     },
     questionSets: [
         { value: 'bo1', label: 'Bộ câu hỏi 1 (453 câu)' },
-        { value: 'bo2', label: 'Bộ câu hỏi 2 - V2 (497 câu)' }
+        { value: 'bo2', label: 'Bộ câu hỏi 2 (497 câu)' }
     ],
     exam: {
         title: 'Đề thi thử tổng hợp Kinh tế chính trị Mác - Lênin',
@@ -27,7 +27,7 @@ window.COURSE = {
             showCount: true,
             options: [
                 { value: 'bo1', label: 'Bộ câu hỏi 1' },
-                { value: 'bo2', label: 'Bộ câu hỏi 2 (V2)' }
+                { value: 'bo2', label: 'Bộ câu hỏi 2' }
             ]
         },
         {
