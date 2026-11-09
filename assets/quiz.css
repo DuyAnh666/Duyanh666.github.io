@@ -1953,6 +1953,53 @@ body.login-page {
     line-height: 1.6;
 }
 
+.modal-set-picker {
+    margin: 12px 0 16px;
+    padding: 12px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    text-align: left;
+}
+
+.modal-set-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.modal-set-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.modal-set-btn {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-hover);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.modal-set-btn:hover {
+    border-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.modal-set-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+}
+
 .modal-score {
     font-size: 2.1rem;
     font-weight: 800;

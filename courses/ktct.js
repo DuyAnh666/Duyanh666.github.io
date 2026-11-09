@@ -1,15 +1,49 @@
 window.COURSE = {
     title: 'Kinh tế Chính trị Mác - Lênin',
     banner: {
-        desc: 'Mô phỏng kỳ thi kết thúc học phần với 40 câu hỏi trắc nghiệm ngẫu nhiên bao quát 6 chương, thời gian làm bài chuẩn 60 phút. Tự động chấm điểm theo thang điểm 10.'
+        desc: 'Mô phỏng kỳ thi kết thúc học phần với 40 câu hỏi trắc nghiệm ngẫu nhiên bao quát 6 chương, thời gian làm bài chuẩn 60 phút. Hỗ trợ 2 bộ câu hỏi độc lập (Bộ câu hỏi 1 và Bộ câu hỏi 2 - V2).'
     },
+    questionSets: [
+        { value: 'bo1', label: 'Bộ câu hỏi 1 (453 câu)' },
+        { value: 'bo2', label: 'Bộ câu hỏi 2 - V2 (497 câu)' }
+    ],
     exam: {
         title: 'Đề thi thử tổng hợp Kinh tế chính trị Mác - Lênin',
         total: 40,
         minutes: 60,
         by: 'category',
         matrix: { chuong2: 10, chuong3: 10, chuong6: 10, chuong1: 3, chuong4: 3, chuong5: 4 },
+        poolFilters: ['set'],
         note: 'trắc nghiệm ngẫu nhiên bao quát 6 chương'
+    },
+    filters: [
+        {
+            id: 'set',
+            label: 'Bộ câu hỏi',
+            target: 'question',
+            field: 'set',
+            all: 'Tất cả 2 bộ',
+            defaultValue: 'bo1',
+            showCount: true,
+            options: [
+                { value: 'bo1', label: 'Bộ câu hỏi 1' },
+                { value: 'bo2', label: 'Bộ câu hỏi 2 (V2)' }
+            ]
+        },
+        {
+            id: 'chapter',
+            label: 'Chương',
+            target: 'topic',
+            field: 'id',
+            all: 'Tất cả các chương'
+        }
+    ],
+    feedbackInfo: (q, topic) => {
+        const header = `${q.setName ? `<strong>${q.setName}</strong> • ` : ''}Chương: ${topic ? topic.title : ''}`;
+        if (q.explanation) {
+            return `${header}<div style="margin-top: 6px; color: var(--text-main);"><strong>Giải thích:</strong> ${q.explanation}</div>`;
+        }
+        return header;
     },
     topics: [
         {

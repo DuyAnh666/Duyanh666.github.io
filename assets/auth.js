@@ -41,7 +41,7 @@
                     meta: '6 chương • Đề 40 câu',
                     examSpec: '40 câu / 60 phút',
                     title: 'Kinh tế chính trị Mác - Lênin',
-                    desc: 'Hệ thống câu hỏi ôn tập theo từng chương và đề thi thử mô phỏng 40 câu / 60 phút.'
+                    desc: 'Hệ thống 950 câu hỏi gồm 2 bộ đề độc lập (Bộ 1 và Bộ 2 - V2) theo 6 chương và đề thi thử 40 câu / 60 phút.'
                 },
                 {
                     id: 'cnxhkh',

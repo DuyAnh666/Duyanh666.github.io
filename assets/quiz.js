@@ -19,6 +19,7 @@
     const ALL = window.QUESTIONS;
     const TOPICS = C.topics || [];
     const EXAM = C.exam;
+    const QUESTION_SETS = Array.isArray(C.questionSets) ? C.questionSets : null;
     const SUBTITLE = C.subtitle || 'Hệ thống trắc nghiệm ôn tập và thi thử chuẩn Đại học Sư phạm Hà Nội';
     const UNIT = C.unit || 'chương';
     const UNIT_CAP = UNIT.charAt(0).toUpperCase() + UNIT.slice(1);
@@ -94,12 +95,20 @@
     let remaining = 0;
     let initial = 0;
     let pending = null;
+    let pendingContext = null; // { type: 'exam' | 'topic', topicId, selectedMode, activeSet }
 
     // ---------- Filters ----------
     function filterValues() {
         const v = {};
         FILTERS.forEach(f => { v[f.id] = $('filter-' + f.id).value; });
         return v;
+    }
+
+    function getActiveQuestionSet(vals) {
+        if (!QUESTION_SETS || QUESTION_SETS.length === 0) return null;
+        const filterSetVal = vals && vals.set;
+        if (filterSetVal && filterSetVal !== 'all') return filterSetVal;
+        return QUESTION_SETS[0].value;
     }
 
     function matchQuestion(q, f, val) {
@@ -121,13 +130,15 @@
     }
 
     function filterHtml(f) {
+        const defaultVal = f.defaultValue || 'all';
         const options = [{ value: 'all', label: f.all }, ...f.options].map(o => {
             let label = o.label;
             if (f.showCount) {
                 const n = o.value === 'all' ? ALL.length : ALL.filter(q => matchQuestion(q, f, o.value)).length;
                 label += ` (${n} câu)`;
             }
-            return `<option value="${esc(o.value)}">${esc(label)}</option>`;
+            const sel = o.value === defaultVal ? ' selected' : '';
+            return `<option value="${esc(o.value)}"${sel}>${esc(label)}</option>`;
         }).join('');
         return `
             <div class="filter-group">
@@ -258,6 +269,7 @@
     <div class="modal-overlay" id="start-modal">
         <div class="modal-content">
             <h3 class="modal-title" id="start-modal-title"></h3>
+            <div id="start-modal-sets" class="modal-set-picker" style="display: none;"></div>
             <p class="modal-desc" id="start-modal-desc"></p>
             <div class="modal-actions">
                 <button class="btn-modal-primary" id="btn-start-action" onclick="Quiz.confirmStart()">Bắt đầu làm bài</button>
@@ -342,19 +354,71 @@
         updateCourseHistoryBtn();
     }
 
-    // ---------- Start modal ----------
+    // ---------- Start modal & Independent Question Set Picker ----------
+    function renderModalSetPicker() {
+        const box = $('start-modal-sets');
+        if (!box) return;
+        if (!QUESTION_SETS || QUESTION_SETS.length === 0 || !pendingContext) {
+            box.style.display = 'none';
+            box.innerHTML = '';
+            return;
+        }
+
+        const activeSet = pendingContext.activeSet;
+        const buttonsHtml = QUESTION_SETS.map(s => {
+            let count = 0;
+            if (pendingContext.type === 'topic') {
+                count = ALL.filter(q => q.category === pendingContext.topicId && q.set === s.value).length;
+            } else {
+                count = ALL.filter(q => q.set === s.value).length;
+            }
+            const label = s.label.replace(/\s*\(\d+\s*câu\)/i, '') + ` (${count} câu)`;
+            return `
+                <button type="button" class="modal-set-btn${s.value === activeSet ? ' active' : ''}" onclick="Quiz.selectQuestionSet('${esc(s.value)}')">
+                    ${esc(label)}
+                </button>`;
+        }).join('');
+
+        box.innerHTML = `
+            <div class="modal-set-label">Chọn bộ câu hỏi (tách biệt độc lập):</div>
+            <div class="modal-set-buttons">${buttonsHtml}</div>
+        `;
+        box.style.display = 'block';
+    }
+
     function openStartModal(title, desc, btnText) {
         $('start-modal-title').textContent = title;
         $('start-modal-desc').textContent = desc;
         $('btn-start-action').textContent = btnText;
+        renderModalSetPicker();
         show('start-modal', 'flex');
     }
 
-    function promptTopic(topicId, selectedMode) {
+    function selectQuestionSet(setVal) {
+        if (!pendingContext) return;
+        pendingContext.activeSet = setVal;
+        if ($('filter-set')) {
+            $('filter-set').value = setVal;
+            renderTopics();
+        }
+        if (pendingContext.type === 'exam') {
+            prepareExamSession(setVal);
+        } else if (pendingContext.type === 'topic') {
+            prepareTopicSession(pendingContext.topicId, pendingContext.selectedMode, setVal);
+        }
+    }
+
+    function prepareTopicSession(topicId, selectedMode, forcedSet) {
         const topic = TOPICS.find(t => t.id === topicId);
         if (!topic) return;
 
-        let qs = applyQuestionFilters(ALL.filter(q => q.category === topicId), filterValues());
+        const vals = { ...filterValues() };
+        const activeSet = forcedSet || getActiveQuestionSet(vals);
+        if (activeSet) vals.set = activeSet;
+
+        pendingContext = { type: 'topic', topicId, selectedMode, activeSet };
+
+        let qs = applyQuestionFilters(ALL.filter(q => q.category === topicId), vals);
         if (selectedMode === 'test') {
             const graded = qs.filter(isGraded);
             if (graded.length > 0) qs = graded;
@@ -364,20 +428,31 @@
             return;
         }
 
+        const setObj = QUESTION_SETS ? QUESTION_SETS.find(s => s.value === activeSet) : null;
+        const setSuffix = setObj ? ` — ${setObj.label.replace(/\s*\(\d+\s*câu\)/i, '')}` : '';
         const minutes = selectedMode === 'test' ? TOPIC_MINUTES(qs.length) : 0;
-        pending = { title: topic.title, questions: qs, mode: selectedMode, timeMinutes: minutes };
+        pending = {
+            title: topic.title + setSuffix,
+            questions: selectedMode === 'test' ? shuffle(qs) : qs,
+            mode: selectedMode,
+            timeMinutes: minutes
+        };
 
         if (selectedMode === 'practice') {
             openStartModal(
                 topic.title,
-                `${UNIT_CAP} gồm ${qs.length} câu hỏi. Chế độ luyện tập không giới hạn thời gian và hiển thị đáp án ngay sau mỗi câu trả lời.`,
+                `${UNIT_CAP} gồm ${qs.length} câu hỏi${setSuffix}. Chế độ luyện tập không giới hạn thời gian và hiển thị đáp án ngay sau mỗi câu trả lời.`,
                 'Bắt đầu luyện tập');
         } else {
             openStartModal(
                 topic.title,
-                `${UNIT_CAP} gồm ${qs.length} câu hỏi. Thời gian làm bài ${minutes} phút, hệ thống chấm điểm theo thang điểm 10 sau khi nộp bài.`,
+                `${UNIT_CAP} gồm ${qs.length} câu hỏi${setSuffix}. Thời gian làm bài ${minutes} phút, hệ thống chấm điểm theo thang điểm 10 sau khi nộp bài.`,
                 'Bắt đầu làm bài thi');
         }
+    }
+
+    function promptTopic(topicId, selectedMode) {
+        prepareTopicSession(topicId, selectedMode, null);
     }
 
     function buildExam(pool) {
@@ -392,24 +467,40 @@
         return shuffle(picked).slice(0, EXAM.total);
     }
 
-    function promptExam() {
-        const vals = filterValues();
+    function prepareExamSession(forcedSet) {
+        const vals = { ...filterValues() };
+        const activeSet = forcedSet || getActiveQuestionSet(vals);
+        if (activeSet) vals.set = activeSet;
+
+        pendingContext = { type: 'exam', activeSet };
+
         const pool = examPool(vals);
         if (pool.length === 0) {
             alert('Chưa có dữ liệu câu hỏi trong ngân hàng đề thi thử của học phần này.');
             return;
         }
-        const suffix = (EXAM.poolFilters || []).map(id => vals[id]).filter(v => v && v !== 'all');
+        const setObj = QUESTION_SETS ? QUESTION_SETS.find(s => s.value === activeSet) : null;
+        const setLabel = setObj ? setObj.label.replace(/\s*\(\d+\s*câu\)/i, '') : '';
+        const otherSuffix = (EXAM.poolFilters || [])
+            .filter(id => id !== 'set')
+            .map(id => vals[id])
+            .filter(v => v && v !== 'all');
+        const allTags = [setLabel, ...otherSuffix].filter(Boolean);
+
         pending = {
-            title: EXAM.title + (suffix.length ? ` (${suffix.join(', ')})` : ''),
+            title: EXAM.title + (allTags.length ? ` (${allTags.join(', ')})` : ''),
             questions: buildExam(pool),
             mode: 'test',
             timeMinutes: EXAM.minutes
         };
         openStartModal(
             EXAM.title,
-            `Đề thi gồm ${EXAM.total} câu hỏi ${EXAM.note}. Thời gian làm bài ${EXAM.minutes} phút, tự động nộp bài khi hết giờ và chấm theo thang điểm 10.`,
+            `Đề thi gồm ${EXAM.total} câu hỏi ${EXAM.note}${setLabel ? ` trích xuất độc lập từ ${setLabel}` : ''}. Thời gian làm bài ${EXAM.minutes} phút, tự động nộp bài khi hết giờ và chấm theo thang điểm 10.`,
             'Bắt đầu làm bài thi');
+    }
+
+    function promptExam() {
+        prepareExamSession(null);
     }
 
     function closeModal(id) { show(id, 'none'); }
@@ -483,7 +574,7 @@
 
         $('q-index-text').textContent = `Câu ${i + 1} / ${quiz.length}`;
         const tagMeta = $('q-tag-meta');
-        const metaParts = [q.levelName, q.group].filter(Boolean);
+        const metaParts = [q.setName, q.levelName, q.group].filter(Boolean);
         if (metaParts.length > 0) {
             tagMeta.textContent = metaParts.join(' • ');
             tagMeta.style.display = 'inline-block';
@@ -810,7 +901,7 @@
 
     window.Quiz = {
         applyFilters: renderTopics,
-        promptTopic, promptExam, confirmStart, closeModal,
+        promptTopic, promptExam, selectQuestionSet, confirmStart, closeModal,
         select, toggleFlag, nav, go: loadQuestion,
         submit, enterReview, setReviewFilter, restart, toTopics, exit,
         openHistory, reviewAttempt
