@@ -23,9 +23,10 @@
  */
 window.CLOUD_CONFIG = {
     // Dien link Firebase Realtime Database cua ban vao day (vi du: 'https://hnue-quiz-default-rtdb.asia-southeast1.firebasedatabase.app')
-    firebaseDatabaseURL: '',
+    firebaseDatabaseURL: 'https://on-thi-hnue-default-rtdb.firebaseio.com',
 
     // Hoac dien thong tin Supabase vao day:
     supabaseUrl: '',
     supabaseAnonKey: ''
 };
+
