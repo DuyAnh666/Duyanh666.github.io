@@ -4,64 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập & Đăng ký - Cổng Ôn tập HNUE</title>
-    <link rel="stylesheet" href="assets/quiz.css?v=6">
+    <link rel="stylesheet" href="assets/quiz.css?v=8">
 </head>
 <body class="login-page">
 
-    <div class="login-card">
-        <div class="login-brand">
-            <div class="login-logos">
-                <img class="login-logo" src="Logo/logoHNUE.png" alt="Logo HNUE">
-                <img class="login-logo" src="Logo/logoFIT.png" alt="Logo FIT">
+    <div class="login-shell">
+        <div class="login-showcase">
+            <div class="showcase-top">
+                <div class="showcase-logos">
+                    <img class="showcase-logo" src="Logo/logoHNUE.png" alt="Logo HNUE">
+                    <img class="showcase-logo" src="Logo/logoFIT.png" alt="Logo FIT">
+                </div>
+                <span class="showcase-badge">Trường Đại học Sư phạm Hà Nội</span>
+                <h1>Cổng Ôn tập &amp; Thi thử Trực tuyến</h1>
+                <p class="showcase-motto">Chuẩn mực — Sáng tạo — Tiên phong</p>
+                <p class="showcase-desc">
+                    Nền tảng luyện tập trắc nghiệm theo chương và thi thử mô phỏng chuẩn cấu trúc đề thi kết thúc học phần dành cho sinh viên HNUE.
+                </p>
             </div>
-            <h2>Hệ thống Ôn tập Trực tuyến</h2>
-            <p class="login-subtitle">Trường Đại học Sư phạm Hà Nội</p>
+
+            <div class="showcase-campus-frame">
+                <img src="Logo/bg-hnue.jpg" alt="Khuôn viên Trường Đại học Sư phạm Hà Nội">
+                <div class="showcase-campus-caption">
+                    Nhà Hành chính — Trường Đại học Sư phạm Hà Nội (136 Xuân Thủy, Cầu Giấy)
+                </div>
+            </div>
+
+            <div class="showcase-highlights">
+                <div class="showcase-pill">6 học phần trọng tâm</div>
+                <div class="showcase-pill">Chấm điểm thang 10</div>
+                <div class="showcase-pill">Lưu lịch sử theo tài khoản</div>
+            </div>
         </div>
 
-        <div class="auth-tabs">
-            <button type="button" class="auth-tab active" id="tab-login" onclick="switchTab('login')">Đăng nhập</button>
-            <button type="button" class="auth-tab" id="tab-register" onclick="switchTab('register')">Tạo tài khoản</button>
+        <div class="login-card">
+            <div class="login-brand">
+                <div class="login-brand-eyebrow">Tài khoản học tập cá nhân</div>
+                <h2 id="auth-heading">Chào mừng bạn quay trở lại</h2>
+                <p class="login-subtitle" id="auth-subheading">Đăng nhập để tiếp tục lộ trình ôn tập và xem lại lịch sử bài thi</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" id="tab-login" onclick="switchTab('login')">Đăng nhập</button>
+                <button type="button" class="auth-tab" id="tab-register" onclick="switchTab('register')">Tạo tài khoản mới</button>
+            </div>
+
+            <div id="form-login">
+                <div class="form-group">
+                    <label for="username">Tên tài khoản</label>
+                    <input type="text" id="username" placeholder="Nhập tên tài khoản của bạn..." onkeypress="handleLoginKey(event)">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" placeholder="Nhập mật khẩu..." onkeypress="handleLoginKey(event)">
+                </div>
+                <button type="button" class="btn-login" id="btn-login-submit" onclick="handleLogin()">Đăng nhập vào hệ thống</button>
+                <div class="auth-switch-hint">
+                    Chưa có tài khoản cá nhân?
+                    <button type="button" class="btn-link-inline" onclick="switchTab('register')">Đăng ký ngay tại đây</button>
+                </div>
+            </div>
+
+            <div id="form-register" style="display: none;">
+                <div class="form-group">
+                    <label for="reg-fullname">Họ và tên hiển thị</label>
+                    <input type="text" id="reg-fullname" placeholder="Ví dụ: Nguyễn Duy Anh" onkeypress="handleRegisterKey(event)">
+                </div>
+                <div class="form-group">
+                    <label for="reg-username">Tên tài khoản đăng nhập</label>
+                    <input type="text" id="reg-username" placeholder="3-24 ký tự chữ thường hoặc số..." onkeypress="handleRegisterKey(event)">
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="reg-password">Mật khẩu</label>
+                        <input type="password" id="reg-password" placeholder="Ít nhất 4 ký tự..." onkeypress="handleRegisterKey(event)">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm">Xác nhận mật khẩu</label>
+                        <input type="password" id="reg-confirm" placeholder="Nhập lại mật khẩu..." onkeypress="handleRegisterKey(event)">
+                    </div>
+                </div>
+                <button type="button" class="btn-login" id="btn-register-submit" onclick="handleRegister()">Tạo tài khoản &amp; Bắt đầu ôn tập</button>
+                <div class="auth-switch-hint">
+                    Đã có tài khoản trên hệ thống?
+                    <button type="button" class="btn-link-inline" onclick="switchTab('login')">Quay lại đăng nhập</button>
+                </div>
+            </div>
+
+            <div id="error-msg" class="error-msg"></div>
+            <div id="success-msg" class="success-msg"></div>
         </div>
-
-        <div id="form-login">
-            <div class="form-group">
-                <label for="username">Tên tài khoản</label>
-                <input type="text" id="username" placeholder="Nhập tên tài khoản..." onkeypress="handleLoginKey(event)">
-            </div>
-            <div class="form-group">
-                <label for="password">Mật khẩu</label>
-                <input type="password" id="password" placeholder="Nhập mật khẩu..." onkeypress="handleLoginKey(event)">
-            </div>
-            <button type="button" class="btn-login" id="btn-login-submit" onclick="handleLogin()">Đăng nhập vào hệ thống</button>
-        </div>
-
-        <div id="form-register" style="display: none;">
-            <div class="form-group">
-                <label for="reg-fullname">Họ và tên (Tên hiển thị)</label>
-                <input type="text" id="reg-fullname" placeholder="Ví dụ: Nguyễn Văn A" onkeypress="handleRegisterKey(event)">
-            </div>
-            <div class="form-group">
-                <label for="reg-username">Tên tài khoản đăng nhập</label>
-                <input type="text" id="reg-username" placeholder="3-24 ký tự chữ thường hoặc số..." onkeypress="handleRegisterKey(event)">
-            </div>
-            <div class="form-group">
-                <label for="reg-password">Mật khẩu</label>
-                <input type="password" id="reg-password" placeholder="Ít nhất 4 ký tự..." onkeypress="handleRegisterKey(event)">
-            </div>
-            <div class="form-group">
-                <label for="reg-confirm">Xác nhận mật khẩu</label>
-                <input type="password" id="reg-confirm" placeholder="Nhập lại mật khẩu..." onkeypress="handleRegisterKey(event)">
-            </div>
-            <button type="button" class="btn-login" id="btn-register-submit" onclick="handleRegister()">Tạo tài khoản cá nhân</button>
-        </div>
-
-        <div id="error-msg" class="error-msg"></div>
-        <div id="success-msg" class="success-msg"></div>
-
     </div>
 
-    <script src="assets/cloud-config.js?v=7"></script>
-    <script src="assets/auth.js?v=6"></script>
+    <script src="assets/cloud-config.js?v=8"></script>
+    <script src="assets/auth.js?v=8"></script>
     <script>
         window.onload = function() {
             if (window.QuizAuth && QuizAuth.getCurrentUser()) {
@@ -90,6 +126,12 @@
             document.getElementById('tab-register').classList.toggle('active', !isLogin);
             document.getElementById('form-login').style.display = isLogin ? 'block' : 'none';
             document.getElementById('form-register').style.display = isLogin ? 'none' : 'block';
+            document.getElementById('auth-heading').textContent = isLogin
+                ? 'Chào mừng bạn quay trở lại'
+                : 'Khởi tạo tài khoản học viên';
+            document.getElementById('auth-subheading').textContent = isLogin
+                ? 'Đăng nhập để tiếp tục lộ trình ôn tập và xem lại lịch sử bài thi'
+                : 'Tạo tài khoản riêng để lưu trữ điểm số và lịch sử làm bài trên mọi thiết bị';
         }
 
         function handleLoginKey(e) {
@@ -131,7 +173,7 @@
             btn.textContent = 'Đang khởi tạo tài khoản...';
             const res = await QuizAuth.register(fullName, user, pass, confirmPass);
             btn.disabled = false;
-            btn.textContent = 'Tạo tài khoản cá nhân';
+            btn.textContent = 'Tạo tài khoản & Bắt đầu ôn tập';
 
             if (res.ok) {
                 window.location.href = 'home.html';

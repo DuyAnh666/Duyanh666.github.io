@@ -136,17 +136,25 @@
         document.title = `${C.title} - Ôn tập HNUE`;
         const bannerDesc = (C.banner && C.banner.desc) || '';
         $('app').innerHTML = `
-    <header>
-        <div class="course-header-inner">
-            <a href="home.html" class="back-home">Danh mục học phần</a>
-            <div class="header-copy">
-                <div class="header-eyebrow">Trường Đại học Sư phạm Hà Nội</div>
+    <div id="course-navbar-root"></div>
+
+    <div class="course-subbanner">
+        <div class="course-subbanner-inner">
+            <div class="course-subbanner-left">
+                <div class="course-breadcrumb">
+                    <a href="home.html">Trang chủ</a>
+                    <span>/</span>
+                    <span>${esc(C.title)}</span>
+                </div>
                 <h1>${C.title}</h1>
                 <div class="brand-subtitle">${SUBTITLE}</div>
             </div>
-            <div class="course-header-meta">Đề chuẩn: ${EXAM.total} câu / ${EXAM.minutes} phút</div>
+            <div class="course-subbanner-right">
+                <span class="course-header-meta">Đề chuẩn: ${EXAM.total} câu / ${EXAM.minutes} phút</span>
+                <a href="home.html" class="back-home">Danh mục học phần</a>
+            </div>
         </div>
-    </header>
+    </div>
 
     <div id="main-app">
         <div id="topics-view" class="content-container">
@@ -818,9 +826,15 @@
     // ---------- Init ----------
     document.addEventListener('DOMContentLoaded', () => {
         renderApp();
+        if (window.QuizAuth && QuizAuth.mountNavbar) {
+            QuizAuth.mountNavbar('#course-navbar-root', {
+                activePageId: COURSE_ID,
+                onOpenHistory: openHistory
+            });
+        }
         renderTopics();
 
-        const checkUrlReview = () => {
+        const checkUrlParams = () => {
             const params = new URLSearchParams(window.location.search);
             const revId = params.get('review');
             if (revId && window.QuizAuth) {
@@ -830,13 +844,20 @@
                     return true;
                 }
             }
+            if (params.get('autoExam') === '1') {
+                if (window.history && window.history.replaceState) {
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                }
+                promptExam();
+                return true;
+            }
             return false;
         };
 
-        if (!checkUrlReview() && window.QuizAuth) {
+        if (!checkUrlParams() && window.QuizAuth) {
             QuizAuth.syncHistoryFromCloud().then(() => {
                 updateCourseHistoryBtn();
-                checkUrlReview();
+                checkUrlParams();
             });
         }
 

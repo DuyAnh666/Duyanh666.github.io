@@ -3,41 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cổng Ôn tập Trực tuyến - HNUE</title>
-    <link rel="stylesheet" href="assets/quiz.css?v=6">
+    <title>Cổng Ôn tập &amp; Thi thử Trực tuyến - HNUE</title>
+    <link rel="stylesheet" href="assets/quiz.css?v=8">
 </head>
 <body>
 
-    <header>
-        <div class="header-inner">
-            <img class="brand-logo" src="Logo/logoHNUE.png" alt="Logo HNUE">
-            <div class="header-copy">
-                <div class="header-eyebrow">Hệ thống học tập trực tuyến</div>
-                <h1>Cổng Ôn tập và Thi thử Trực tuyến</h1>
-                <p>Trường Đại học Sư phạm Hà Nội</p>
-            </div>
-            <img class="brand-logo" src="Logo/logoFIT.png" alt="Logo FIT">
-        </div>
-    </header>
+    <div id="navbar-root"></div>
 
     <main class="home-wrapper">
-        <div class="home-toolbar">
-            <div class="home-toolbar-info">
-                <h2>Danh mục học phần ôn tập</h2>
-                <p>Lựa chọn học phần bên dưới để luyện tập theo từng chương hoặc làm bài thi thử tổng hợp</p>
+        <section class="home-hero-banner">
+            <div class="home-hero-content">
+                <span class="home-hero-badge">Trường Đại học Sư phạm Hà Nội — Chuẩn mực • Sáng tạo • Tiên phong</span>
+                <h1>Xin chào, <span id="welcome-user-name">Học viên</span>!</h1>
+                <p>
+                    Chào mừng bạn đến với Cổng Ôn tập và Thi thử Trực tuyến. Lựa chọn học phần bên dưới để luyện tập theo từng chương có giải thích tức thì hoặc làm đề thi thử tổng hợp theo thời gian thực.
+                </p>
+                <div class="home-hero-actions">
+                    <button type="button" class="btn-hero-primary" onclick="openHistoryModal()">Xem lịch sử làm bài</button>
+                    <button type="button" class="btn-hero-secondary" onclick="QuizAuth.openProfileModal()">Hồ sơ cá nhân</button>
+                </div>
             </div>
-            <div class="home-toolbar-actions">
-                <span class="user-badge" id="user-display-badge">Tài khoản: Học viên</span>
-                <button type="button" class="btn-history" id="btn-open-history" onclick="openHistoryModal()">Lịch sử làm bài (0)</button>
-                <button type="button" class="btn-logout" onclick="QuizAuth.logout()">Đăng xuất</button>
+
+            <div class="home-hero-stats">
+                <div class="hero-stat-box">
+                    <span class="hero-stat-label">Tổng số lượt làm bài</span>
+                    <span class="hero-stat-value" id="hero-stat-count">0 bài</span>
+                </div>
+                <div class="hero-stat-box">
+                    <span class="hero-stat-label">Điểm trung bình tích lũy</span>
+                    <span class="hero-stat-value" id="hero-stat-avg">0.00 / 10</span>
+                </div>
+                <div class="hero-stat-box">
+                    <span class="hero-stat-label">Thành tích cao nhất</span>
+                    <span class="hero-stat-value" id="hero-stat-best">0.00 / 10</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="home-toolbar">
+            <div class="home-category-tabs" id="home-category-tabs">
+                <button type="button" class="cat-tab active" onclick="setCategoryFilter('all', this)">Tất cả học phần (6)</button>
+                <button type="button" class="cat-tab" onclick="setCategoryFilter('llct', this)">Khối Lý luận chính trị (4)</button>
+                <button type="button" class="cat-tab" onclick="setCategoryFilter('nvsp', this)">Khối Nghiệp vụ &amp; Chuyên ngành (2)</button>
+            </div>
+            <div class="home-search-box">
+                <input type="text" id="home-course-search" class="filter-search" placeholder="Tìm nhanh tên học phần..." oninput="renderCourseCatalog()">
             </div>
         </div>
 
-        <div class="home-container" id="course-list"></div>
+        <div id="course-catalog-sections"></div>
     </main>
 
     <footer class="site-footer">
-        Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội
+        Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội (136 Xuân Thủy, Cầu Giấy, Hà Nội)
     </footer>
 
     <div class="modal-overlay" id="history-modal">
@@ -83,89 +101,104 @@
         </div>
     </div>
 
-    <script src="assets/cloud-config.js?v=7"></script>
-    <script src="assets/auth.js?v=6"></script>
+    <script src="assets/cloud-config.js?v=8"></script>
+    <script src="assets/auth.js?v=8"></script>
     <script>
         const currentUser = QuizAuth.requireAuth();
-
-        const COURSES = [
-            {
-                id: 'tthcm',
-                href: 'tthcm.html',
-                meta: '6 chương • Đề 40 câu',
-                title: 'Tư tưởng Hồ Chí Minh',
-                desc: 'Hệ thống câu hỏi trắc nghiệm ôn tập theo 6 chương và bộ đề thi thử tổng hợp kết thúc học phần.'
-            },
-            {
-                id: 'ktct',
-                href: 'ktct.html',
-                meta: '6 chương • Đề 40 câu',
-                title: 'Kinh tế chính trị Mác - Lênin',
-                desc: 'Hệ thống câu hỏi ôn tập theo từng chương và đề thi thử mô phỏng 40 câu / 60 phút.'
-            },
-            {
-                id: 'cnxhkh',
-                href: 'cnxhkh.html',
-                meta: '7 chương • Đề 40 câu',
-                title: 'Chủ nghĩa xã hội khoa học',
-                desc: 'Hệ thống câu hỏi ôn tập theo 7 chương và đề thi thử mô phỏng 40 câu / 50 phút.'
-            },
-            {
-                id: 'lsd',
-                href: 'lsd.html',
-                meta: '4 chương • Đề 40 câu',
-                title: 'Lịch sử Đảng Cộng sản Việt Nam',
-                desc: 'Hệ thống câu hỏi ôn tập theo từng chương và đề thi thử mô phỏng 40 câu / 50 phút.'
-            },
-            {
-                id: 'hbhnue',
-                href: 'hbhnue.html',
-                meta: '5 chủ đề • Đề 20 câu',
-                title: 'Hiểu biết Sư phạm - HNUE',
-                desc: 'Ngân hàng trắc nghiệm kiến thức giáo dục, nghề giáo, chính sách pháp luật và văn hóa sư phạm.'
-            },
-            {
-                id: 'xdkhdh',
-                href: 'xdkhdh.html',
-                meta: '6 chủ đề • Đề 30 câu',
-                title: 'Xây dựng kế hoạch dạy học Tin học',
-                desc: 'Hệ thống trắc nghiệm GDPT 2018 theo nhóm học phần, đề thi chuẩn ma trận 3:4:3 (Nhận biết - Thông hiểu - Vận dụng).'
-            }
-        ];
+        let activeCategory = 'all';
 
         function escHtml(s) {
             return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
 
+        QuizAuth.mountNavbar('#navbar-root', {
+            activePageId: 'home',
+            onOpenHistory: openHistoryModal
+        });
+
         if (currentUser) {
-            document.getElementById('user-display-badge').textContent =
-                `Tài khoản: ${currentUser.displayName} (${currentUser.username})`;
+            document.getElementById('welcome-user-name').textContent = currentUser.displayName;
         }
 
+        const allCourses = QuizAuth.getAllCourses();
         const courseFilterEl = document.getElementById('history-course-filter');
-        COURSES.forEach(c => {
+        allCourses.forEach(c => {
             const opt = document.createElement('option');
             opt.value = c.id;
             opt.textContent = c.title;
             courseFilterEl.appendChild(opt);
         });
 
-        document.getElementById('course-list').innerHTML = COURSES.map(c => `
-            <a href="${c.href}" class="course-card">
-                <div class="card-body">
-                    <h2>${c.title}</h2>
-                    <p>${c.desc}</p>
-                </div>
-                <div class="card-footer">
-                    <span class="card-unit-count">${c.meta}</span>
-                    <span class="btn-enter">Vào học phần</span>
-                </div>
-            </a>
-        `).join('');
+        function setCategoryFilter(catId, btnEl) {
+            activeCategory = catId;
+            document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+            if (btnEl) btnEl.classList.add('active');
+            renderCourseCatalog();
+        }
 
-        function updateHistoryButtonCount() {
-            const all = QuizAuth.getHistory();
-            document.getElementById('btn-open-history').textContent = `Lịch sử làm bài (${all.length})`;
+        function renderCourseCatalog() {
+            const query = (document.getElementById('home-course-search').value || '').trim().toLowerCase();
+            const container = document.getElementById('course-catalog-sections');
+
+            const sectionsHtml = QuizAuth.COURSE_CATALOG.map(group => {
+                if (activeCategory !== 'all' && group.categoryId !== activeCategory) return '';
+
+                const filteredCourses = group.courses.filter(c => {
+                    if (!query) return true;
+                    return c.title.toLowerCase().includes(query) || c.desc.toLowerCase().includes(query);
+                });
+
+                if (filteredCourses.length === 0) return '';
+
+                const cardsHtml = filteredCourses.map(c => {
+                    const cHist = QuizAuth.getHistory(c.id);
+                    const attemptsCount = cHist.length;
+                    const bestScore = attemptsCount > 0
+                        ? Math.max(...cHist.map(i => parseFloat(i.score) || 0)).toFixed(2)
+                        : null;
+
+                    const progressTag = attemptsCount > 0
+                        ? `<span class="course-progress-pill practiced">Đã làm ${attemptsCount} bài • Cao nhất: ${bestScore}/10</span>`
+                        : `<span class="course-progress-pill">Chưa có bài làm</span>`;
+
+                    return `
+                        <div class="course-card">
+                            <div class="card-body">
+                                <div class="course-card-topline">
+                                    <span class="course-cat-tag">${escHtml(group.categoryShort)}</span>
+                                    ${progressTag}
+                                </div>
+                                <h2><a href="${c.href}" class="course-title-link">${escHtml(c.title)}</a></h2>
+                                <p>${escHtml(c.desc)}</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="card-unit-count">${escHtml(c.meta)}</span>
+                                <div class="topic-actions">
+                                    <a href="${c.href}?autoExam=1" class="btn-topic-practice" style="text-decoration:none;">Thi thử ngay</a>
+                                    <a href="${c.href}" class="btn-enter" style="text-decoration:none;">Vào học phần</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <section class="catalog-section">
+                        <div class="catalog-section-header">
+                            <div>
+                                <h2 class="catalog-section-title">${escHtml(group.categoryName)}</h2>
+                                <p class="catalog-section-desc">${escHtml(group.categoryDesc)}</p>
+                            </div>
+                            <span class="home-count-badge">${filteredCourses.length} học phần</span>
+                        </div>
+                        <div class="home-container">
+                            ${cardsHtml}
+                        </div>
+                    </section>
+                `;
+            }).join('');
+
+            container.innerHTML = sectionsHtml || '<div class="empty-state">Không tìm thấy học phần nào phù hợp với từ khóa tìm kiếm.</div>';
         }
 
         function openHistoryModal() {
@@ -232,17 +265,16 @@
         async function removeAttempt(attemptId) {
             if (!confirm('Bạn có chắc chắn muốn xóa kết quả bài làm này khỏi lịch sử?')) return;
             await QuizAuth.deleteAttempt(attemptId);
-            updateHistoryButtonCount();
+            QuizAuth.refreshNavbarHistoryCount();
+            renderCourseCatalog();
             renderHistoryList();
         }
 
-        document.addEventListener('click', e => {
-            if (e.target.id === 'history-modal') closeHistoryModal();
-        });
-
-        updateHistoryButtonCount();
+        QuizAuth.refreshNavbarHistoryCount();
+        renderCourseCatalog();
         QuizAuth.syncHistoryFromCloud().then(() => {
-            updateHistoryButtonCount();
+            QuizAuth.refreshNavbarHistoryCount();
+            renderCourseCatalog();
         });
     </script>
 </body>
