@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cổng Ôn tập &amp; Thi thử Trực tuyến - HNUE</title>
-    <link rel="stylesheet" href="assets/quiz.css?v=12">
+    <link rel="stylesheet" href="assets/quiz.css?v=13">
 </head>
 <body>
 
@@ -34,11 +34,7 @@
         </section>
 
         <div class="home-toolbar">
-            <div class="home-category-tabs" id="home-category-tabs">
-                <button type="button" class="cat-tab active" onclick="setCategoryFilter('all', this)">Tất cả học phần (7)</button>
-                <button type="button" class="cat-tab" onclick="setCategoryFilter('llct', this)">Khối Lý luận chính trị (4)</button>
-                <button type="button" class="cat-tab" onclick="setCategoryFilter('nvsp', this)">Khối Nghiệp vụ &amp; Chuyên ngành (3)</button>
-            </div>
+            <div class="home-category-tabs" id="home-category-tabs"></div>
             <div class="home-search-box">
                 <input type="text" id="home-course-search" class="filter-search" placeholder="Tìm nhanh học phần..." oninput="renderCourseCatalog()">
             </div>
@@ -51,76 +47,32 @@
         Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội
     </footer>
 
-    <div class="modal-overlay" id="history-modal">
-        <div class="modal-content modal-history">
-            <div class="history-modal-header">
-                <h3 id="history-modal-title">Lịch sử làm bài cá nhân</h3>
-                <button type="button" class="btn-exit-quiz" onclick="closeHistoryModal()">Đóng</button>
-            </div>
-
-            <div class="history-stats-grid">
-                <div class="history-stat-card">
-                    <div class="history-stat-label">Tổng số lượt làm bài</div>
-                    <div class="history-stat-val" id="hist-stat-count">0 bài</div>
-                </div>
-                <div class="history-stat-card">
-                    <div class="history-stat-label">Điểm trung bình</div>
-                    <div class="history-stat-val" id="hist-stat-avg">0.00 / 10</div>
-                </div>
-                <div class="history-stat-card">
-                    <div class="history-stat-label">Điểm cao nhất</div>
-                    <div class="history-stat-val" id="hist-stat-best">0.00 / 10</div>
-                </div>
-            </div>
-
-            <div class="history-filter-bar">
-                <div class="filter-group">
-                    <span class="filter-label">Học phần:</span>
-                    <select id="history-course-filter" class="filter-select" onchange="renderHistoryList()">
-                        <option value="all">Tất cả học phần</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <span class="filter-label">Chế độ:</span>
-                    <select id="history-mode-filter" class="filter-select" onchange="renderHistoryList()">
-                        <option value="all">Tất cả chế độ</option>
-                        <option value="test">Thi thử</option>
-                        <option value="practice">Luyện tập</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="history-list" id="history-list"></div>
-        </div>
-    </div>
-
-    <script src="assets/cloud-config.js?v=12"></script>
-    <script src="assets/auth.js?v=12"></script>
+    <script src="assets/cloud-config.js?v=13"></script>
+    <script src="assets/auth.js?v=13"></script>
     <script>
         const currentUser = QuizAuth.requireAuth();
+        const esc = QuizAuth.escHtml;
         let activeCategory = 'all';
 
-        function escHtml(s) {
-            return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        }
-
-        QuizAuth.mountNavbar('#navbar-root', {
-            activePageId: 'home',
-            onOpenHistory: openHistoryModal
-        });
+        QuizAuth.mountNavbar('#navbar-root', { activePageId: 'home' });
 
         if (currentUser) {
             document.getElementById('welcome-user-name').textContent = currentUser.displayName;
         }
 
-        const allCourses = QuizAuth.getAllCourses();
-        const courseFilterEl = document.getElementById('history-course-filter');
-        allCourses.forEach(c => {
-            const opt = document.createElement('option');
-            opt.value = c.id;
-            opt.textContent = c.title;
-            courseFilterEl.appendChild(opt);
-        });
+        function renderCategoryTabs() {
+            const totalCourses = QuizAuth.getAllCourses().length;
+            const tabs = [
+                { id: 'all', label: `Tất cả học phần (${totalCourses})` },
+                ...QuizAuth.COURSE_CATALOG.map(g => ({
+                    id: g.categoryId,
+                    label: `${g.categoryName} (${g.courses.length})`
+                }))
+            ];
+            document.getElementById('home-category-tabs').innerHTML = tabs.map(t => `
+                <button type="button" class="cat-tab${t.id === activeCategory ? ' active' : ''}" onclick="setCategoryFilter('${esc(t.id)}', this)">${esc(t.label)}</button>
+            `).join('');
+        }
 
         function setCategoryFilter(catId, btnEl) {
             activeCategory = catId;
@@ -146,11 +98,11 @@
                 const cardsHtml = filteredCourses.map(c => `
                     <a href="${c.href}" class="course-card">
                         <div class="card-body">
-                            <h2>${escHtml(c.title)}</h2>
-                            <p>${escHtml(c.desc)}</p>
+                            <h2>${esc(c.title)}</h2>
+                            <p>${esc(c.desc)}</p>
                         </div>
                         <div class="card-footer">
-                            <span class="card-unit-count">${escHtml(c.meta)}</span>
+                            <span class="card-unit-count">${esc(c.meta)}</span>
                             <span class="btn-enter">Vào học phần</span>
                         </div>
                     </a>
@@ -159,7 +111,7 @@
                 return `
                     <section class="catalog-section">
                         <div class="catalog-section-header">
-                            <h2 class="catalog-section-title">${escHtml(group.categoryName)}</h2>
+                            <h2 class="catalog-section-title">${esc(group.categoryName)}</h2>
                             <span class="home-count-badge">${filteredCourses.length} học phần</span>
                         </div>
                         <div class="home-container">
@@ -172,81 +124,10 @@
             container.innerHTML = sectionsHtml || '<div class="empty-state">Không tìm thấy học phần nào phù hợp với từ khóa tìm kiếm.</div>';
         }
 
-        function openHistoryModal() {
-            renderHistoryList();
-            document.getElementById('history-modal').style.display = 'flex';
-        }
-
-        function closeHistoryModal() {
-            document.getElementById('history-modal').style.display = 'none';
-        }
-
-        function renderHistoryList() {
-            const courseVal = document.getElementById('history-course-filter').value;
-            const modeVal = document.getElementById('history-mode-filter').value;
-            let list = QuizAuth.getHistory(courseVal);
-            if (modeVal !== 'all') {
-                list = list.filter(item => item.mode === modeVal);
-            }
-
-            const count = list.length;
-            const scores = list.map(i => parseFloat(i.score) || 0);
-            const avg = count > 0 ? (scores.reduce((a, b) => a + b, 0) / count).toFixed(2) : '0.00';
-            const best = count > 0 ? Math.max(...scores).toFixed(2) : '0.00';
-
-            document.getElementById('hist-stat-count').textContent = `${count} bài`;
-            document.getElementById('hist-stat-avg').textContent = `${avg} / 10`;
-            document.getElementById('hist-stat-best').textContent = `${best} / 10`;
-
-            const container = document.getElementById('history-list');
-            if (count === 0) {
-                container.innerHTML = '<div class="empty-state" style="padding: 32px 16px;">Chưa có lịch sử làm bài nào cho bộ lọc này.</div>';
-                return;
-            }
-
-            container.innerHTML = list.map(item => {
-                const modeLabel = item.mode === 'test' ? 'Thi thử' : 'Luyện tập';
-                const canReview = Array.isArray(item.records) && item.records.length > 0 && item.courseId;
-                return `
-                    <div class="history-item">
-                        <div class="history-item-main">
-                            <div class="history-item-title">${escHtml(item.title)}</div>
-                            <div class="history-item-sub">
-                                <span>Học phần: <strong>${escHtml(item.courseTitle || item.courseId)}</strong></span>
-                                <span>Chế độ: ${modeLabel}</span>
-                                <span>Đúng: ${item.correct}/${item.total} câu</span>
-                                <span>Thời gian: ${escHtml(item.timeSpent)}</span>
-                                <span>Nộp lúc: ${QuizAuth.formatDateTime(item.createdAt)}</span>
-                            </div>
-                        </div>
-                        <div class="history-item-right">
-                            <span class="history-score-badge">${escHtml(item.score)} / 10</span>
-                            ${canReview ? `<button type="button" class="btn-history-review" onclick="reviewAttempt('${escHtml(item.courseId)}', '${escHtml(item.id)}')">Xem lại chi tiết</button>` : ''}
-                            <button type="button" class="btn-history-del" onclick="removeAttempt('${escHtml(item.id)}')">Xóa</button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function reviewAttempt(courseId, attemptId) {
-            window.location.href = `${courseId}.html?review=${encodeURIComponent(attemptId)}`;
-        }
-
-        async function removeAttempt(attemptId) {
-            if (!confirm('Bạn có chắc chắn muốn xóa kết quả bài làm này khỏi lịch sử?')) return;
-            await QuizAuth.deleteAttempt(attemptId);
-            QuizAuth.refreshNavbarHistoryCount();
-            renderCourseCatalog();
-            renderHistoryList();
-        }
-
+        renderCategoryTabs();
         QuizAuth.refreshNavbarHistoryCount();
         renderCourseCatalog();
-        QuizAuth.syncHistoryFromCloud().then(() => {
-            QuizAuth.refreshNavbarHistoryCount();
-            renderCourseCatalog();
-        });
+        QuizAuth.syncHistoryFromCloud();
     </script>
 </body>
 </html>
