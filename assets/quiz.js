@@ -58,6 +58,11 @@
         return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
     }
 
+    function stripOptionLabel(text) {
+        if (!text) return '';
+        return String(text).replace(/^[A-Da-d][\.\:\)]\s*/, '').trim();
+    }
+
     function shuffle(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {
@@ -128,12 +133,13 @@
         $('app').innerHTML = `
     <header>
         <div class="course-header-inner">
-            <a href="home.html" class="back-home">Trang chủ</a>
+            <a href="home.html" class="back-home">Danh mục học phần</a>
             <div class="header-copy">
+                <div class="header-eyebrow">Trường Đại học Sư phạm Hà Nội</div>
                 <h1>${C.title}</h1>
                 <div class="brand-subtitle">${SUBTITLE}</div>
             </div>
-            <div class="course-header-spacer"></div>
+            <div class="course-header-meta">Đề chuẩn: ${EXAM.total} câu / ${EXAM.minutes} phút</div>
         </div>
     </header>
 
@@ -141,11 +147,17 @@
         <div id="topics-view" class="content-container">
             <div class="exam-banner-card">
                 <div class="exam-banner-info">
+                    <span class="exam-banner-eyebrow">Đề thi thử tổng hợp</span>
                     <h2>${EXAM.title}</h2>
                     <p>${bannerDesc}</p>
+                    <div class="exam-banner-specs">
+                        <span class="exam-spec-pill">Số lượng: ${EXAM.total} câu hỏi</span>
+                        <span class="exam-spec-pill">Thời gian: ${EXAM.minutes} phút</span>
+                        <span class="exam-spec-pill">Chấm điểm: Thang điểm 10</span>
+                    </div>
                 </div>
                 <div>
-                    <button class="btn-exam-start" onclick="Quiz.promptExam()">Vào thi thử (${EXAM.minutes} phút - ${EXAM.total} câu)</button>
+                    <button class="btn-exam-start" onclick="Quiz.promptExam()">Bắt đầu thi thử</button>
                 </div>
             </div>
 
@@ -153,7 +165,7 @@
                 <div class="filters-row">
                     ${FILTERS.map(filterHtml).join('')}
                     <div class="filter-group filter-group-search">
-                        <input type="text" id="search-input" class="filter-search" placeholder="Tìm kiếm theo từ khóa..." oninput="Quiz.applyFilters()">
+                        <input type="text" id="search-input" class="filter-search" placeholder="Tìm kiếm nội dung chủ đề..." oninput="Quiz.applyFilters()">
                     </div>
                     <div class="filter-counter" id="filter-counter"></div>
                 </div>
@@ -165,20 +177,27 @@
         <div id="quiz-section">
             <div class="quiz-topbar">
                 <div class="topbar-left">
+                    <span class="quiz-mode-badge" id="quiz-mode-badge">Luyện tập</span>
                     <span id="quiz-topic-title" class="quiz-topic-heading"></span>
                 </div>
                 <div class="topbar-right">
                     <span class="badge-timer" id="quiz-timer" style="display: none;">00:00</span>
-                    <button class="btn-exit-quiz" onclick="Quiz.exit()">Thoát</button>
+                    <button class="btn-exit-quiz" onclick="Quiz.exit()">Thoát bài làm</button>
                 </div>
             </div>
 
             <div class="quiz-layout">
                 <div class="quiz-main-column">
                     <div class="question-card">
+                        <div class="q-progress-track">
+                            <div class="q-progress-fill" id="q-progress-fill"></div>
+                        </div>
                         <div class="q-meta">
-                            <span class="q-index" id="q-index-text"></span>
-                            <button class="btn-flag" id="btn-flag" onclick="Quiz.toggleFlag()">Đặt cờ</button>
+                            <div class="q-meta-left">
+                                <span class="q-index" id="q-index-text"></span>
+                                <span class="q-tag-meta" id="q-tag-meta" style="display: none;"></span>
+                            </div>
+                            <button class="btn-flag" id="btn-flag" onclick="Quiz.toggleFlag()">Đặt cờ xem lại</button>
                         </div>
                         <div class="q-text" id="q-text"></div>
                         <div class="options-list" id="options-list"></div>
@@ -193,7 +212,7 @@
 
                 <div class="quiz-side-column">
                     <div class="side-header">
-                        <div class="side-title">Danh sách câu hỏi</div>
+                        <div class="side-title">Bảng câu hỏi</div>
                         <div class="side-progress" id="side-progress"></div>
                     </div>
                     <div class="review-filter-bar" id="review-filters" style="display: none;">
@@ -206,12 +225,16 @@
                     <div class="side-legend">
                         <div class="legend-row"><div class="legend-dot" style="background: #eff6ff; border: 1px solid #93c5fd;"></div><span>Đã chọn đáp án</span></div>
                         <div class="legend-row"><div class="legend-dot" style="background: #ffffff; border: 1px solid #cbd5e1;"></div><span>Chưa trả lời</span></div>
-                        <div class="legend-row"><div class="legend-dot" style="background: var(--warning);"></div><span>Đã đặt cờ xem lại</span></div>
+                        <div class="legend-row"><div class="legend-dot" style="background: #f59e0b;"></div><span>Đã đặt cờ xem lại</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer class="site-footer">
+        Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội
+    </footer>
 
     <div class="modal-overlay" id="start-modal">
         <div class="modal-content">
@@ -219,7 +242,7 @@
             <p class="modal-desc" id="start-modal-desc"></p>
             <div class="modal-actions">
                 <button class="btn-modal-primary" id="btn-start-action" onclick="Quiz.confirmStart()">Bắt đầu làm bài</button>
-                <button class="btn-modal-secondary" onclick="Quiz.closeModal('start-modal')">Đóng</button>
+                <button class="btn-modal-secondary" onclick="Quiz.closeModal('start-modal')">Hủy bỏ</button>
             </div>
         </div>
     </div>
@@ -229,10 +252,10 @@
             <h3 class="modal-title">Kết quả bài làm</h3>
             <div class="modal-score" id="res-score"></div>
             <div class="modal-stats">
-                <div class="modal-stats-row"><span>Số câu đúng:</span><span class="modal-stats-val" id="res-correct" style="color: var(--success);"></span></div>
-                <div class="modal-stats-row"><span>Số câu làm sai / bỏ qua:</span><span class="modal-stats-val" id="res-incorrect" style="color: var(--danger);"></span></div>
+                <div class="modal-stats-row"><span>Số câu trả lời đúng:</span><span class="modal-stats-val" id="res-correct" style="color: var(--success);"></span></div>
+                <div class="modal-stats-row"><span>Số câu sai / chưa làm:</span><span class="modal-stats-val" id="res-incorrect" style="color: var(--danger);"></span></div>
                 <div class="modal-stats-row"><span>Tổng số câu hỏi:</span><span class="modal-stats-val" id="res-total"></span></div>
-                <div class="modal-stats-row"><span>Thời gian làm bài:</span><span class="modal-stats-val" id="res-time"></span></div>
+                <div class="modal-stats-row"><span>Thời gian hoàn thành:</span><span class="modal-stats-val" id="res-time"></span></div>
                 ${C.levelStats ? `
                 <div class="level-stats-box">
                     <div class="level-stat-col"><div class="level-stat-label">Nhận biết (NB)</div><div class="level-stat-value" id="res-NB"></div></div>
@@ -241,9 +264,9 @@
                 </div>` : ''}
             </div>
             <div class="modal-actions">
-                <button class="btn-modal-primary" onclick="Quiz.enterReview()">Xem lại toàn bộ bài làm</button>
-                <button class="btn-modal-secondary" onclick="Quiz.restart()">Làm lại bài này</button>
-                <button class="btn-modal-secondary" onclick="Quiz.toTopics()">Về danh sách chủ đề</button>
+                <button class="btn-modal-primary" onclick="Quiz.enterReview()">Xem lại chi tiết bài làm</button>
+                <button class="btn-modal-secondary" onclick="Quiz.restart()">Làm lại đề này</button>
+                <button class="btn-modal-secondary" onclick="Quiz.toTopics()">Về danh sách ${UNIT}</button>
             </div>
         </div>
     </div>`;
@@ -262,7 +285,7 @@
         const strictCount = hasActiveQuestionFilter(vals);
         let visible = 0, total = 0;
 
-        const html = TOPICS.map(topic => {
+        const html = TOPICS.map((topic, index) => {
             if (!topicVisible(topic, vals)) return '';
             if (search && !topic.title.toLowerCase().includes(search) && !topic.desc.toLowerCase().includes(search)) return '';
 
@@ -272,14 +295,22 @@
             visible++;
             total += qs.length;
 
+            const unitTag = topic.chapter
+                ? `Chương ${String(topic.chapter).replace(/^c/i, '')}`
+                : `${UNIT_CAP} ${pad(index + 1)}`;
+
             return `
                 <div class="topic-card">
                     <div>
+                        <div class="card-meta-row">
+                            <span class="card-tag">${esc(unitTag)}</span>
+                            <span class="card-spec">${qs.length} câu hỏi</span>
+                        </div>
                         <h3 class="topic-title">${topic.title}</h3>
                         <p class="topic-desc">${topic.desc}</p>
                     </div>
                     <div class="topic-footer">
-                        <span class="topic-count">${qs.length} câu hỏi</span>
+                        <span class="topic-count">Thời lượng thi: ${TOPIC_MINUTES(qs.length)} phút</span>
                         <div class="topic-actions">
                             <button class="btn-topic-practice" onclick="Quiz.promptTopic('${topic.id}', 'practice')">Luyện tập</button>
                             <button class="btn-topic-test" onclick="Quiz.promptTopic('${topic.id}', 'test')">Thi thử</button>
@@ -289,7 +320,7 @@
         }).join('');
 
         $('topics-grid').innerHTML = html ||
-            '<div class="empty-state">Không tìm thấy chủ đề phù hợp với bộ lọc hiện tại.</div>';
+            '<div class="empty-state">Chưa có câu hỏi hoặc chủ đề phù hợp với điều kiện lọc hiện tại.</div>';
         $('filter-counter').textContent = `Hiển thị ${visible} ${UNIT} (${total} câu hỏi)`;
     }
 
@@ -311,7 +342,7 @@
             if (graded.length > 0) qs = graded;
         }
         if (qs.length === 0) {
-            alert('Không có câu hỏi phù hợp cho mục này theo bộ lọc hiện tại.');
+            alert('Chưa có câu hỏi trong mục này theo bộ lọc hiện tại.');
             return;
         }
 
@@ -321,13 +352,13 @@
         if (selectedMode === 'practice') {
             openStartModal(
                 topic.title,
-                `${UNIT_CAP} gồm ${qs.length} câu hỏi. Bạn có thể kiểm tra đáp án và giải thích ngay sau mỗi câu trả lời.`,
-                'Bắt đầu làm bài');
+                `${UNIT_CAP} gồm ${qs.length} câu hỏi. Chế độ luyện tập không giới hạn thời gian và hiển thị đáp án ngay sau mỗi câu trả lời.`,
+                'Bắt đầu luyện tập');
         } else {
             openStartModal(
                 topic.title,
-                `${UNIT_CAP} gồm ${qs.length} câu hỏi. Thời gian làm bài ${minutes} phút. Điểm số và kết quả sẽ hiển thị sau khi nộp bài.`,
-                'Bắt đầu thi');
+                `${UNIT_CAP} gồm ${qs.length} câu hỏi. Thời gian làm bài ${minutes} phút, hệ thống chấm điểm theo thang điểm 10 sau khi nộp bài.`,
+                'Bắt đầu làm bài thi');
         }
     }
 
@@ -347,7 +378,7 @@
         const vals = filterValues();
         const pool = examPool(vals);
         if (pool.length === 0) {
-            alert('Chưa có câu hỏi trong ngân hàng đề thi thử.');
+            alert('Chưa có dữ liệu câu hỏi trong ngân hàng đề thi thử của học phần này.');
             return;
         }
         const suffix = (EXAM.poolFilters || []).map(id => vals[id]).filter(v => v && v !== 'all');
@@ -385,6 +416,7 @@
         show('review-filters', 'none');
         show('btn-submit', 'inline-block');
         $('btn-submit').textContent = 'Nộp bài';
+        $('quiz-mode-badge').textContent = mode === 'test' ? 'Thi thử' : 'Luyện tập';
         $('quiz-topic-title').textContent = cfg.title;
 
         const badge = $('quiz-timer');
@@ -432,6 +464,15 @@
         const topic = TOPICS.find(t => t.id === q.category);
 
         $('q-index-text').textContent = `Câu ${i + 1} / ${quiz.length}`;
+        const tagMeta = $('q-tag-meta');
+        const metaParts = [q.levelName, q.group].filter(Boolean);
+        if (metaParts.length > 0) {
+            tagMeta.textContent = metaParts.join(' • ');
+            tagMeta.style.display = 'inline-block';
+        } else {
+            tagMeta.style.display = 'none';
+        }
+
         const cleanText = stripSourcePrefix(q.question);
         const imgHtml = q.image
             ? `<div class="q-image-wrap"><img class="q-image" src="${q.image}" alt="Hình minh họa câu hỏi"></div>`
@@ -440,7 +481,7 @@
 
         const flagBtn = $('btn-flag');
         flagBtn.classList.toggle('active', flags[i]);
-        flagBtn.textContent = flags[i] ? 'Bỏ cờ' : 'Đặt cờ';
+        flagBtn.textContent = flags[i] ? 'Bỏ cờ đánh dấu' : 'Đặt cờ xem lại';
 
         const answered = answers[i] !== null;
         const verified = isGraded(q);
@@ -450,30 +491,33 @@
         $('options-list').innerHTML = q.options.map((text, k) => {
             const selected = answers[i] === k;
             let cl = 'option-item' + (selected ? ' selected' : '');
+            if (locked) cl += ' locked';
             if (revealed) {
-                cl += ' locked';
                 if (k === q.correctIndex) cl += ' correct';
                 else if (selected) cl += ' incorrect';
             }
+            const letter = 'ABCD'[k] || String(k + 1);
+            const body = stripOptionLabel(text);
             return `
-                <label class="${cl}" onclick="Quiz.select(${k})">
-                    <input type="radio" name="q_opt" value="${k}" ${selected ? 'checked' : ''} ${locked ? 'disabled' : ''}>
-                    <span>${esc(text)}</span>
-                </label>`;
+                <div class="${cl}" onclick="Quiz.select(${k})">
+                    <span class="option-letter">${letter}</span>
+                    <span class="option-content">${esc(body)}</span>
+                </div>`;
         }).join('');
 
         const fb = $('practice-feedback');
+        fb.classList.remove('is-correct', 'is-incorrect');
         if (!verified) {
             fb.classList.add('show');
             fb.innerHTML = `<div style="color: var(--text-muted); font-size: 0.88rem;">${C.unverifiedNote ? C.unverifiedNote(q) : 'Câu hỏi chưa có đáp án xác định.'}</div>`;
         } else if (revealed) {
             const ok = answers[i] === q.correctIndex;
-            fb.classList.add('show');
+            fb.classList.add('show', ok ? 'is-correct' : 'is-incorrect');
             fb.innerHTML = `
-                <div style="font-weight: 600; color: ${ok ? 'var(--success)' : 'var(--danger)'}; margin-bottom: 4px;">
-                    ${ok ? 'Chính xác!' : 'Chưa chính xác.'} Đáp án đúng: ${'ABCD'[q.correctIndex]}
+                <div style="font-weight: 700; color: ${ok ? 'var(--success)' : 'var(--danger)'}; margin-bottom: 4px;">
+                    ${ok ? 'Chính xác!' : 'Chưa chính xác.'} Phương án đúng: ${'ABCD'[q.correctIndex]}
                 </div>
-                <div style="color: var(--text-muted); font-size: 0.85rem;">${FEEDBACK_INFO(q, topic)}</div>`;
+                <div style="color: var(--text-secondary); font-size: 0.84rem;">${FEEDBACK_INFO(q, topic)}</div>`;
         } else {
             fb.classList.remove('show');
         }
@@ -505,7 +549,11 @@
     function renderPalette() {
         const answeredCount = answers.filter(a => a !== null).length;
         const progEl = $('side-progress');
-        if (progEl) progEl.textContent = `${answeredCount}/${quiz.length} đã chọn`;
+        if (progEl) progEl.textContent = `Đã chọn: ${answeredCount}/${quiz.length}`;
+        const fillEl = $('q-progress-fill');
+        if (fillEl && quiz.length > 0) {
+            fillEl.style.width = `${Math.round((answeredCount / quiz.length) * 100)}%`;
+        }
 
         let html = '';
         quiz.forEach((q, i) => {
@@ -553,11 +601,11 @@
         const total = graded > 0 ? graded : quiz.length;
         const score = total > 0 ? ((correct / total) * 10).toFixed(2) : 0;
 
-        $('res-score').textContent = `${score} Điểm`;
+        $('res-score').textContent = `${score} / 10`;
         $('res-correct').textContent = `${correct} câu`;
         $('res-incorrect').textContent = `${total - correct} câu`;
         $('res-total').textContent = `${quiz.length} câu`;
-        $('res-time').textContent = mode === 'test' && initial > 0 ? fmtTime(initial - remaining) : 'Không tính giờ';
+        $('res-time').textContent = mode === 'test' && initial > 0 ? fmtTime(initial - remaining) : 'Không giới hạn';
         if (C.levelStats) {
             Object.entries(levels).forEach(([k, [c, t]]) => { $('res-' + k).textContent = `${c} / ${t}`; });
         }
@@ -569,6 +617,7 @@
         reviewing = true;
         show('quiz-timer', 'none');
         show('review-filters', 'flex');
+        $('quiz-mode-badge').textContent = 'Xem lại bài làm';
         $('btn-submit').textContent = 'Trở về danh sách';
         loadQuestion(0);
     }
@@ -585,6 +634,7 @@
         answers = new Array(quiz.length).fill(null);
         flags = new Array(quiz.length).fill(false);
         reviewing = false;
+        $('quiz-mode-badge').textContent = mode === 'test' ? 'Thi thử' : 'Luyện tập';
         if (mode === 'test' && initial > 0) {
             remaining = initial;
             startTimer();

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cổng Ôn tập Trực tuyến - HNUE</title>
-    <link rel="stylesheet" href="assets/quiz.css?v=2">
+    <link rel="stylesheet" href="assets/quiz.css?v=4">
 </head>
 <body>
 
@@ -12,16 +12,32 @@
         <div class="header-inner">
             <img class="brand-logo" src="Logo/logoHNUE.png" alt="Logo HNUE">
             <div class="header-copy">
-                <h1>Cổng Ôn tập Trực tuyến</h1>
-                <p>Đại học Sư phạm Hà Nội</p>
+                <div class="header-eyebrow">Hệ thống học tập trực tuyến</div>
+                <h1>Cổng Ôn tập và Thi thử Trực tuyến</h1>
+                <p>Trường Đại học Sư phạm Hà Nội</p>
             </div>
             <img class="brand-logo" src="Logo/logoFIT.png" alt="Logo FIT">
         </div>
     </header>
 
-    <div class="home-container" id="course-list"></div>
+    <main class="home-wrapper">
+        <div class="home-toolbar">
+            <div class="home-toolbar-info">
+                <h2>Danh mục học phần ôn tập</h2>
+                <p>Lựa chọn học phần bên dưới để luyện tập theo từng chương hoặc làm bài thi thử tổng hợp</p>
+            </div>
+            <div class="home-toolbar-actions">
+                <span class="home-count-badge" id="course-total-badge">6 học phần</span>
+                <button class="btn-logout" onclick="handleLogout()">Đăng xuất tài khoản</button>
+            </div>
+        </div>
 
-    <button class="btn-logout" onclick="handleLogout()">Đăng xuất tài khoản</button>
+        <div class="home-container" id="course-list"></div>
+    </main>
+
+    <footer class="site-footer">
+        Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội
+    </footer>
 
     <script>
         if (localStorage.getItem('isLoggedIn') !== 'true') {
@@ -31,43 +47,67 @@
         const COURSES = [
             {
                 href: 'tthcm.html',
+                category: 'Lý luận chính trị',
+                spec: 'Đề thi: 40 câu / 60 phút',
+                units: '6 chương ôn tập',
                 title: 'Tư tưởng Hồ Chí Minh',
                 desc: 'Hệ thống câu hỏi trắc nghiệm ôn tập theo 6 chương và bộ đề thi thử tổng hợp kết thúc học phần.'
             },
             {
                 href: 'ktct.html',
+                category: 'Lý luận chính trị',
+                spec: 'Đề thi: 40 câu / 60 phút',
+                units: '6 chương ôn tập',
                 title: 'Kinh tế chính trị Mác - Lênin',
-                desc: 'Hệ thống câu hỏi ôn tập theo từng chương và đề thi thử mô phỏng 40 câu / 60 phút.'
+                desc: 'Hệ thống câu hỏi ôn tập theo từng chương và đề thi thử mô phỏng chuẩn cấu trúc kết thúc học phần.'
             },
             {
                 href: 'cnxhkh.html',
+                category: 'Lý luận chính trị',
+                spec: 'Đề thi: 40 câu / 50 phút',
+                units: '7 chương ôn tập',
                 title: 'Chủ nghĩa xã hội khoa học',
-                desc: 'Hệ thống câu hỏi ôn tập theo 7 chương và đề thi thử mô phỏng 40 câu / 50 phút.'
+                desc: 'Hệ thống câu hỏi ôn tập theo 7 chương và đề thi thử mô phỏng chuẩn cấu trúc kết thúc học phần.'
             },
             {
                 href: 'lsd.html',
+                category: 'Lý luận chính trị',
+                spec: 'Đề thi: 40 câu / 50 phút',
+                units: '4 chương ôn tập',
                 title: 'Lịch sử Đảng Cộng sản Việt Nam',
-                desc: 'Hệ thống câu hỏi ôn tập theo từng chương và đề thi thử mô phỏng 40 câu / 50 phút.'
+                desc: 'Hệ thống câu hỏi ôn tập theo từng chương và đề thi thử mô phỏng chuẩn cấu trúc kết thúc học phần.'
             },
             {
                 href: 'hbhnue.html',
+                category: 'Nghiệp vụ sư phạm',
+                spec: 'Đề thi: 20 câu / 10 phút',
+                units: '5 chủ đề ôn tập',
                 title: 'Hiểu biết Sư phạm - HNUE',
-                desc: 'Ngân hàng trắc nghiệm kiến thức giáo dục, nghề giáo, chính sách và văn hóa sư phạm. Đề thi chuẩn 20 câu / 10 phút.'
+                desc: 'Ngân hàng trắc nghiệm kiến thức giáo dục, nghề giáo, chính sách pháp luật và văn hóa sư phạm.'
             },
             {
                 href: 'xdkhdh.html',
+                category: 'Phương pháp dạy học',
+                spec: 'Đề thi: 30 câu / 40 phút',
+                units: '6 chủ đề ôn tập',
                 title: 'Xây dựng kế hoạch dạy học Tin học',
-                desc: 'Hệ thống trắc nghiệm GDPT 2018 theo nhóm. Đề thi chuẩn 30 câu / 40 phút theo ma trận 3:4:3 (Nhận biết - Thông hiểu - Vận dụng).'
+                desc: 'Hệ thống trắc nghiệm GDPT 2018 theo nhóm học phần, đề thi chuẩn ma trận 3:4:3 (Nhận biết - Thông hiểu - Vận dụng).'
             }
         ];
 
+        document.getElementById('course-total-badge').textContent = `${COURSES.length} học phần`;
         document.getElementById('course-list').innerHTML = COURSES.map(c => `
             <a href="${c.href}" class="course-card">
                 <div class="card-body">
+                    <div class="card-meta-row">
+                        <span class="card-tag">${c.category}</span>
+                        <span class="card-spec">${c.spec}</span>
+                    </div>
                     <h2>${c.title}</h2>
                     <p>${c.desc}</p>
                 </div>
                 <div class="card-footer">
+                    <span class="card-unit-count">${c.units}</span>
                     <span class="btn-enter">Vào học phần</span>
                 </div>
             </a>
