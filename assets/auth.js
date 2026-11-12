@@ -68,7 +68,7 @@
                     meta: '5 chủ đề • Đề 20 câu',
                     examSpec: '20 câu / 10 phút',
                     title: 'Hiểu biết Sư phạm - HNUE',
-                    desc: 'Ngân hàng trắc nghiệm kiến thức giáo dục, nghề giáo, chính sách pháp luật và văn hóa sư phạm.'
+                    desc: 'Tìm hiểu kiến thức về giáo dục, nghề giáo, đạo đức nhà giáo, chính sách pháp luật và truyền thống văn hóa sư phạm.'
                 },
                 {
                     id: 'xdkhdh',
@@ -76,7 +76,7 @@
                     meta: '6 chủ đề • Đề 30 câu',
                     examSpec: '30 câu / 40 phút',
                     title: 'Xây dựng kế hoạch dạy học Tin học',
-                    desc: 'Hệ thống trắc nghiệm GDPT 2018 theo nhóm học phần, đề thi chuẩn ma trận 3:4:3 (Nhận biết - Thông hiểu - Vận dụng).'
+                    desc: 'Tìm hiểu nguyên tắc, quy trình thiết kế kế hoạch dạy học môn Tin học theo Chương trình GDPT 2018 và định hướng phát triển năng lực học sinh.'
                 },
                 {
                     id: 'dggd',
@@ -84,7 +84,7 @@
                     meta: '5 chủ đề • Đề 40 câu',
                     examSpec: '40 câu / 50 phút',
                     title: 'Đánh giá trong giáo dục',
-                    desc: 'Hệ thống 229 câu hỏi trắc nghiệm theo 5 chủ đề: Đo lường, Đánh giá năng lực, Thông tư 22 & 27, Xây dựng công cụ và Kế hoạch KTĐG.'
+                    desc: 'Nghiên cứu các nguyên tắc, phương pháp, công cụ kiểm tra đánh giá và cách vận dụng trong đo lường kết quả học tập, phát triển năng lực học sinh.'
                 }
             ]
         }
