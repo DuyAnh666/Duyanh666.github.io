@@ -601,7 +601,6 @@
                 <a href="home.html" class="navbar-brand">
                     <div class="navbar-logos">
                         <img class="navbar-logo" src="Logo/logoHNUE.png" alt="Logo HNUE">
-                        <img class="navbar-logo" src="Logo/logoFIT.png" alt="Logo FIT">
                     </div>
                     <div class="navbar-brand-text">
                         <span class="navbar-eyebrow">Đại học Sư phạm Hà Nội</span>
