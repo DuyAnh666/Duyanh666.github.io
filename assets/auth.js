@@ -30,7 +30,7 @@
                     meta: '6 chương • Đề 40 câu',
                     examSpec: '40 câu / 60 phút',
                     title: 'Tư tưởng Hồ Chí Minh',
-                    desc: 'Hệ thống câu hỏi trắc nghiệm ôn tập theo 6 chương và bộ đề thi thử tổng hợp kết thúc học phần.'
+                    desc: 'Tìm hiểu hệ thống quan điểm của Hồ Chí Minh về cách mạng Việt Nam, độc lập dân tộc, chủ nghĩa xã hội, đạo đức và con người.'
                 },
                 {
                     id: 'ktct',
@@ -38,7 +38,7 @@
                     meta: '6 chương • Đề 40 câu',
                     examSpec: '40 câu / 60 phút',
                     title: 'Kinh tế chính trị Mác - Lênin',
-                    desc: 'Hệ thống 950 câu hỏi gồm 2 bộ đề độc lập (Bộ câu hỏi 1 và Bộ câu hỏi 2) theo 6 chương và đề thi thử 40 câu / 60 phút.'
+                    desc: 'Nghiên cứu các quy luật kinh tế, quan hệ sản xuất, giá trị thặng dư và sự vận động của nền kinh tế thị trường.'
                 },
                 {
                     id: 'cnxhkh',
@@ -46,7 +46,7 @@
                     meta: '7 chương • Đề 40 câu',
                     examSpec: '40 câu / 50 phút',
                     title: 'Chủ nghĩa xã hội khoa học',
-                    desc: 'Hệ thống câu hỏi ôn tập theo 7 chương và đề thi thử mô phỏng 40 câu / 50 phút.'
+                    desc: 'Tìm hiểu những nguyên lý cơ bản về chủ nghĩa xã hội, giai cấp công nhân và quá trình xây dựng xã hội xã hội chủ nghĩa.'
                 },
                 {
                     id: 'lsd',
@@ -54,7 +54,7 @@
                     meta: '4 chương • Đề 40 câu',
                     examSpec: '40 câu / 50 phút',
                     title: 'Lịch sử Đảng Cộng sản Việt Nam',
-                    desc: 'Hệ thống câu hỏi ôn tập theo từng chương và đề thi thử mô phỏng 40 câu / 50 phút.'
+                    desc: 'Khái quát quá trình ra đời, lãnh đạo cách mạng và những dấu mốc lịch sử quan trọng của Đảng Cộng sản Việt Nam.'
                 }
             ]
         },
