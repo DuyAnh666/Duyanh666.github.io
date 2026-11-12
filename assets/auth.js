@@ -16,16 +16,7 @@
     const STORAGE_HISTORY_PREFIX = 'hnue_history_v1_';
 
     const DEFAULT_ACCOUNTS = [
-        { user: 'admin', displayName: 'Quản trị viên', passHash: '14aeb4dxZ', role: 'Quản trị viên' },
-        { user: 'duyanh', displayName: 'Duy Anh', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' },
-        { user: 'nghung', displayName: 'Nguyễn Hùng', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' },
-        { user: 'nhuhoa', displayName: 'Như Hoa', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' },
-        { user: 'quynhhoa', displayName: 'Quỳnh Hoa', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' },
-        { user: 'ngochung', displayName: 'Ngọc Hưng', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' },
-        { user: 'hnue1', displayName: 'Sinh viên HNUE 1', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' },
-        { user: 'hnue2', displayName: 'Sinh viên HNUE 2', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' },
-        { user: 'hnue3', displayName: 'Sinh viên HNUE 3', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' },
-        { user: 'hnue4', displayName: 'Sinh viên HNUE 4', passHash: 'd9833136xZ', role: 'Sinh viên HNUE' }
+        { user: 'admin', displayName: 'Quản trị viên', passHash: '14aeb4dxZ', role: 'Quản trị viên' }
     ];
 
     const COURSE_CATALOG = [
@@ -1189,7 +1180,7 @@
         const historiesMap = {};
 
         // 1. Seed with local users & histories as fallback
-        const localUsers = getLocalUsersMap();
+        const localUsers = getLocalCustomUsers();
         Object.keys(localUsers).forEach(u => {
             usersMap[u] = localUsers[u];
             const h = getLocalHistory(u);
@@ -1199,7 +1190,8 @@
         });
 
         // 2. Fetch full cloud database snapshot if Firebase is configured
-        const fbBase = cleanFirebaseUrl();
+        const cfg = window.CLOUD_CONFIG || {};
+        const fbBase = (cfg.firebaseDatabaseURL || '').trim().replace(/\/+$/, '');
         if (fbBase) {
             try {
                 const res = await fetch(`${fbBase}/.json`);
