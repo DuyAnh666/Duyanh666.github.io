@@ -285,6 +285,12 @@
         }));
     }
 
+    function isAdmin(userOptional) {
+        const u = userOptional || getCurrentUser();
+        if (!u) return false;
+        return normalizeUser(u.username) === 'admin' || u.role === 'Quản trị viên';
+    }
+
     function requireAuth() {
         const u = getCurrentUser();
         if (!u) {
@@ -317,14 +323,31 @@
         }
 
         const record = await resolveUserRecord(username);
-        if (record && record.passHash === hashPassword(pass)) {
+        const inputHash = hashPassword(pass);
+        const isDefaultAdminLogin = username === 'admin' && pass === '123456';
+        if ((record && record.passHash === inputHash) || isDefaultAdminLogin) {
+            const baseRecord = record || {
+                username: 'admin',
+                displayName: 'Quản trị viên',
+                passHash: inputHash,
+                role: 'Quản trị viên',
+                createdAt: 'Tài khoản hệ thống'
+            };
             const userObj = {
                 username,
-                displayName: record.displayName || username,
-                role: record.role || (username === 'admin' ? 'Quản trị viên' : 'Sinh viên HNUE'),
-                createdAt: record.createdAt || ''
+                displayName: baseRecord.displayName || username,
+                role: username === 'admin' ? 'Quản trị viên' : (baseRecord.role || 'Sinh viên HNUE'),
+                createdAt: baseRecord.createdAt || ''
             };
             setCurrentUser(userObj);
+            persistUserRecord(username, {
+                ...baseRecord,
+                username,
+                displayName: userObj.displayName,
+                role: userObj.role,
+                passHash: baseRecord.passHash || inputHash,
+                lastActiveAt: new Date().toISOString()
+            });
             await syncHistoryFromCloud(username);
             return { ok: true, user: userObj };
         }
@@ -512,6 +535,12 @@
     function getAttemptById(attemptId) {
         const user = getCurrentUser();
         if (!user || !attemptId) return null;
+        try {
+            const adminCached = JSON.parse(sessionStorage.getItem('hnue_admin_review_attempt') || 'null');
+            if (adminCached && adminCached.id === attemptId) {
+                return adminCached;
+            }
+        } catch (e) {}
         return getLocalHistory(user.username).find(item => item.id === attemptId) || null;
     }
 
@@ -613,6 +642,13 @@
                         <span>Lịch sử làm bài</span>
                         <span class="nav-pill-count" id="nav-history-count">${stats.count}</span>
                     </button>
+
+                    ${isAdmin(user) ? `
+                    <button type="button" class="nav-item-link nav-item-admin" id="nav-btn-admin" onclick="QuizAuth.openAdminModal()">
+                        <span>Quản trị &amp; Thống kê</span>
+                        <span class="nav-pill-count nav-pill-admin">Admin</span>
+                    </button>
+                    ` : ''}
                 </nav>
 
                 <div class="navbar-user-area">
@@ -650,6 +686,11 @@
                             </div>
 
                             <div class="user-dropdown-list">
+                                ${isAdmin(user) ? `
+                                <button type="button" class="user-dropdown-item user-dropdown-admin" onclick="QuizAuth.openAdminModal()">
+                                    <span class="dropdown-item-title">Quản trị &amp; Thống kê hệ thống</span>
+                                </button>
+                                ` : ''}
                                 <button type="button" class="user-dropdown-item" onclick="QuizAuth.openProfileModal()">
                                     <span class="dropdown-item-title">Thông tin cá nhân</span>
                                 </button>
@@ -813,6 +854,99 @@
                     </div>
 
                     <div class="history-list" id="history-list"></div>
+                </div>
+            </div>
+
+            <div class="modal-overlay" id="account-admin-modal">
+                <div class="modal-content modal-admin">
+                    <div class="history-modal-header">
+                        <div>
+                            <h3 id="admin-modal-title">Quản trị &amp; Thống kê hoạt động người dùng</h3>
+                            <p class="admin-modal-subtitle" id="admin-sync-status">Đang đồng bộ dữ liệu toàn hệ thống...</p>
+                        </div>
+                        <div class="admin-header-actions">
+                            <button type="button" class="btn-modal-secondary btn-admin-refresh" id="btn-admin-refresh" onclick="QuizAuth.refreshAdminData()">Làm mới dữ liệu</button>
+                            <button type="button" class="btn-exit-quiz" onclick="QuizAuth.closeAccountModal('account-admin-modal')">Đóng</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-kpi-grid">
+                        <div class="history-stat-card">
+                            <div class="history-stat-label">Tổng số tài khoản</div>
+                            <div class="history-stat-val" id="admin-kpi-users">0</div>
+                        </div>
+                        <div class="history-stat-card">
+                            <div class="history-stat-label">Tài khoản đã làm bài</div>
+                            <div class="history-stat-val" id="admin-kpi-active-users">0</div>
+                        </div>
+                        <div class="history-stat-card">
+                            <div class="history-stat-label">Tổng lượt nộp bài</div>
+                            <div class="history-stat-val" id="admin-kpi-attempts">0</div>
+                        </div>
+                        <div class="history-stat-card">
+                            <div class="history-stat-label">Điểm TB toàn hệ thống</div>
+                            <div class="history-stat-val" id="admin-kpi-avg-score">0.00 / 10</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-tabs">
+                        <button type="button" class="admin-tab-btn active" id="admin-tab-btn-users" onclick="QuizAuth.switchAdminTab('users')">Thống kê theo tài khoản</button>
+                        <button type="button" class="admin-tab-btn" id="admin-tab-btn-attempts" onclick="QuizAuth.switchAdminTab('attempts')">Nhật ký bài làm toàn web</button>
+                    </div>
+
+                    <div id="admin-panel-users" class="admin-tab-panel">
+                        <div class="history-filter-bar admin-filter-bar">
+                            <div class="filter-group" style="flex: 1; min-width: 200px;">
+                                <span class="filter-label">Tìm kiếm:</span>
+                                <input type="text" id="admin-user-search" class="filter-select admin-search-input" placeholder="Nhập tên hoặc @username..." oninput="QuizAuth.renderAdminUsersList()">
+                            </div>
+                            <div class="filter-group">
+                                <span class="filter-label">Trạng thái:</span>
+                                <select id="admin-user-filter" class="filter-select" onchange="QuizAuth.renderAdminUsersList()">
+                                    <option value="all">Tất cả tài khoản</option>
+                                    <option value="active">Đã làm bài (&gt; 0 bài)</option>
+                                    <option value="inactive">Chưa làm bài (0 bài)</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <span class="filter-label">Sắp xếp:</span>
+                                <select id="admin-user-sort" class="filter-select" onchange="QuizAuth.renderAdminUsersList()">
+                                    <option value="recent">Hoạt động gần nhất</option>
+                                    <option value="attempts">Số bài làm nhiều nhất</option>
+                                    <option value="avg">Điểm trung bình cao nhất</option>
+                                    <option value="best">Điểm cao nhất</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="history-list admin-list" id="admin-users-list"></div>
+                    </div>
+
+                    <div id="admin-panel-attempts" class="admin-tab-panel" style="display: none;">
+                        <div class="history-filter-bar admin-filter-bar">
+                            <div class="filter-group">
+                                <span class="filter-label">Tài khoản:</span>
+                                <select id="admin-attempt-user-filter" class="filter-select" onchange="QuizAuth.renderAdminAttemptsList()">
+                                    <option value="all">Tất cả người dùng</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <span class="filter-label">Học phần:</span>
+                                <select id="admin-attempt-course-filter" class="filter-select" onchange="QuizAuth.renderAdminAttemptsList()">
+                                    <option value="all">Tất cả học phần</option>
+                                    ${courseOptionsHtml}
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <span class="filter-label">Chế độ:</span>
+                                <select id="admin-attempt-mode-filter" class="filter-select" onchange="QuizAuth.renderAdminAttemptsList()">
+                                    <option value="all">Tất cả chế độ</option>
+                                    <option value="test">Thi thử</option>
+                                    <option value="practice">Luyện tập</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="history-list admin-list" id="admin-attempts-list"></div>
+                    </div>
                 </div>
             </div>
         `;
@@ -1043,6 +1177,337 @@
         }
     }
 
+    // ---------- Admin Activity & Statistics Dashboard ----------
+    let adminCache = {
+        users: [],
+        allAttempts: [],
+        attemptMap: {}
+    };
+
+    async function fetchAdminSystemData() {
+        const usersMap = {};
+        const historiesMap = {};
+
+        // 1. Seed with local users & histories as fallback
+        const localUsers = getLocalUsersMap();
+        Object.keys(localUsers).forEach(u => {
+            usersMap[u] = localUsers[u];
+            const h = getLocalHistory(u);
+            if (Array.isArray(h) && h.length > 0) {
+                historiesMap[u] = h;
+            }
+        });
+
+        // 2. Fetch full cloud database snapshot if Firebase is configured
+        const fbBase = cleanFirebaseUrl();
+        if (fbBase) {
+            try {
+                const res = await fetch(`${fbBase}/.json`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && typeof data === 'object') {
+                        Object.keys(data).forEach(key => {
+                            if (key.startsWith('user_') && data[key] && typeof data[key] === 'object') {
+                                const u = normalizeUser(key.slice(5));
+                                usersMap[u] = { ...(usersMap[u] || {}), ...data[key], username: u };
+                            } else if (key.startsWith('history_') && Array.isArray(data[key])) {
+                                const u = normalizeUser(key.slice(8));
+                                const existing = historiesMap[u] || [];
+                                historiesMap[u] = mergeHistories(existing, data[key]);
+                            }
+                        });
+                    }
+                }
+            } catch (e) {}
+        }
+
+        // 3. Ensure every user who has history also appears in usersMap
+        Object.keys(historiesMap).forEach(u => {
+            if (!usersMap[u]) {
+                usersMap[u] = {
+                    username: u,
+                    displayName: u,
+                    role: u === 'admin' ? 'Quản trị viên' : 'Sinh viên HNUE',
+                    createdAt: ''
+                };
+            }
+        });
+
+        const allCourses = getAllCourses();
+        const courseTitleMap = {};
+        allCourses.forEach(c => { courseTitleMap[c.id] = c.title; });
+
+        const usersList = [];
+        const allAttempts = [];
+        const attemptMap = {};
+
+        Object.keys(usersMap).forEach(u => {
+            const uObj = usersMap[u];
+            const attempts = (historiesMap[u] || []).filter(Boolean);
+            const st = calcStats(attempts);
+
+            const courseBreakdown = {};
+            let latestAttemptAt = '';
+            attempts.forEach(att => {
+                const cTitle = att.courseTitle || courseTitleMap[att.courseId] || att.courseId || 'Khác';
+                courseBreakdown[cTitle] = (courseBreakdown[cTitle] || 0) + 1;
+                if (att.createdAt && (!latestAttemptAt || new Date(att.createdAt) > new Date(latestAttemptAt))) {
+                    latestAttemptAt = att.createdAt;
+                }
+                const enriched = {
+                    ...att,
+                    username: u,
+                    userDisplayName: uObj.displayName || u,
+                    userRole: u === 'admin' ? 'Quản trị viên' : (uObj.role || 'Sinh viên HNUE')
+                };
+                allAttempts.push(enriched);
+                if (enriched.id) {
+                    attemptMap[enriched.id] = enriched;
+                }
+            });
+
+            const timestamps = [uObj.lastActiveAt, latestAttemptAt, uObj.updatedAt, uObj.createdAt]
+                .filter(Boolean)
+                .map(t => new Date(t).getTime())
+                .filter(t => !isNaN(t));
+            const lastActiveMs = timestamps.length > 0 ? Math.max(...timestamps) : 0;
+
+            usersList.push({
+                username: u,
+                displayName: uObj.displayName || u,
+                role: u === 'admin' ? 'Quản trị viên' : (uObj.role || 'Sinh viên HNUE'),
+                createdAt: uObj.createdAt || '',
+                lastActiveAt: lastActiveMs > 0 ? new Date(lastActiveMs).toISOString() : '',
+                lastActiveMs,
+                count: st.count,
+                avg: st.avg,
+                avgNum: Number(st.avg) || 0,
+                best: st.best,
+                bestNum: Number(st.best) || 0,
+                coursesPracticed: st.coursesPracticed,
+                courseBreakdown
+            });
+        });
+
+        allAttempts.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+
+        adminCache = {
+            users: usersList,
+            allAttempts,
+            attemptMap
+        };
+        return adminCache;
+    }
+
+    async function openAdminModal() {
+        const user = getCurrentUser();
+        if (!isAdmin(user)) return;
+        closeUserDropdown();
+        ensureAccountModalsMounted();
+        $('account-admin-modal').style.display = 'flex';
+        await refreshAdminData();
+    }
+
+    async function refreshAdminData() {
+        const statusEl = $('admin-sync-status');
+        const refreshBtn = $('btn-admin-refresh');
+        if (statusEl) statusEl.textContent = 'Đang tải dữ liệu hoạt động từ hệ thống đám mây...';
+        if (refreshBtn) {
+            refreshBtn.disabled = true;
+            refreshBtn.textContent = 'Đang đồng bộ...';
+        }
+
+        const data = await fetchAdminSystemData();
+        const totalUsers = data.users.length;
+        const activeUsers = data.users.filter(u => u.count > 0).length;
+        const totalAttempts = data.allAttempts.length;
+        const sysStats = calcStats(data.allAttempts);
+
+        setTxt('admin-kpi-users', `${totalUsers} tài khoản`);
+        setTxt('admin-kpi-active-users', `${activeUsers} / ${totalUsers}`);
+        setTxt('admin-kpi-attempts', `${totalAttempts} lượt`);
+        setTxt('admin-kpi-avg-score', `${sysStats.avg} / 10`);
+
+        // Populate user filter dropdown in Attempts tab
+        const userSelect = $('admin-attempt-user-filter');
+        if (userSelect) {
+            const prevVal = userSelect.value || 'all';
+            const sortedForDropdown = [...data.users].sort((a, b) => b.count - a.count || a.username.localeCompare(b.username));
+            userSelect.innerHTML = `<option value="all">Tất cả người dùng (${totalUsers})</option>` +
+                sortedForDropdown.map(u => `<option value="${escHtml(u.username)}">${escHtml(u.displayName)} (@${escHtml(u.username)}) - ${u.count} bài</option>`).join('');
+            if (sortedForDropdown.some(u => u.username === prevVal)) {
+                userSelect.value = prevVal;
+            }
+        }
+
+        renderAdminUsersList();
+        renderAdminAttemptsList();
+
+        if (statusEl) {
+            statusEl.textContent = `Cập nhật lúc ${formatDateTime(new Date().toISOString())} • Đã đồng bộ ${totalUsers} tài khoản và ${totalAttempts} bài làm`;
+        }
+        if (refreshBtn) {
+            refreshBtn.disabled = false;
+            refreshBtn.textContent = 'Làm mới dữ liệu';
+        }
+    }
+
+    function switchAdminTab(tab) {
+        const isUsers = tab === 'users';
+        const btnUsers = $('admin-tab-btn-users');
+        const btnAttempts = $('admin-tab-btn-attempts');
+        const panelUsers = $('admin-panel-users');
+        const panelAttempts = $('admin-panel-attempts');
+
+        if (btnUsers) btnUsers.classList.toggle('active', isUsers);
+        if (btnAttempts) btnAttempts.classList.toggle('active', !isUsers);
+        if (panelUsers) panelUsers.style.display = isUsers ? 'block' : 'none';
+        if (panelAttempts) panelAttempts.style.display = isUsers ? 'none' : 'block';
+    }
+
+    function renderAdminUsersList() {
+        const container = $('admin-users-list');
+        if (!container) return;
+
+        const q = (($('admin-user-search') && $('admin-user-search').value) || '').trim().toLowerCase();
+        const statusFilter = ($('admin-user-filter') && $('admin-user-filter').value) || 'all';
+        const sortBy = ($('admin-user-sort') && $('admin-user-sort').value) || 'recent';
+
+        let list = [...adminCache.users];
+        if (q) {
+            list = list.filter(u =>
+                u.username.toLowerCase().includes(q) ||
+                u.displayName.toLowerCase().includes(q)
+            );
+        }
+        if (statusFilter === 'active') {
+            list = list.filter(u => u.count > 0);
+        } else if (statusFilter === 'inactive') {
+            list = list.filter(u => u.count === 0);
+        }
+
+        list.sort((a, b) => {
+            if (sortBy === 'attempts') return b.count - a.count || b.lastActiveMs - a.lastActiveMs;
+            if (sortBy === 'avg') return b.avgNum - a.avgNum || b.count - a.count;
+            if (sortBy === 'best') return b.bestNum - a.bestNum || b.count - a.count;
+            return b.lastActiveMs - a.lastActiveMs || b.count - a.count;
+        });
+
+        if (list.length === 0) {
+            container.innerHTML = '<div class="empty-state" style="padding: 32px 16px;">Không tìm thấy tài khoản nào phù hợp với bộ lọc.</div>';
+            return;
+        }
+
+        container.innerHTML = list.map(u => {
+            const breakdownEntries = Object.entries(u.courseBreakdown || {});
+            const breakdownHtml = breakdownEntries.length > 0
+                ? `<div class="admin-course-tags">${breakdownEntries.map(([cName, cnt]) => `<span class="admin-course-tag">${escHtml(cName)}: <strong>${cnt} bài</strong></span>`).join('')}</div>`
+                : `<div class="admin-course-tags"><span class="admin-course-tag admin-course-tag-muted">Chưa có bài làm nào</span></div>`;
+
+            return `
+                <div class="history-item admin-user-item">
+                    <div class="history-item-main">
+                        <div class="admin-user-header">
+                            <span class="avatar-circle avatar-circle-sm">${escHtml(getInitials(u.displayName))}</span>
+                            <span class="history-item-title">${escHtml(u.displayName)}</span>
+                            <span class="admin-username-badge">@${escHtml(u.username)}</span>
+                            <span class="admin-role-badge${u.username === 'admin' ? ' is-admin' : ''}">${escHtml(u.role)}</span>
+                        </div>
+                        <div class="history-item-sub">
+                            <span>Đã làm: <strong>${u.count} bài</strong></span>
+                            <span>Điểm TB: <strong>${u.avg} / 10</strong></span>
+                            <span>Cao nhất: <strong>${u.best} / 10</strong></span>
+                            <span>Số môn đã ôn: <strong>${u.coursesPracticed} môn</strong></span>
+                            <span>Hoạt động gần nhất: <strong>${u.lastActiveAt ? formatDateTime(u.lastActiveAt) : 'Chưa ghi nhận'}</strong></span>
+                        </div>
+                        ${breakdownHtml}
+                    </div>
+                    <div class="history-item-right">
+                        <span class="history-score-badge">${u.count} bài</span>
+                        ${u.count > 0 ? `<button type="button" class="btn-history-review" onclick="QuizAuth.inspectUserAttempts('${escHtml(u.username)}')">Xem lịch sử (${u.count})</button>` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderAdminAttemptsList() {
+        const container = $('admin-attempts-list');
+        if (!container) return;
+
+        const userVal = ($('admin-attempt-user-filter') && $('admin-attempt-user-filter').value) || 'all';
+        const courseVal = ($('admin-attempt-course-filter') && $('admin-attempt-course-filter').value) || 'all';
+        const modeVal = ($('admin-attempt-mode-filter') && $('admin-attempt-mode-filter').value) || 'all';
+
+        let list = [...adminCache.allAttempts];
+        if (userVal !== 'all') {
+            list = list.filter(item => item.username === userVal);
+        }
+        if (courseVal !== 'all') {
+            list = list.filter(item => item.courseId === courseVal);
+        }
+        if (modeVal !== 'all') {
+            list = list.filter(item => item.mode === modeVal);
+        }
+
+        if (list.length === 0) {
+            container.innerHTML = '<div class="empty-state" style="padding: 32px 16px;">Chưa có lượt làm bài nào khớp với bộ lọc hiện tại.</div>';
+            return;
+        }
+
+        container.innerHTML = list.map(item => {
+            const modeLabel = item.mode === 'test' ? 'Thi thử' : 'Luyện tập';
+            const canReview = Array.isArray(item.records) && item.records.length > 0 && item.courseId && item.id;
+            return `
+                <div class="history-item">
+                    <div class="history-item-main">
+                        <div class="admin-user-header">
+                            <span class="admin-username-badge">@${escHtml(item.username)}</span>
+                            <span class="admin-attempt-user">${escHtml(item.userDisplayName)}</span>
+                            <span>•</span>
+                            <span class="history-item-title">${escHtml(item.title)}</span>
+                        </div>
+                        <div class="history-item-sub">
+                            <span>Học phần: <strong>${escHtml(item.courseTitle || item.courseId)}</strong></span>
+                            <span>Chế độ: <strong>${modeLabel}</strong></span>
+                            <span>Kết quả: <strong>${item.correct}/${item.total} câu</strong></span>
+                            <span>Thời gian: ${escHtml(item.timeSpent)}</span>
+                            <span>Nộp lúc: ${formatDateTime(item.createdAt)}</span>
+                        </div>
+                    </div>
+                    <div class="history-item-right">
+                        <span class="history-score-badge">${escHtml(item.score)} / 10</span>
+                        ${canReview ? `<button type="button" class="btn-history-review" onclick="QuizAuth.handleAdminReviewAttempt('${escHtml(item.courseId)}', '${escHtml(item.id)}')">Xem bài làm</button>` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function inspectUserAttempts(username) {
+        const userSelect = $('admin-attempt-user-filter');
+        if (userSelect) {
+            userSelect.value = username;
+        }
+        switchAdminTab('attempts');
+        renderAdminAttemptsList();
+    }
+
+    function handleAdminReviewAttempt(courseId, attemptId) {
+        const record = adminCache.attemptMap[attemptId];
+        if (record) {
+            try {
+                sessionStorage.setItem('hnue_admin_review_attempt', JSON.stringify(record));
+            } catch (e) {}
+        }
+        closeAccountModal('account-admin-modal');
+        if (currentPageId === courseId && window.Quiz && typeof window.Quiz.reviewAttempt === 'function') {
+            window.Quiz.reviewAttempt(attemptId);
+        } else {
+            window.location.href = `${courseId}.html?review=${encodeURIComponent(attemptId)}`;
+        }
+    }
+
     document.addEventListener('click', e => {
         const wrap = $('user-menu-wrap');
         if (wrap && !wrap.contains(e.target)) closeUserDropdown();
@@ -1058,6 +1523,7 @@
         getInitials,
         getCloudMode,
         getCurrentUser,
+        isAdmin,
         requireAuth,
         login,
         register,
@@ -1086,6 +1552,13 @@
         switchToPasswordModal,
         closeAccountModal,
         submitProfileUpdate,
-        submitPasswordChange
+        submitPasswordChange,
+        openAdminModal,
+        refreshAdminData,
+        switchAdminTab,
+        renderAdminUsersList,
+        renderAdminAttemptsList,
+        inspectUserAttempts,
+        handleAdminReviewAttempt
     };
 })();
