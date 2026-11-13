@@ -263,7 +263,8 @@
     </div>
 
     <footer class="site-footer">
-        Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội
+        <div>Hệ thống Ôn tập và Thi thử Trực tuyến — Trường Đại học Sư phạm Hà Nội</div>
+        <div class="site-footer-sub">Monlabs - FIT - SMCS - HNUE</div>
     </footer>
 
     <div class="modal-overlay" id="start-modal">

@@ -1953,6 +1953,14 @@ body.login-page {
     text-align: center;
     font-size: 0.8rem;
     color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.site-footer-sub {
+    margin-top: 3px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
 }
 
 .modal-overlay {
