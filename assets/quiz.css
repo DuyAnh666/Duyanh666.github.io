@@ -1697,6 +1697,51 @@ body.login-page {
     display: block;
 }
 
+.fb-title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin-bottom: 8px;
+}
+
+.fb-title.is-ok {
+    color: var(--success);
+}
+
+.fb-title.is-bad {
+    color: var(--danger);
+}
+
+.fb-block {
+    margin-top: 8px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--text-main);
+}
+
+.fb-analysis {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+.fb-explain {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+}
+
+.fb-label {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.fb-meta {
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
 .q-nav-actions {
     display: flex;
     justify-content: space-between;

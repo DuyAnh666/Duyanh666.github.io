@@ -566,6 +566,69 @@
         el.classList.toggle('urgent', remaining <= 180);
     }
 
+    function analyzeWrongChoice(q, chosenIdx, chosenText, correctLetter, correctText) {
+        const stem = stripSourcePrefix(q.question || '');
+        const stemLower = stem.toLowerCase();
+        const chosenLetter = 'ABCD'[chosenIdx] || '';
+        const chosenClean = chosenText.replace(/\.$/, '');
+        const correctClean = correctText.replace(/\.$/, '');
+
+        const negMatch = stem.match(/(không đúng|không phải|không thuộc|không phản ánh|ngoại trừ|sai khi nói về)/i);
+        if (negMatch) {
+            return `Câu hỏi chứa từ khóa phủ định ("${negMatch[1]}"). Phương án ${chosenLetter} ("${chosenClean}") thực chất là một nội dung đúng nên không phải đáp án cần tìm. Phương án không phù hợp / ngoại trừ cần chọn là ${correctLetter} ("${correctClean}").`;
+        }
+
+        if (/tất cả các đáp án|tất cả các phương án|cả ba phương án|cả a, b, c|cả a và b|cả b và c|a, b, c đều đúng/i.test(correctClean)) {
+            return `Phương án ${chosenLetter} ("${chosenClean}") là một ý đúng nhưng chưa bao quát hết toàn bộ yêu cầu đề bài, vì các phương án còn lại cũng chính xác. Do đó cần chọn ${correctLetter} ("${correctClean}").`;
+        }
+
+        if (/tất cả|cả a|cả ba|a và b|b và c/i.test(chosenClean)) {
+            return `Phương án ${chosenLetter} ("${chosenClean}") gộp cả nội dung chưa chính xác. Chỉ có duy nhất phương án ${correctLetter} ("${correctClean}") đáp ứng đúng yêu cầu câu hỏi.`;
+        }
+
+        const supMatch = stem.match(/(quan trọng nhất|cơ bản nhất|quyết định nhất|chủ yếu nhất|hàng đầu|then chốt|trung tâm|đầu tiên|sâu xa nhất)/i);
+        if (supMatch) {
+            return `Đề bài hỏi yếu tố "${supMatch[1]}". Phương án ${chosenLetter} ("${chosenClean}") có thể liên quan đến bài học nhưng chưa phản ánh đúng vai trò cốt lõi nhất bằng phương án ${correctLetter} ("${correctClean}").`;
+        }
+
+        if (/\d/.test(chosenClean) && /\d/.test(correctClean)) {
+            return `Phương án ${chosenLetter} ("${chosenClean}") là mốc thời gian hoặc số liệu gây nhiễu. Dữ kiện chính xác tương ứng với nội dung câu hỏi là ${correctLetter} ("${correctClean}").`;
+        }
+
+        return `Phương án ${chosenLetter} ("${chosenClean}") chưa chính xác vì không phản ánh đúng bản chất hoặc đối tượng câu hỏi đề cập. Đáp án đúng là ${correctLetter} ("${correctClean}").`;
+    }
+
+    function buildDynamicFeedbackHtml(q, chosenIdx, topic) {
+        const ok = chosenIdx === q.correctIndex;
+        const unans = chosenIdx === null;
+        const correctLetter = 'ABCD'[q.correctIndex] || '';
+        const correctText = stripOptionLabel((q.options && q.options[q.correctIndex]) || '');
+        const chosenLetter = !unans ? ('ABCD'[chosenIdx] || '') : '';
+        const chosenText = !unans ? stripOptionLabel((q.options && q.options[chosenIdx]) || '') : '';
+        const explainText = (q.explain || q.explanation || '').trim();
+        const sourceMeta = FEEDBACK_INFO(q, topic);
+
+        const titleHtml = ok
+            ? `<div class="fb-title is-ok">Chính xác! Phương án đúng là ${correctLetter}</div>`
+            : unans
+                ? `<div class="fb-title is-bad">Chưa chọn đáp án. Phương án đúng là ${correctLetter}</div>`
+                : `<div class="fb-title is-bad">Chưa chính xác (Bạn chọn ${chosenLetter}). Phương án đúng là ${correctLetter}</div>`;
+
+        const analysisHtml = (!ok && !unans)
+            ? `<div class="fb-block fb-analysis"><span class="fb-label">Phân tích lựa chọn ${chosenLetter}:</span> ${esc(analyzeWrongChoice(q, chosenIdx, chosenText, correctLetter, correctText))}</div>`
+            : '';
+
+        const explainHtml = explainText
+            ? `<div class="fb-block fb-explain"><span class="fb-label">Giải thích kiến thức:</span> ${esc(explainText)}</div>`
+            : '';
+
+        const metaHtml = sourceMeta
+            ? `<div class="fb-meta">${esc(sourceMeta)}</div>`
+            : '';
+
+        return `${titleHtml}${analysisHtml}${explainHtml}${metaHtml}`;
+    }
+
     function loadQuestion(i) {
         if (i < 0 || i >= quiz.length) return;
         idx = i;
@@ -621,13 +684,8 @@
             fb.innerHTML = `<div style="color: var(--text-muted); font-size: 0.88rem;">${C.unverifiedNote ? C.unverifiedNote(q) : 'Câu hỏi chưa có đáp án xác định.'}</div>`;
         } else if (revealed) {
             const ok = answers[i] === q.correctIndex;
-            const unans = answers[i] === null;
             fb.classList.add('show', ok ? 'is-correct' : 'is-incorrect');
-            fb.innerHTML = `
-                <div style="font-weight: 700; color: ${ok ? 'var(--success)' : 'var(--danger)'}; margin-bottom: 4px;">
-                    ${ok ? 'Chính xác!' : (unans ? 'Chưa chọn đáp án.' : 'Chưa chính xác.')} Phương án đúng: ${'ABCD'[q.correctIndex]}
-                </div>
-                <div style="color: var(--text-secondary); font-size: 0.84rem;">${FEEDBACK_INFO(q, topic)}</div>`;
+            fb.innerHTML = buildDynamicFeedbackHtml(q, answers[i], topic);
         } else {
             fb.classList.remove('show');
         }
