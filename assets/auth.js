@@ -51,7 +51,7 @@
                 {
                     id: 'lsd',
                     href: 'lsd.html',
-                    meta: '4 chương • Đề 40 câu',
+                    meta: '3 chương • Đề 40 câu',
                     examSpec: '40 câu / 50 phút',
                     title: 'Lịch sử Đảng Cộng sản Việt Nam',
                     desc: 'Khái quát quá trình ra đời, lãnh đạo cách mạng và những dấu mốc lịch sử quan trọng của Đảng Cộng sản Việt Nam.'
