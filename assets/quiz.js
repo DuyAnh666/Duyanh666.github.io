@@ -714,7 +714,7 @@
             <div class="ai-test-config">
                 <div class="ai-test-title">Cấu hình kiểm thử nhanh (chỉ hiển thị với Admin trên trình duyệt này)</div>
                 <input type="text" id="ai-test-endpoint-input" class="ai-test-input" placeholder="URL Cloudflare Worker (vd: https://hnue-quiz-ai.xxx.workers.dev)" value="${esc(curEndpoint)}">
-                <input type="password" id="ai-test-key-input" class="ai-test-input" placeholder="Hoặc dán tạm Gemini API Key để test ngay trên máy bạn" value="${esc(curKey)}">
+                <input type="password" id="ai-test-key-input" class="ai-test-input" placeholder="Hoặc dán tạm Gemini Key (AIza...) / Groq Key miễn phí (gsk_...)" value="${esc(curKey)}">
                 <div class="ai-test-actions">
                     <button type="button" class="btn-ai-save" onclick="Quiz.saveAiTestConfig()">Lưu &amp; Chạy thử AI</button>
                     ${(curEndpoint || curKey) ? `<button type="button" class="btn-ai-clear" onclick="Quiz.clearAiTestConfig()">Xóa cấu hình test</button>` : ''}
@@ -772,7 +772,7 @@
         } catch (e) {}
     }
 
-    async function callDirectGeminiTest(apiKey, payload) {
+    async function callDirectAiTest(apiKey, payload) {
         const letters = ['A', 'B', 'C', 'D'];
         const optionsText = payload.options.map((opt, k) => `${letters[k] || k + 1}. ${stripOptionLabel(opt)}`).join('\n');
         const correctLabel = letters[payload.correctIndex] || '';
@@ -791,6 +791,29 @@
             '',
             'Trình bày súc tích (140-180 từ) gồm 3 ý: (1) Vì sao phương án vừa chọn đúng/sai, (2) Bản chất kiến thức của đáp án đúng, (3) Mẹo ghi nhớ nhanh.'
         ].filter(Boolean).join('\n');
+
+        if (apiKey.startsWith('gsk_')) {
+            const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: 'llama-3.3-70b-versatile',
+                    messages: [{ role: 'user', content: prompt }],
+                    temperature: 0.3,
+                    max_tokens: 550
+                })
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error((data && data.error && data.error.message) || `Lỗi Groq API (${res.status})`);
+            }
+            const text = data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+            if (!text) throw new Error('AI không trả về nội dung.');
+            return text.trim();
+        }
 
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
         const res = await fetch(url, {
@@ -871,7 +894,7 @@
                 }
                 aiText = data.explanation;
             } else {
-                aiText = await callDirectGeminiTest(testKey, payload);
+                aiText = await callDirectAiTest(testKey, payload);
             }
 
             aiExplainCache[cacheKey] = aiText;

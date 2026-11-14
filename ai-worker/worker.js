@@ -81,7 +81,31 @@ export default {
         ].filter(Boolean).join('\n');
 
         try {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(env.GEMINI_API_KEY)}`;
+            const apiKey = (env.GEMINI_API_KEY || env.GROQ_API_KEY || '').trim();
+            if (apiKey.startsWith('gsk_')) {
+                const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'llama-3.3-70b-versatile',
+                        messages: [{ role: 'user', content: prompt }],
+                        temperature: 0.3,
+                        max_tokens: 550
+                    })
+                });
+                const gData = await groqRes.json();
+                if (!groqRes.ok) {
+                    return jsonResponse({ ok: false, error: (gData?.error?.message) || `Lỗi Groq API (${groqRes.status})` }, 502);
+                }
+                const gText = gData?.choices?.[0]?.message?.content?.trim();
+                if (!gText) return jsonResponse({ ok: false, error: 'AI không trả về nội dung giải thích.' }, 502);
+                return jsonResponse({ ok: true, explanation: gText, cached: false });
+            }
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
             const geminiRes = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
