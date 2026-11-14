@@ -27,6 +27,9 @@ window.CLOUD_CONFIG = {
 
     // Hoac dien thong tin Supabase vao day:
     supabaseUrl: '',
-    supabaseAnonKey: ''
+    supabaseAnonKey: '',
+
+    // Duong dan Cloudflare Worker Proxy cho tinh nang AI giai thich chi tiet (de trong neu chua bat):
+    aiEndpoint: ''
 };
 
