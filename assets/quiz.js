@@ -16,7 +16,12 @@
         .replace(/\.html.*$/i, '')
         .toLowerCase();
     const C = window.COURSE;
-    const ALL = window.QUESTIONS;
+    const ALL = (window.QUESTIONS || []).map(q => {
+        if (!Number.isInteger(q.correctIndex) && Number.isInteger(q.answer)) {
+            q.correctIndex = q.answer;
+        }
+        return q;
+    });
     const TOPICS = C.topics || [];
     const EXAM = C.exam;
     const QUESTION_SETS = Array.isArray(C.questionSets) ? C.questionSets : null;
@@ -94,6 +99,7 @@
     let timer = null;
     let remaining = 0;
     let initial = 0;
+    let startedAt = 0;
     let pending = null;
     let pendingContext = null; // { type: 'exam' | 'topic', topicId, selectedMode, activeSet }
 
@@ -530,6 +536,7 @@
         $('quiz-topic-title').textContent = cfg.title;
 
         const badge = $('quiz-timer');
+        startedAt = Date.now();
         if (mode === 'test' && cfg.timeMinutes > 0) {
             show('quiz-timer', 'inline-block');
             badge.classList.remove('urgent');
@@ -772,7 +779,10 @@
 
         const total = graded > 0 ? graded : quiz.length;
         const score = total > 0 ? ((correct / total) * 10).toFixed(2) : '0.00';
-        const timeSpentStr = mode === 'test' && initial > 0 ? fmtTime(initial - remaining) : 'Không giới hạn';
+        const elapsedSec = startedAt > 0 ? Math.max(1, Math.round((Date.now() - startedAt) / 1000)) : 0;
+        const timeSpentStr = mode === 'test' && initial > 0
+            ? fmtTime(initial - remaining)
+            : (elapsedSec > 0 ? fmtTime(elapsedSec) : 'Không giới hạn');
 
         // Luu lich su lam bai cua tai khoan
         if (window.QuizAuth) {
@@ -830,6 +840,7 @@
         show('review-filters', 'none');
         $('btn-submit').textContent = 'Nộp bài';
         $('quiz-mode-badge').textContent = mode === 'test' ? 'Thi thử' : 'Luyện tập';
+        startedAt = Date.now();
         if (mode === 'test' && initial > 0) {
             show('quiz-timer', 'inline-block');
             remaining = initial;
